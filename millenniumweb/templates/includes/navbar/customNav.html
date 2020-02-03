@@ -1,0 +1,271 @@
+<header class="millenniumNav noDropdownTransition">
+
+    <ul class="navRoot">
+        <li class="navSection logo mt-2 ml-2">
+            <div class="finbyz-logo" style="margin: 4px 11px;">
+                <a href="/"><img src="http://www.millenniumtiles.com/wp-content/uploads/2018/02/millenniums.jpg" class="img-responsive" alt="Millennium Tiles" title="FinByz Tech Pvt Ltd"></a>
+            </div>
+        </li>
+        <li class="navSection primary p-2">
+            <a class="rootLink" href="/"> Home </a>
+            <a class="rootLink" >
+                    About
+                </a>
+            <a class="rootLink hasDropdown" data-dropdown="product">
+                Products
+            </a>
+            <a class="rootLink" href="">
+                E-Catalogue
+            </a>
+            <a class="rootLink" >
+                Event
+            </a>
+            <a class="rootLink">
+                Inquiry
+            </a>
+            <a class="rootLink">
+                Contact
+            </a>
+        </li>
+        <li class="navSection mobile">
+            <div id="content">
+                <div id="navsidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="nav-wrapper">
+                <nav id="navsidebar" class="vh-100">
+                    <!-- navsidebar Links -->
+                    <div class="d-flex justify-content-center p-2">
+                        <img src="http://www.millenniumtiles.com/wp-content/uploads/2018/02/favicon.png" alt="logo" title="Logo" height="80">
+                    </div>
+                    <ul class="list-unstyled components">
+                        <li class="p-3">
+                            <!-- <img src="/files/nav-home.svg" title="Home" alt="Home" class="nav-service-icon"> -->
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="p-3">
+                            <a href="" class="go-tosub-menu" data-toggle="collapse" aria-expanded="false">
+                                <!-- <img class="nav-service-icon" src="/files/nav-about-company.svg" alt="About" title="About Company"> -->
+                                About
+                            </a>
+                        </li>
+                       
+                        <li class="p-3">
+                            <a href="" data-ls="products" data-toggle="collapse" aria-expanded="false" class="go-tosub-menu">
+                                <img class="left-arrow nav-service-icon d-none" src="https://finbyz.tech/files/left-arrow.svg" alt="Left Arrow" title="Web App Development">
+                                <!-- <img class="nav-service-icon" src="/files/nav-services.svg" alt="Services" title="Services"> -->
+                                Products
+                            </a>
+                            <img data-ls="products" src="https://finbyz.tech/files/right-arrow.svg" class="go-tosub-menu ml-5 float-right mt-2" alt="right-arrow" height="15" width="15">
+                            <ul class="collapse list-unstyled ml-5" id='products'>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-erp-implementation.svg" alt="ERP Implementation" title="ERP Implementation">  -->
+                                    <a href="" class="link-underline p-1">Porcelain Tiles</a>
+                                </li>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-software-development.svg" alt="Software Development" title="Software Development"> -->
+                                    <a href="" class="link-underline p-1"> Wall Tiles</a>
+                                </li>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-website-development.svg" alt="Website Development" title="Website Development"> -->
+                                    <a href="" class="link-underline p-1">Floor Tiles</a>
+                                </li>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-it-consulting.svg" alt="IT Consulting" title="IT Consulting"> -->
+                                    <a href="" class="link-underline p-1">Double Charges Tiles</a>
+                                </li>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-crm-system.svg" alt="CRM Software" title="CRM Software"> -->
+                                    <a class="link-underline p-1" href="">Full Body Vitrified Tiles</a>
+                                </li>
+                                <li class="p-3">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-data-analytics.svg" alt="Data Analytics" title="Data Analytics"> -->
+                                    <a class="link-underline p-1" href="">Parking Tiles</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="p-3">
+                            <!-- <img class="nav-service-icon" src="/files/nav-tech-update.svg" alt="Blog" title="Blog"> -->
+                            <a href="">E-Catalogue</a>
+                        </li>
+                        <li class="p-3">
+                            <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
+                            <a href="">Event</a>
+                        </li>
+                        <li class="p-3">
+                            <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
+                            <a href="">Inquiry</a>
+                        </li>
+                        <li class="p-3">
+                            <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
+                            <a href="">Contact</a>
+                        </li>
+                        {% if not hide_login %}
+                        <li class="btn-login-area">
+                            <!-- <img class="nav-service-icon" src="/files/nav-login.svg" alt="Login" title="Login"> -->
+                            <a href="/login">{{ _("Login") }}</a>
+                        </li>
+                        {% endif %}
+                        <li >
+                            <a data-ls="loginsubmenu" class="go-tosub-menu" data-toggle="collapse" aria-expanded="false">
+                                <img class="left-arrow nav-service-icon d-none" src="/files/left-arrow.svg" alt="Left Arrow" title="About Company">
+                                <span class="user-image-wrapper"></span>
+                                <span class="full-name"></span>
+                                <b class="caret"></b>
+                            </a>
+                            <!-- <img data-ls="loginsubmenu" src="/files/right-arrow.svg" class="go-tosub-menu ml-5 float-right mt-2" alt="right-arrow" height="15" width="15"> -->
+                            <ul class="collapse list-unstyled ml-5" id='loginsubmenu'>
+                                <li>
+                                    <a class="" href="/me" rel="nofollow">
+                                        <img class="nav-service-icon" src="/files/nav-my-account.svg" alt="About FinByz" title="About FinByz">
+                                        <h6 class="link-underline mt-1">{{ _('My Account') }}
+                                        </h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="linkContainer item-about" href="/?cmd=web_logout" rel="nofollow">
+                                        <img class="nav-service-icon" src="/files/nav-logout.svg" alt="About FinByz" title="About FinByz">
+                                        <h6 class="link-underline mt-1">{{ _('Logout') }}
+                                        </h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="linkContainer item-about" href="/desk" rel="nofollow">
+                                        <img class="nav-service-icon" src="/files/nav-switch-to-desk.svg" alt="About FinByz" title="About FinByz">
+                                        <h6 class="link-underline mt-1">{{ _('Switch To Desk') }}
+                                        </h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li >
+                    </ul>
+                </nav>
+            </div>
+        </li>
+        <li class="navSection secondary p-2">
+            {% if not hide_login %}
+              <a href="/login" class="rootLink btn-login-area">{{ _("Login") }}</a> 
+            {% endif %}
+            <a href="#" class="rootLink hasDropdown" data-dropdown="millennium-login">
+                <span class="user-image-wrapper"></span>
+                <span class="full-name"></span>
+                <b class="caret"></b>
+            </a>
+            <a href="#" class="d-none"></a>
+        </li>
+    </ul>
+
+    <div class="dropdownRoot">
+        <div class="dropdownBackground" style="transform: translateX(452px) scaleX(0.707692) scaleY(1.1075);">
+            <div class="alternateBackground" style="transform: translateY(255.53px);"></div>
+        </div>
+        <div class="dropdownArrow" style="transform: translateX(636px) rotate(45deg);"></div>
+        <div class="dropdownContainer" style="transform: translateX(452px); width: 400px; height: 443px;">
+            <div class="dropdownSection left" data-dropdown="product">
+                <div class="dropdownContent">
+                    <div class="linkGroup">
+                        <ul class="industryGroup">
+                            <li>
+                                <a class="linkContainer item-dyechem" href="">
+                                    <!-- <img src="/files/nav-chemical.svg" title="Dyechem" alt="Dyechem" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Porcelain Tiles</h6>
+                                        <p class="nav-subtext text-justify">Porcelain tiles or ceramic tiles are porcelain or ceramic tiles commonly used to cover floors and walls, with a water absorption rate of less than 0.5 percent.
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkContainer item-manufacturing" href="">
+                                    <!-- <img src="/files/nav-manufacturing.svg" title="Manufacturing" alt="Manufacturing" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Wall Tiles</h6>
+                                        <p class="nav-subtext text-justify">Tiles are often used to form wall and floor coverings, and can range from simple square tiles to complex or mosaics.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkContainer item-engineering" href="">
+                                    <!-- <img src="/files/nav-engineering.svg" title="Engineering" alt="Engineering" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Floor Tiles</h6>
+                                        <p class="nav-subtext text-justify">Tile is a manufactured piece of hard-wearing material such as ceramic, stone, metal, baked clay, or even glass, generally used for covering roofs, floors, walls, or other objects such as tabletops.
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkContainer item-logistics" href="">
+                                    <!-- <img src="/files/nav-logistics.svg" title="Logistics" alt="Logistics" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Double Charge Tiles</h6>
+                                        <p class="nav-subtext text-justify">Double Charge vitrified tiles are fed through a press that prints pattern with a double layer of pigment; they are 3 to 4 mm thicker than compared to other tiles.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkContainer item-agro-commodity" href="">
+                                    <!-- <img src="/files/nav-agro.svg" title="Agro Commodity" alt="Agro Commodity" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Full Body Vitrified Tiles</h6>
+                                        <p class="nav-subtext text-justify">Soluble salt vitrified tiles are screen printed and polished.
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="linkContainer item-trading" href="">
+                                    <!-- <img src="/files/nav-trading.svg" title="Trading" alt="Trading" class="nav-icon"> -->
+                                    <div>
+                                        <h6 class="link-underline">Parking Tiles</h6>
+                                        <p class="nav-subtext text-justify">Parking Tiles based on terracotta and ivory and Digital Parking Tiles manufactured using inkjet printing technology.
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="linkGroup linkList prodsubGroup">
+                        <li class="text-center">
+                            <a class="" href="">
+                                <h6 class="title-underline link-underline">View All</h6>
+                            </a>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+            {% if not hide_login %}
+            <div class="dropdownSection left logged-in" data-dropdown="millennium-login">
+                <div class="dropdownContent">
+                    <ul class="linkGroup linkList loginGroup">
+                        <li>
+                            <a class="linkContainer item-about" href="/me" rel="nofollow">
+                                <img class="nav-service-icon" src="/files/nav-my-account.svg" alt="My account" title="My account">
+                                <h6 class="link-underline mt-1">{{ _('My Account') }}
+                                </h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="linkContainer item-about" href="/?cmd=web_logout" rel="nofollow">
+                                <img class="nav-service-icon" src="/files/nav-logout.svg" alt="Logout" title="Logout">
+                                <h6 class="link-underline mt-1">{{ _('Logout') }}
+                                </h6>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="linkContainer item-about" href="/desk" rel="nofollow">
+                                <img class="nav-service-icon" src="/files/nav-switch-to-desk.svg" alt="Desk" title="Desk">
+                                <h6 class="link-underline mt-1">{{ _('Switch To Desk') }}
+                                </h6>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</header>

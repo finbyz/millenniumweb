@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- Built on Frappe. https://frappe.io/ -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="finbyz">
+
+    {% block meta_block %}
+    {% include "templates/includes/meta_block.html" %}
+    {% endblock %}
+
+    <title>{% block title %} {{ title | striptags }} {% endblock %}</title>
+
+    {% block favicon %}
+    <link rel="shortcut icon" href="{{ (favicon or "/assets/frappe/images/favicon.png") | abs_url }}"
+        type="image/x-icon">
+    {% endblock %}
+
+    {%- block head -%}
+
+    {% if head_html is defined -%}
+    {{ head_html or "" }}
+    {%- endif %}
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
+
+
+    {% if theme.theme_url %}
+    <link type="text/css" rel="stylesheet" href="{{ theme.theme_url }}">
+    {% endif %}
+
+    {% for link in web_include_css %}
+    {% if link not in ["assets/frappe/css/bootstrap.css","assets/erpnext/css/website.css","assets/css/frappe-web.css"] %}
+    <link type="text/css" rel="stylesheet" href="{{ link|abs_url }}">
+    {%- endif -%}
+    {%- endfor -%}
+
+    {%- endblock -%}
+
+    {%- block head_include %}
+    {{ head_include or "" }}
+    {% endblock -%}
+
+    {%- block style %}{%- endblock -%}
+
+    <script>
+        window.frappe = {};
+        frappe.ready_events = [];
+        frappe.ready = function (fn) {
+            frappe.ready_events.push(fn);
+        }
+        window.dev_server = {{ dev_server }};
+        window.socketio_port = {{ frappe.socketio_port }};
+    </script>
+</head>
+
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}"
+    data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown"
+    {% endif -%}>
+    <div class="main-section">
+        <a id="gototop"><img src="https://finbyz.tech/files/upwards-arrow.svg"></a>
+        {%- block banner -%}
+        {% include "templates/includes/banner_extension.html" ignore missing %}
+
+        {% if banner_html -%}
+        {{ banner_html or "" }}
+        {%- endif %}
+        {%- endblock -%}
+
+        {%- block navbar -%}
+        {% include "templates/includes/navbar/customNav.html" %}
+        {%- endblock -%}
+        <div class="container-fluid pl-0 pr-0">
+            <div class="main-content">
+                {% block content %}
+                {{ content }}
+                {% endblock %}
+            </div>
+        </div>
+        <div>
+            {%- block footer -%}{% include "templates/includes/footer/footer.html" %}{%- endblock -%}
+         </div>
+    </div>
+    {% block base_scripts %}
+    <!-- js should be loaded in body! -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    {% endblock %}
+
+    {%- for link in web_include_js -%}
+    {%- if link not in ["website_script.js","assets/js/erpnext-web.min.js"] -%}
+    <script type="text/javascript" src="{{ link|abs_url }}"></script>
+    {%- endif -%}
+    {%- endfor -%}
+
+
+    <!-- <script type="text/javascript" src="/assets/finbyzweb/js/combine.min.js"></script> -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+    {%- if script_path -%}
+    <script type="text/javascript" src="{{ script_path }}"></script>{%- endif -%}
+    <script type="text/javascript" src="/assets/millenniumweb/js/combine.min.js"></script>
+    <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>
+
+    {%- block script %}{%- endblock %}
+    <!-- csrf_token -->
+    {%- block body_include %}{{ body_include or "" }}{% endblock -%}
+</body>
+
+</html>

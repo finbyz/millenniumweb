@@ -32,28 +32,26 @@ $(document).ready(function () {
         // }
     });
 
-    // var lastScrollTop = 0;
-    // window.addEventListener("scroll", function () {
-    //     var st = window.pageYOffset || document.documentElement.scrollTop;
+    var lastScrollTop = 0;
+    window.addEventListener("scroll", function (e) {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
 
-    //     if (st < lastScrollTop) {
-    //         if (findOnScroll($('.has-animation'))) {
-    //             if ($('.has-animation').hasClass('animate-in')) {
-    //                 $('.animate-in').not('.not-scroll').addClass("reverse");
-    //                 console.log("reversenew");
-    //             }
-    //             else {
-    //                 $('.has-animation').addClass('animate-in');
-    //             }
-    //         }
-    //     }
-    //     else {
-
-    //         $('.animate-in').removeClass("reverse");
-
-    //     }
-    //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-    // }, false);
+        if (st < lastScrollTop) {
+            if (findOnScroll($('.has-animation'))) {
+                if ($('.has-animation').hasClass('animate-in')) {
+                    curElement = $("div.has-animation").filter(".animate-in").not($('.not-scroll'));
+                    curElement.addClass('reverse');
+                    curElement.removeClass('animate-in');
+                }
+            }
+        }
+        else {
+            curElement = $("div.has-animation").filter(".reverse").not($('.not-scroll'));
+            curElement.addClass("animate-in");
+            curElement.removeClass('reverse');
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    }, false);
 
 
     $(window).scroll(function () {
@@ -62,7 +60,7 @@ $(document).ready(function () {
                 $(this).delay($(this).data('delay+20')).queue(function () {
                     $(this).addClass('animate-in');
                 });
-                console.log("Forward");
+                // console.log("Forward");
             }
             // else {
             //     console.log("reverse");
@@ -105,19 +103,20 @@ $(document).ready(function () {
     var controller = new ScrollMagic.Controller();
     var fade_all = new TimelineMax();
     fade_all
-        .to(".back-face-div", 0.1, { css: { className: "+=show" } }, 1)
-        .to(".front-img", 0, { css: { className: "+=top-bottom" } }, 2)
+        .to(".back-face-div", 1, { css: { className: "+=show" } })
+        .to(".front-img", 1, { css: { className: "+=top-bottom" } })
     new ScrollMagic.Scene({
-        triggerHook: 1,
+        triggerElement: '.custom-container',
         reverse: true,
-        duration: 2000,
-        offset: -50,
+        duration: 1000,
+        offset: -400,
 
 
     })
+        .addIndicators()
         .addTo(controller)
         .setTween(fade_all);
-    console.log("hello");
+    // console.log("hello");
 
     // var controller = new ScrollMagic.Controller();
     // var fade_all = new TimelineMax();
@@ -132,7 +131,8 @@ $(document).ready(function () {
     //     .setTween(fade_all);
     var controller = new ScrollMagic.Controller();
     $(".has-animation").not($(".not-scroll")).each(function () {
-        var tween = TweenMax.to(this, 1, { className: "+=animate-in" });
+        var tween = TweenMax.to(this, 1, { className: "+=animate-in" })
+
         var fadeUpScene = new ScrollMagic.Scene({
             triggerElement: this,
             duration: 1000,
@@ -392,15 +392,14 @@ window.addEventListener("scroll", function () {
     var st = window.pageYOffset || document.documentElement.scrollTop;
     if (st <= 0) {
         setTimeout(() => {
-            $("header.millenniumNav").removeClass("nav-shadow");
+            $("header.mi    llenniumNav").removeClass("nav-shadow");
         }, 100)
     }
     if (st > lastScrollTop) {
         $("header.millenniumNav").addClass("nav-shadow");
-        console.log("forward");
     } else {
         $("header.millenniumNav").addClass("nav-shadow");
-        console.log("reverse");
+        // console.log("reverse");
     }
     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 }, false);
@@ -512,32 +511,34 @@ $(window).on('scroll', function () {
 });
 $(window).on("scroll", () => {
     if (findOnScroll($('#drag-container'))) {
-        console.log("hello");
+        // console.log("hello");
         imageGallary({ "radius": 400, "imgheightwidth": 208.3 });
     }
 });
 function findOnScroll(elm, eval) {
+
+
     eval = eval || "object visible";
     var viewportHeight = $(window).height(), // Viewport Height
         scrolltop = $(window).scrollTop(), // Scroll Top
         y = $(elm).offset().top,
         elementHeight = $(elm).height();
 
+
     if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
-    if (eval == "above") return ((y < (viewportHeight + scrolltop)));
 }
 
 if ($(window).width() < 768) {
     $(window).on("scroll", () => {
         if (findOnScroll($('#drag-container'))) {
-            console.log("hello");
+            // console.log("hello");
             imageGallary({ "radius": 200, "imgheightwidth": 110.3 });
         }
     });
 }
 
 function imageGallary(args) {
-    console.log("function call");
+    // console.log("function call");
     var radius = args.radius;
     var autoRotate = true;
     var rotateSpeed = -60;

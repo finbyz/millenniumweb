@@ -126,7 +126,7 @@ $(document).ready(function () {
     var fade_all = new TimelineMax();
     fade_all
 
-        .to(".back-bar-wrapper", 1, { css: { top: "85%" } })
+        .to(".back-bar-wrapper", 1, { css: { top: "75%" } })
     new ScrollMagic.Scene({
         triggerElement: '.bar-wrapper',
         reverse: true,

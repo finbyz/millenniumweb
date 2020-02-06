@@ -37,12 +37,14 @@ $(document).ready(function () {
         var st = window.pageYOffset || document.documentElement.scrollTop;
 
         if (st < lastScrollTop) {
+
             if (findOnScroll($('.has-animation'))) {
                 if ($('.has-animation').hasClass('animate-in')) {
                     curElement = $("div.has-animation").filter(".animate-in").not($('.not-scroll'));
                     curElement.addClass('reverse');
                     curElement.removeClass('animate-in');
                 }
+
             }
         }
         else {
@@ -110,6 +112,26 @@ $(document).ready(function () {
         reverse: true,
         duration: 1000,
         offset: -400,
+
+
+    })
+        .addIndicators()
+        .addTo(controller)
+        .setTween(fade_all);
+
+
+    // bar section top-bottom
+
+    var controller = new ScrollMagic.Controller();
+    var fade_all = new TimelineMax();
+    fade_all
+
+        .to(".back-bar-wrapper", 1, { css: { top: "85%" } })
+    new ScrollMagic.Scene({
+        triggerElement: '.bar-wrapper',
+        reverse: true,
+        duration: 1000,
+        offset: 300,
 
 
     })

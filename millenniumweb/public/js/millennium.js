@@ -32,28 +32,28 @@ $(document).ready(function () {
         // }
     });
 
-    var lastScrollTop = 0;
-    window.addEventListener("scroll", function (e) {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
+    // var lastScrollTop = 0;
+    // window.addEventListener("scroll", function (e) {
+    //     var st = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (st < lastScrollTop) {
+    //     if (st < lastScrollTop) {
 
-            if (findOnScroll($('.has-animation'))) {
-                if ($('.has-animation').hasClass('animate-in')) {
-                    curElement = $("div.has-animation").filter(".animate-in").not($('.not-scroll'));
-                    curElement.addClass('reverse');
-                    curElement.removeClass('animate-in');
-                }
+    //         if (findOnScroll($('.has-animation'))) {
+    //             if ($('.has-animation').hasClass('animate-in')) {
+    //                 curElement = $("div.has-animation").filter(".animate-in").not($('.not-scroll'));
+    //                 curElement.addClass('reverse');
+    //                 curElement.removeClass('animate-in');
+    //             }
 
-            }
-        }
-        else {
-            curElement = $("div.has-animation").filter(".reverse").not($('.not-scroll'));
-            curElement.addClass("animate-in");
-            curElement.removeClass('reverse');
-        }
-        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-    }, false);
+    //         }
+    //     }
+    //     else {
+    //         curElement = $("div.has-animation").filter(".reverse").not($('.not-scroll'));
+    //         curElement.addClass("animate-in");
+    //         curElement.removeClass('reverse');
+    //     }
+    //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    // }, false);
 
 
     $(window).scroll(function () {
@@ -106,14 +106,12 @@ $(document).ready(function () {
     var fade_all = new TimelineMax();
     fade_all
         .to(".back-face-div", 1, { css: { className: "+=show" } })
-        .to(".front-img", 1, { css: { className: "+=top-bottom" } })
+        .to(".front-img", 2, { css: { className: "+=top-bottom" } })
     new ScrollMagic.Scene({
         triggerElement: '.custom-container',
         reverse: true,
-        duration: 1000,
+        duration: 1100,
         offset: -400,
-
-
     })
         .addIndicators()
         .addTo(controller)
@@ -125,19 +123,17 @@ $(document).ready(function () {
     var controller = new ScrollMagic.Controller();
     var fade_all = new TimelineMax();
     fade_all
-
-        .to(".back-bar-wrapper", 1, { css: { top: "75%" } })
+        .to(".back-bar-wrapper", 1, { css: { top: "78%" } })
     new ScrollMagic.Scene({
         triggerElement: '.bar-wrapper',
         reverse: true,
         duration: 1000,
         offset: 300,
-
-
     })
         .addIndicators()
         .addTo(controller)
         .setTween(fade_all);
+
     // console.log("hello");
 
     // var controller = new ScrollMagic.Controller();
@@ -157,21 +153,28 @@ $(document).ready(function () {
 
         var fadeUpScene = new ScrollMagic.Scene({
             triggerElement: this,
-            duration: 1000,
-            offset: -200,
+            duration: 800,
+            offset: -300,
             reverse: false
         })
             .setTween(tween)
             .addTo(controller);
     })
-
-    var controller = new ScrollMagic.Controller();
-
-
+    if ($(window).width() > 768) {
+        var controller = new ScrollMagic.Controller();
+        var fade_all = new TimelineMax();
+        fade_all
+            .to(".testimonial_container", 1, { css: { top: "-4rem" } })
+        new ScrollMagic.Scene({
+            triggerElement: '.background_layer',
+            reverse: true,
+            duration: 700,
+            offset: -150,
+        })
+            .addTo(controller)
+            .setTween(fade_all);
+    }
 });
-
-
-
 function millenniumNavDropdowns(e) {
     var t = this;
     this.container = document.querySelector(e),
@@ -427,116 +430,129 @@ window.addEventListener("scroll", function () {
 }, false);
 
 /* Counter */
+try {
+    $(window).on('scroll', function () {
+        if (findOnScroll($('#counter-section'))) {
+            (function ($) {
+                $.fn.countTo = function (options) {
+                    options = options || {};
 
-$(window).on('scroll', function () {
-    if (findOnScroll($('#counter-section'))) {
-        (function ($) {
-            $.fn.countTo = function (options) {
-                options = options || {};
+                    return $(this).each(function () {
+                        // set options for current element
+                        var settings = $.extend({}, $.fn.countTo.defaults, {
+                            from: $(this).data('from'),
+                            to: $(this).data('to'),
+                            speed: $(this).data('speed'),
+                            refreshInterval: $(this).data('refresh-interval'),
+                            decimals: $(this).data('decimals')
+                        }, options);
 
-                return $(this).each(function () {
-                    // set options for current element
-                    var settings = $.extend({}, $.fn.countTo.defaults, {
-                        from: $(this).data('from'),
-                        to: $(this).data('to'),
-                        speed: $(this).data('speed'),
-                        refreshInterval: $(this).data('refresh-interval'),
-                        decimals: $(this).data('decimals')
-                    }, options);
+                        // how many times to update the value, and how much to increment the value on each update
+                        var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                            increment = (settings.to - settings.from) / loops;
 
-                    // how many times to update the value, and how much to increment the value on each update
-                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
-                        increment = (settings.to - settings.from) / loops;
+                        // references & variables that will change with each update
+                        var self = this,
+                            $self = $(this),
+                            loopCount = 0,
+                            value = settings.from,
+                            data = $self.data('countTo') || {};
 
-                    // references & variables that will change with each update
-                    var self = this,
-                        $self = $(this),
-                        loopCount = 0,
-                        value = settings.from,
-                        data = $self.data('countTo') || {};
+                        $self.data('countTo', data);
 
-                    $self.data('countTo', data);
+                        // if an existing interval can be found, clear it first
+                        if (data.interval) {
+                            clearInterval(data.interval);
+                        }
+                        data.interval = setInterval(updateTimer, settings.refreshInterval);
 
-                    // if an existing interval can be found, clear it first
-                    if (data.interval) {
-                        clearInterval(data.interval);
-                    }
-                    data.interval = setInterval(updateTimer, settings.refreshInterval);
-
-                    // initialize the element with the starting value
-                    render(value);
-
-                    function updateTimer() {
-                        value += increment;
-                        loopCount++;
-
+                        // initialize the element with the starting value
                         render(value);
 
-                        if (typeof (settings.onUpdate) == 'function') {
-                            settings.onUpdate.call(self, value);
-                        }
+                        function updateTimer() {
+                            value += increment;
+                            loopCount++;
 
-                        if (loopCount >= loops) {
-                            // remove the interval
-                            $self.removeData('countTo');
-                            clearInterval(data.interval);
-                            value = settings.to;
+                            render(value);
 
-                            if (typeof (settings.onComplete) == 'function') {
-                                settings.onComplete.call(self, value);
+                            if (typeof (settings.onUpdate) == 'function') {
+                                settings.onUpdate.call(self, value);
+                            }
+
+                            if (loopCount >= loops) {
+                                // remove the interval
+                                $self.removeData('countTo');
+                                clearInterval(data.interval);
+                                value = settings.to;
+
+                                if (typeof (settings.onComplete) == 'function') {
+                                    settings.onComplete.call(self, value);
+                                }
                             }
                         }
-                    }
 
-                    function render(value) {
-                        var formattedValue = settings.formatter.call(self, value, settings);
-                        $self.html(formattedValue);
+                        function render(value) {
+                            var formattedValue = settings.formatter.call(self, value, settings);
+                            $self.html(formattedValue);
+                        }
+                    });
+                };
+
+                $.fn.countTo.defaults = {
+                    from: 0,               // the number the element should start at
+                    to: 0,                 // the number the element should end at
+                    speed: 1000,           // how long it should take to count between the target numbers
+                    refreshInterval: 100,  // how often the element should be updated
+                    decimals: 0,           // the number of decimal places to show
+                    formatter: formatter,  // handler for formatting the value before rendering
+                    onUpdate: null,        // callback method for every time the element is updated
+                    onComplete: null       // callback method for when the element finishes updating
+                };
+
+                function formatter(value, settings) {
+                    return value.toFixed(settings.decimals);
+                }
+            }(jQuery));
+
+            jQuery(function ($) {
+                // custom formatting example
+                $('.count-number').data('countToOptions', {
+                    formatter: function (value, options) {
+                        return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
                     }
                 });
-            };
 
-            $.fn.countTo.defaults = {
-                from: 0,               // the number the element should start at
-                to: 0,                 // the number the element should end at
-                speed: 1000,           // how long it should take to count between the target numbers
-                refreshInterval: 100,  // how often the element should be updated
-                decimals: 0,           // the number of decimal places to show
-                formatter: formatter,  // handler for formatting the value before rendering
-                onUpdate: null,        // callback method for every time the element is updated
-                onComplete: null       // callback method for when the element finishes updating
-            };
+                // start all the timers
+                $('.timer').each(count);
 
-            function formatter(value, settings) {
-                return value.toFixed(settings.decimals);
-            }
-        }(jQuery));
-
-        jQuery(function ($) {
-            // custom formatting example
-            $('.count-number').data('countToOptions', {
-                formatter: function (value, options) {
-                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+                function count(options) {
+                    var $this = $(this);
+                    options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+                    $this.countTo(options);
                 }
             });
+            $(window).off('scroll');
+        }
+        if (findOnScroll($('#drag-container'))) {
+            // console.log("hello");
+            imageGallary({ "radius": 400, "imgheightwidth": 208.3 });
+        }
+        if ($(window).width() < 768) {
 
-            // start all the timers
-            $('.timer').each(count);
-
-            function count(options) {
-                var $this = $(this);
-                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-                $this.countTo(options);
+            if (findOnScroll($('#drag-container'))) {
+                // console.log("hello");
+                imageGallary({ "radius": 200, "imgheightwidth": 110.3 });
             }
-        });
-        $(window).off('scroll');
-    }
-});
-$(window).on("scroll", () => {
-    if (findOnScroll($('#drag-container'))) {
-        // console.log("hello");
-        imageGallary({ "radius": 400, "imgheightwidth": 208.3 });
-    }
-});
+
+        }
+
+    });
+
+
+} catch (err) { }
+
+
+
 function findOnScroll(elm, eval) {
 
 
@@ -550,14 +566,6 @@ function findOnScroll(elm, eval) {
     if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
 }
 
-if ($(window).width() < 768) {
-    $(window).on("scroll", () => {
-        if (findOnScroll($('#drag-container'))) {
-            // console.log("hello");
-            imageGallary({ "radius": 200, "imgheightwidth": 110.3 });
-        }
-    });
-}
 
 function imageGallary(args) {
     // console.log("function call");

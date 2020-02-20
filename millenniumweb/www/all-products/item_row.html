@@ -1,0 +1,31 @@
+<div class="card m-3  ">
+	<div class="row no-gutters">
+		<div class="card-body ">
+			<a class="no-underline" href="/{{ item.route }}">
+				<div class="vis-img   has-animation has-animation-y animation-ttb scroll">
+
+					<img class="website-image item-image  "
+						src="{{ item.website_image or item.image or 'no-image.jpg' }}" alt="{{ item.item_name }}">
+				</div>
+				<div class=" hover-img has-animation has-animation-y animation-ttb scroll" style="position: absolute; top:20px; width: calc(100% - 40px);">
+					<img class=" website-image item-image  "
+						
+						src="https://www.flooringinc.com/blog/wp-content/uploads/2018/12/2019-tile-flooring-trends.jpg"
+						alt="">
+				</div>
+				<div class="card-content card-body" >
+					<h5 class="card-title">
+						<a class="text-dark" href="/{{ item.route }}">
+							{{ item.item_name or item.name }}
+						</a>
+					</h5>
+					<p class="card-text">
+						{{ item.website_description or item.description or '<i class="text-muted">No description</i>' }}
+					</p>
+					<a href="/{{ item.route }}" class="btn btn-sm btn-light">{{ _('More details') }}</a>
+				</div>
+			</a>
+		</div>
+
+	</div>
+</div>

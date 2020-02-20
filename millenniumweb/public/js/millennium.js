@@ -19,7 +19,7 @@ $(document).ready(function () {
         items: 1,
     });
 
-    $('.has-animation').not($('.scroll')).each(function (index) {
+    $('.has-animation').filter($('.not-scroll')).each(function (index) {
         if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
             $(this).delay($(this).data('delay+20')).queue(function () {
                 $(this).addClass('animate-in');
@@ -57,7 +57,7 @@ $(document).ready(function () {
 
 
     $(window).scroll(function () {
-        $('.has-animation').not($('.scroll')).each(function (index) {
+        $('.has-animation').filter($('.not-scroll')).each(function (index) {
             if ($(window).scrollTop() + $(window).height() > $(this).offset().top) {
                 $(this).delay($(this).data('delay+20')).queue(function () {
                     $(this).addClass('animate-in');
@@ -148,7 +148,7 @@ $(document).ready(function () {
     //     .addTo(controller)
     //     .setTween(fade_all);
     var controller = new ScrollMagic.Controller();
-    $(".has-animation").not($(".not-scroll")).each(function () {
+    $(".has-animation").filter($(".scroll")).each(function () {
         var tween = TweenMax.to(this, 1, { className: "+=animate-in" })
 
         var fadeUpScene = new ScrollMagic.Scene({
@@ -174,7 +174,36 @@ $(document).ready(function () {
             .addTo(controller)
             .setTween(fade_all);
     }
+
+    // $('.hover-img').mouseenter(function(){
+    //     if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
+    //         $(this).delay($(this).data('delay+20')).queue(function () {
+    //             $(this).addClass('animate-in');
+    //         });
+    //     }
+      
+
+    // })
+    // $('.hover-img').mouseleave(function(){
+    //     $(this).removeClass('animate-in');     
+
+    // })
+
+    $('.hover-img').on({
+        mouseenter: function() {
+            $(this).animate({opacity:0});
+            
+        },
+        mouseleave: function() {
+            $(this).animate({opacity:1});
+  
+        }
+    })
+
+    
 });
+
+
 function millenniumNavDropdowns(e) {
     var t = this;
     this.container = document.querySelector(e),

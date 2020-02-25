@@ -113,7 +113,7 @@ $(document).ready(function () {
         duration: 1100,
         offset: -400,
     })
-        .addIndicators()
+
         .addTo(controller)
         .setTween(fade_all);
 
@@ -130,7 +130,7 @@ $(document).ready(function () {
         duration: 1000,
         offset: 300,
     })
-        .addIndicators()
+
         .addTo(controller)
         .setTween(fade_all);
 
@@ -199,6 +199,20 @@ $(document).ready(function () {
   
         }
     })
+
+
+// $('#menu_bars').hasClass("active")(function(){
+//     $('.page_content').css("padding-left",20%)
+// }
+
+   
+    
+    const sidebar = document.getElementById('sidebar');
+    const button = document.getElementById('toggle');
+    
+    button.addEventListener('click', _ => {
+      sidebar.classList.toggle('collapsed');
+    });
 
     
 });

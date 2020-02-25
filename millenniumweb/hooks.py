@@ -127,3 +127,7 @@ app_license = "GPL 3.0"
 # 	"Task": "millenniumweb.task.get_dashboard_data"
 # }
 
+
+override_whitelisted_methods = {
+	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "millenniumweb.api.get_products_html_for_website",
+}

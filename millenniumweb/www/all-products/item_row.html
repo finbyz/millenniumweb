@@ -1,31 +1,64 @@
-<div class="card m-3  ">
-	<div class="row no-gutters">
-		<div class="card-body ">
-			<a class="no-underline" href="/{{ item.route }}">
-				<div class="vis-img   has-animation has-animation-y animation-ttb scroll">
 
-					<img class="website-image item-image  "
-						src="{{ item.website_image or item.image or 'no-image.jpg' }}" alt="{{ item.item_name }}">
-				</div>
-				<div class=" hover-img has-animation has-animation-y animation-ttb scroll" style="position: absolute; top:20px; width: calc(100% - 40px);">
-					<img class=" website-image item-image  "
-						
-						src="https://www.flooringinc.com/blog/wp-content/uploads/2018/12/2019-tile-flooring-trends.jpg"
-						alt="">
-				</div>
-				<div class="card-content card-body" >
-					<h5 class="card-title">
-						<a class="text-dark" href="/{{ item.route }}">
-							{{ item.item_name or item.name }}
-						</a>
-					</h5>
-					<p class="card-text">
-						{{ item.website_description or item.description or '<i class="text-muted">No description</i>' }}
-					</p>
-					<a href="/{{ item.route }}" class="btn btn-sm btn-light">{{ _('More details') }}</a>
-				</div>
+<div class="card m-3">
+	<div class="row no-gutters">
+		<div class="col-md-12">
+			<div class="card-body card-image">
+			
+				<a class="no-underline" href="/{{ item.route }}">
+					<div class="vis-img product-img has-animation has-animation-y animation-ttb scroll">
+
+						<img class="website-image" src="{{ item.website_image or 'no-image.jpg' }}"
+							alt="{{ item.item_name }}">
+
+					</div>
+					<div class=" hover-img product-img has-animation has-animation-y animation-ttb scroll"
+						style="position: absolute; top:0; ">
+						<img class=" website-image"
+							src="{{ item.cover_image or 'no-image.jpg' }}"
+							alt="">
+
+					</div>
+			
+
+				</a>
+			</div>
+			</div>
+		</div>
+		<div class="card-content card-body">
+			<h5 class="card-title sub-text">
+				<a class="blue-text" href="/{{ item.route }}">
+					{{ item.item_name or item.name }}
+				</a>
+			</h5>
+			<a class="tile-button card-button fill ml-0 mt-4 pt-4"  href="/en-au/news-more/news/ortec-sustainability-report-2017">
+				<span class="tile-point-parent"><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span></span>
+				<h6 class="label" style="text-transform: capitalize;">View More</h6>
 			</a>
+
+
 		</div>
 
+
+
 	</div>
-</div>
+<script>
+    $('.has-animation').filter('.product-img').each(function (index) {
+        if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
+            $(this).delay($(this).data('delay+20')).queue(function () {
+                $(this).addClass('animate-in');
+            });
+        }
+        // else {
+        //     $(this).delay($(this).data('delay+20')).queue(function () {
+        //         $(this).addClass('reverse');
+        //     });
+        // }
+    });
+	</script>

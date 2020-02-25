@@ -7,128 +7,295 @@
 {% endblock header %}
 
 {% block page_content %}
-<div class="container card-holder mt-5">
-	<div class="row">
-		<div class="col-8">
-			<div class="input-group input-group-sm mb-3">
-				<input type="search" class="form-control" placeholder="{{_('Search')}}"
-					aria-label="{{_('Product Search')}}" aria-describedby="product-search"
-					value="{{ frappe.form_dict.search or '' }}">
-			</div>
-		</div>
 
-		<div class="col-4 pl-0">
+
+
+<div class="container  mt-5">
+	<div class="row">
+		<div class="col-4">
 			<button class="btn btn-light btn-sm btn-block d-md-none" type="button" data-toggle="collapse"
 				data-target="#product-filters" aria-expanded="false" aria-controls="product-filters"
 				style="white-space: nowrap;">
 				{{ _('Toggle Filters') }}
 			</button>
 		</div>
+
+		<div class="col-4 pl-0">
+
+
+		</div>
+		<div class="col-4 pl-0">
+
+			<div class="input-group input-group-sm mb-3">
+				<input type="search" class="form-control" placeholder="{{_('Search')}}"
+					aria-label="{{_('Product Search')}}" aria-describedby="product-search"
+					value="{{ frappe.form_dict.search or '' }}">
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="container">
+<div class="container products-list-container">
 
-	<div class=" card-holder">
+	<div class="products-list finbyz">
 
 		{% if items %}
 		{% for item in items %}
-	
-			{% include "millenniumweb/www/all-products/item_row.html" %}
+
+		{% include "millenniumweb/www/all-products/item_row.html" %}
 
 		{% endfor %}
 		{% else %}
 		{% include "millenniumweb/www/all-products/not_found.html" %}
 		{% endif %}
 
-		<div class="col-12 order-1 col-md-4 order-md-2">
 
-			{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
-			<a class="mb-3 d-inline-block" href="/all-products">{{ _('Clear filters') }}</a>
-			{% endif  %}
 
-			<div class="collapse d-md-block" id="product-filters">
-				{% for field_filter in field_filters %}
-				{%- set item_field =  field_filter[0] %}
-				{%- set values =  field_filter[1] %}
-				<div class="mb-4">
-					<h6>{{ item_field.label }}</h6>
+	</div>
+	<div class="d-lg-flex container">
+		<div class="sidebar-block mt-100">
+			<div class="navbar-toggle-visible left">
+				<!--side menu open button-->
 
-					{% if values | len > 20 %}
-					<!-- show inline filter if values more than 20 -->
-					<input type="text" class="form-control form-control-sm mb-2 product-filter-filter" />
-					{% endif %}
 
-					{% if values %}
-					<div class="filter-options">
-						{% for value in values %}
-						<div class="custom-control custom-checkbox" data-value="{{ value }}">
-							<input type="checkbox" class="product-filter field-filter custom-control-input"
-								id="{{value}}" data-filter-name="{{ item_field.fieldname }}"
-								data-filter-value="{{ value }}">
-							<label class="custom-control-label" for="{{value}}">
-								{{ value }}
-							</label>
-						</div>
-						{% endfor %}
+				<!-- <div class="your-account-info-sidebar">
+				<div class="row">
+					<div class="col-xs-2">
+						<span class="user-image-sidebar"></span>
 					</div>
-					{% else %}
-					<i class="text-muted">{{ _('No values') }}</i>
-					{% endif %}
-				</div>
-				{% endfor %}
-
-				{% for attribute in attribute_filters %}
-				<div class="mb-4">
-					<h6>{{ attribute.name }}</h6>
-
-					{% if values | len > 20 %}
-					<!-- show inline filter if values more than 20 -->
-					<input type="text" class="form-control form-control-sm mb-2 product-filter-filter" />
-					{% endif %}
-
-					{% if attribute.item_attribute_values %}
-					<div class="filter-options">
-						{% for attr_value in attribute.item_attribute_values %}
-						<div class="custom-control custom-checkbox" data-value="{{ value }}">
-							<input type="checkbox" class="product-filter attribute-filter custom-control-input"
-								id="{{attr_value.name}}" data-attribute-name="{{ attribute.name }}"
-								data-attribute-value="{{ attr_value.attribute_value }}" {% if attr_value.checked %}
-								checked {% endif %}>
-							<label class="custom-control-label" for="{{attr_value.name}}">
-								{{ attr_value.attribute_value }}
-							</label>
-						</div>
-						{% endfor %}
+					<div class="col-xs-10">
+						<div class="web-sidebar-user">SPMPL</div>
+						<a href="/?cmd=web_logout">
+							<div class="text-muted small">
+								Logout</div>
+						</a>
 					</div>
-					{% else %}
-					<i class="text-muted">{{ _('No values') }}</i>
-					{% endif %}
 				</div>
-				{% endfor %}
+			</div> -->
+
+
+
+				<div class="web-sidebar">
+					<!-- <div class="your-account-info-sidebar">
+					<div class="row">
+						<div class="col-xs-2">
+							<span class="user-image-sidebar"></span>
+						</div>
+						<div class="col-xs-10">
+							<div class="web-sidebar-user">{{ fullname }}</div>
+							<a href="/?cmd=web_logout">
+								<div class="text-muted small">
+									{{ _("Logout") }}</div>
+							</a>
+						</div>
+					</div>
+				</div> -->
+				<div id="menu_bars" class="left "> <span></span> <span></span> <span></span> </div>
+					<div class="sidebar-items">
+						<nav class="side-nav side-nav-left slide-nav static-nav ">
+							<div class="side-nav-inner-setting">
+
+								<div class=" order-1  order-md-2">
+
+									{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
+									<a class="mb-3 d-inline-block" href="/all-products">{{ _('Clear filters') }}</a>
+									{% endif  %}
+
+									<div class="collapse d-md-block" id="product-filters">
+										{% for field_filter in field_filters %}
+										{%- set item_field =  field_filter[0] %}
+										{%- set values =  field_filter[1] %}
+										<div class="mb-4">
+											<h6>{{ item_field.label }}</h6>
+
+											{% if values | len > 20 %}
+											<!-- show inline filter if values more than 20 -->
+											<input type="text"
+												class="form-control form-control-sm mb-2 product-filter-filter" />
+											{% endif %}
+
+											{% if values %}
+											<div class="filter-options">
+												{% for value in values %}
+												<div class="custom-control custom-checkbox" data-value="{{ value }}">
+													<input type="checkbox"
+														class="product-filter field-filter custom-control-input"
+														id="{{value}}" data-filter-name="{{ item_field.fieldname }}"
+														data-filter-value="{{ value }}">
+													<label class="custom-control-label" for="{{value}}">
+														{{ value }}
+													</label>
+												</div>
+												{% endfor %}
+											</div>
+											{% else %}
+											<i class="text-muted">{{ _('No values') }}</i>
+											{% endif %}
+										</div>
+										{% endfor %}
+
+										{% for attribute in attribute_filters %}
+										<div class="mb-4">
+											<h6>{{ attribute.name }}</h6>
+
+											{% if values | len > 20 %}
+											<!-- show inline filter if values more than 20 -->
+											<input type="text"
+												class="form-control form-control-sm mb-2 product-filter-filter" />
+											{% endif %}
+
+											{% if attribute.item_attribute_values %}
+											<div class="filter-options">
+												{% for attr_value in attribute.item_attribute_values %}
+												<div class="custom-control custom-checkbox" data-value="{{ value }}">
+													<input type="checkbox"
+														class="product-filter attribute-filter custom-control-input"
+														id="{{attr_value.name}}"
+														data-attribute-name="{{ attribute.name }}"
+														data-attribute-value="{{ attr_value.attribute_value }}"
+														{% if attr_value.checked %} checked {% endif %}>
+													<label class="custom-control-label" for="{{attr_value.name}}">
+														{{ attr_value.attribute_value }}
+													</label>
+												</div>
+												{% endfor %}
+											</div>
+											{% else %}
+											<i class="text-muted">{{ _('No values') }}</i>
+											{% endif %}
+										</div>
+										{% endfor %}
+									</div>
+
+								</div>
+
+								<script>
+									frappe.ready(() => {
+										$('.product-filter-filter').on('keydown', frappe.utils.debounce((e) => {
+											const $input = $(e.target);
+											const keyword = ($input.val() || '').toLowerCase();
+											const $filter_options = $input.next('.filter-options');
+
+											$filter_options.find('.custom-control').show();
+											$filter_options.find('.custom-control').each((i, el) => {
+												const $el = $(el);
+												const value = $el.data('value').toLowerCase();
+												if (!value.includes(keyword)) {
+													$el.hide();
+												}
+											});
+
+										}, 300));
+									})
+								</script>
+
+								<!-- <ul class="list-unstyled side-nav-list">
+											{% if sidebar_title %}
+											<li class="title clearfix">
+												{{ sidebar_title }}
+											</li>
+											{% endif %}
+											{% for item in sidebar_items -%}
+											<li class="sidebar-item clearfix">
+												{% if item.type != 'input' %}
+												<a href="{{ item.route }}"
+													class="gray {{ 'active' if pathname==item.route else '' }}"
+													{% if item.target %}target="{{ item.target }}" {% endif %}>
+													{{ _(item.title or item.label) }}
+												</a>
+												{% else %}
+												<form action='{{ item.route }}' style="margin-right: 15px;">
+													<input name='q' class='form-control' type='text' style="outline: none"
+														placeholder="{{ _(item.title or item.label) }}">
+												</form>
+												{% endif %}
+											</li>
+											{%- endfor %}
+											{% if frappe.user != 'Guest' %}
+											<li class="sidebar-item clearfix">
+												<a href="/me">{{ _("My Account") }}</a>
+											</li>
+											{% endif %}
+										</ul> -->
+							</div>
+						</nav>
+					</div>
+					<!-- <div class="sidebar-items">
+					<ul class="list-unstyled">
+						{% if sidebar_title %}
+						<li class="title">
+							{{ sidebar_title }}
+						</li>
+						{% endif %}
+						{% for item in sidebar_items -%}
+						<li class="sidebar-item">
+							{% if item.type != 'input' %}
+								<a href="{{ item.route }}" class="gray {{ 'active' if pathname==item.route else '' }}"
+									{% if item.target %}target="{{ item.target }}"{% endif %}>
+									{{ _(item.title or item.label) }}
+								</a>
+							{% else %}
+								<form action='{{ item.route }}' style="margin-right: 15px;">
+									<input name='q' class='form-control' type='text' style="outline: none"
+										placeholder="{{ _(item.title or item.label) }}">
+								</form>
+							{% endif %}
+						</li>
+						{%- endfor %}
+						{% if frappe.user != 'Guest' %}
+						<li class="sidebar-item">
+							<a href="/me">{{ _("My Account") }}</a>
+						</li>
+						{% endif %}
+					</ul>
+				</div> -->
+				</div>
 			</div>
-
 			<script>
-				frappe.ready(() => {
-					$('.product-filter-filter').on('keydown', frappe.utils.debounce((e) => {
-						const $input = $(e.target);
-						const keyword = ($input.val() || '').toLowerCase();
-						const $filter_options = $input.next('.filter-options');
+				frappe.ready(function () {
+					$('.sidebar-item a').each(function (index) {
+						if (this.href.trim() == window.location)
+							$(this).addClass("active");
+					});
+					/* ===================================
+					SideBar Menu On click
+					====================================== */
+					var $menu_left = $(".side-nav-left");
+					var $toggler = $("#menu_bars");
+					if ($("#menu_bars").length) {
+						$("#side-nav").addClass("side-nav-push");
 
-						$filter_options.find('.custom-control').show();
-						$filter_options.find('.custom-control').each((i, el) => {
-							const $el = $(el);
-							const value = $el.data('value').toLowerCase();
-							if (!value.includes(keyword)) {
-								$el.hide();
+
+						if ($toggler.hasClass("left")) {
+							$toggler.on("click", function (e) {
+								$(this).toggleClass("active");
+
+
+								if($(window).width()>768){
+									$('.products-list').toggleClass("shift");
+								}
+								$menu_left.toggleClass("side-nav-open");
+								e.stopPropagation();
+							});
+						}
+						else {
+							if ($toggler.hasClass("full")) {
+								$toggler.on("click", function (e) {
+									$(this).toggleClass("active");
+									
+
+									$menu_full.toggleClass("side-nav-open");
+									e.stopPropagation();
+								});
 							}
-						});
-					}, 300));
-				})
+						}
+					}
+				});
 			</script>
 		</div>
 	</div>
 </div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-12">

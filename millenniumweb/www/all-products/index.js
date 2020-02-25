@@ -60,18 +60,25 @@ $(() => {
 				this.get_items_with_filters()
 					.then(html => {
 						$('.products-list').html(html);
+
+
 					})
 					.then(data => {
 						$('.page_content input').prop('disabled', false);
 						return data;
+				
+4
 					})
 					.catch(() => {
 						$('.page_content input').prop('disabled', false);
+
 					});
+
 			}, 1000));
 		}
 
 		make_filters() {
+
 
 		}
 
@@ -129,9 +136,14 @@ $(() => {
 					.then(r => {
 						if (r.exc) reject(r.exc);
 						else resolve(r.message);
+
+
 					})
 					.fail(reject);
+
 			});
+
+			
 		}
 	}
 

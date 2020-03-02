@@ -81,7 +81,9 @@
         {%- endblock -%}
         <div class="container-fluid pl-0 pr-0">
             <div class="main-content">
+                
                 {% block content %}
+                
                 {{ content }}
                 {% endblock %}
             </div>
@@ -111,6 +113,8 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script type="text/javascript" src="/assets/millenniumweb/js/MorphSVGPlugin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 
     {%- if script_path -%}
     <script type="text/javascript" src="{{ script_path }}"></script>{%- endif -%}

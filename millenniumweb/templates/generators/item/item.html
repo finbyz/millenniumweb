@@ -13,89 +13,13 @@
 		<div class="container  pt-5">
 			<div class="row mb-5">
 				{% include "templates/generators/item/item_image.html" %}
+				<div class="col-1"></div>
 				{% include "templates/generators/item/item_details.html" %}
 			</div>
 		</div>
 		{% include "templates/generators/item/item_specifications.html" %}
 
-		<div class="container mt-5">
-			<hr>
-			<div class="row item-website-specification mt-5">
-				<div class="col-md-12">
-					<h2 class="blue-text">Specifications</h2>
-					<hr class="line-circles">
-
-					<table class="table table-bordered mt-3" >
-						{% if doc.item_series -%}
-						<tr>
-							<td style="width: 30%;"><p>Item Series</p></td>
-							<td><p class="sub-text">{{doc.item_series}}</p></td>
-						</tr>
-						{%- endif%}
 		
-						{% if doc.tile_body_composition -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Body Composition</p></td>
-							<td><p class="sub-text">{{doc.tile_body_composition}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_use -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Use</p></td>
-							<td><p class="sub-text">{{doc.tile_use}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_type -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Type</p></td>
-							<td><p class="sub-text">{{doc.tile_type}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_surface -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Surface</p></td>
-							<td><p class="sub-text">{{doc.tile_surface}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_texture -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Texture</p></td>
-							<td><p class="sub-text">{{doc.tile_texture}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_technical -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Technical</p></td>
-							<td><p class="sub-text">{{doc.tile_technical}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_color -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Color</p></td>
-							<td><p class="sub-text">{{doc.tile_color}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_shape -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Shape</p></td>
-							<td><p class="sub-text">{{doc.tile_shape}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_thickness -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Thickness</p></td>
-							<td><p class="sub-text">{{doc.tile_thickness}}</p></td>
-						</tr>
-						{%- endif %}
-						{% if doc.tile_anti_slip_properties -%}
-						<tr>
-							<td style="width: 30%;"><p>Tile Anti Slip Properties</p></td>
-							<td><p class="sub-text">{{doc.tile_anti_slip_properties}}</p></td>
-						</tr>
-						{%- endif %}
-		
-					</table>
-				</div>
 			</div>
 
 		</div>
@@ -108,6 +32,10 @@
 {% endblock %}
 
 {% block base_scripts %}
+<script>
+
+
+</script>
 <!-- js should be loaded in body! -->
 <script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>

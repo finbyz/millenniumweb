@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    
+    
+      
     // showProjects(20);
     $(".testimonial_owlCarousel").owlCarousel({
         autoplay: true,
@@ -175,46 +178,270 @@ $(document).ready(function () {
             .setTween(fade_all);
     }
 
-    // $('.hover-img').mouseenter(function(){
-    //     if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
-    //         $(this).delay($(this).data('delay+20')).queue(function () {
-    //             $(this).addClass('animate-in');
-    //         });
+
+
+    // $(window).scroll(function () {
+
+    //     $('.line-circle-container').each(function () {
+    //         if (findOnScroll($('.line-circle-container'))) {
+
+    //             const tl = new TimelineMax({ ease: Power4.easeIn });
+
+    //             tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
+    //                 x: 15
+    //             }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
+    //                     x: 30
+    //                 }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
+    //                     x: 45
+    //                 }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
+    //                     x: 60
+    //                 }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
+    //                     x: 75
+    //                 }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
+    //                     x: 90
+    //                 }, '-=0.15')
+    //                 .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
+    //                     x: 105
+    //                 }, '-=0.15')
+
+    //         }
+
+
+    //     })
+    // })
+
+    // $('.line-circle-container').each(function () {
+    //     if (findOnScroll($('.line-circle-container'))) {
+
+    //         const tl = new TimelineMax({ ease: Power4.easeIn });
+
+    //         tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
+    //             x: 15
+    //         }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
+    //                 x: 30
+    //             }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
+    //                 x: 45
+    //             }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
+    //                 x: 60
+    //             }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
+    //                 x: 75
+    //             }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
+    //                 x: 90
+    //             }, '-=0.15')
+    //             .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
+    //                 x: 105
+    //             }, '-=0.15')
+
     //     }
-      
 
-    // })
-    // $('.hover-img').mouseleave(function(){
-    //     $(this).removeClass('animate-in');     
 
     // })
 
-    $('.hover-img').on({
-        mouseenter: function() {
-            $(this).animate({opacity:0});
+    $('.loader').each(function (index) {
+        var controller = new ScrollMagic.Controller();
+        
+        const tl = new TimelineMax({ ease: Power4.easeIn });
+
+        tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
+            x: 15
+        }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
+                x: 30
+            }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
+                x: 45
+            }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
+                x: 60
+            }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
+                x: 75
+            }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
+                x: 90
+            }, '-=0.15')
+            .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
+                x: 105
+            }, '-=0.15')
+        new ScrollMagic.Scene({
             
-        },
-        mouseleave: function() {
-            $(this).animate({opacity:1});
-  
-        }
+            reverse: true,
+            duration: 0,
+
+        })
+            .addTo(controller)
+            .setTween(tl);
+
     })
 
 
-// $('#menu_bars').hasClass("active")(function(){
-//     $('.page_content').css("padding-left",20%)
-// }
 
-   
-    
+// rotating diamonds
+const tl = new TimelineMax({repeat:-1})
+var el1 = $('.diamond-one')
+var el2 = $('.diamond-two')
+var time = 12
+tl.to(el1,time,
+{
+  rotation: 405,
+  ease: Linear.easeNone
+})
+.to(el2,time,
+    {
+  rotation:-405,
+  ease: Linear.easeNone
+}
+,'-=time')
+
+
+    $('.hover-img').on({
+        mouseenter: function () {
+            $(this).animate({ opacity: 0 });
+
+        },
+        mouseleave: function () {
+            $(this).animate({ opacity: 1 });
+
+        }
+    })
+    particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 13,
+            "density": {
+              "enable": true,
+              "value_area": 400
+            }
+          },
+          "color": {
+            "value": "#f67d2a"
+          },
+          "shape": {
+            "type": "image",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 4
+            },
+            "image": {
+              "src": "/files/diamond.png",
+              "width": 500,
+              "height": 500,
+              
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 6,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": false,
+      
+          },
+          "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": false,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": false,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+      
+
+
+    // $('#menu_bars').hasClass("active")(function(){
+    //     $('.page_content').css("padding-left",20%)
+    // }
+
+
+
     const sidebar = document.getElementById('sidebar');
     const button = document.getElementById('toggle');
-    
+
     button.addEventListener('click', _ => {
-      sidebar.classList.toggle('collapsed');
+        sidebar.classList.toggle('collapsed');
     });
 
+
+
     
+
 });
 
 
@@ -648,3 +875,4 @@ function imageGallary(args) {
         ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
     }
 };
+

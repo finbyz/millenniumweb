@@ -1,4 +1,4 @@
-<div class="col-md-5">
+<div class="col-md-6">
 	<div class=" pt-5">
 		<!-- title -->
 		<h2 itemprop="name" class="blue-text pt-3">
@@ -40,4 +40,95 @@
 		{% include "templates/generators/item/item_add_to_cart.html" %}
 		{% endif %}
 	</div>
+	<div class="container mt-5 pl-0">
+		<hr>
+		<div class="row item-website-specification mt-5">
+			<div class="col-md-12">
+				<h2 class="blue-text">Specifications</h2>
+				<div class='line-circle-container'>
+					<div class='loader'>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+					  <div class='loader--dot'></div>
+	
+				
+					</div>
+				  </div>
+
+				<table class="table table-bordered mt-4" >
+					{% if doc.item_series -%}
+					<tr>
+						<td style="width: 30%;"><p>Item Series</p></td>
+						<td><p class="sub-text">{{doc.item_series}}</p></td>
+					</tr>
+					{%- endif%}
+	
+					{% if doc.tile_body_composition -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Body Composition</p></td>
+						<td><p class="sub-text">{{doc.tile_body_composition}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_use -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Use</p></td>
+						<td><p class="sub-text">{{doc.tile_use}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_type -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Type</p></td>
+						<td><p class="sub-text">{{doc.tile_type}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_surface -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Surface</p></td>
+						<td><p class="sub-text">{{doc.tile_surface}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_texture -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Texture</p></td>
+						<td><p class="sub-text">{{doc.tile_texture}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_technical -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Technical</p></td>
+						<td><p class="sub-text">{{doc.tile_technical}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_color -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Color</p></td>
+						<td><p class="sub-text">{{doc.tile_color}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_shape -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Shape</p></td>
+						<td><p class="sub-text">{{doc.tile_shape}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_thickness -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Thickness</p></td>
+						<td><p class="sub-text">{{doc.tile_thickness}}</p></td>
+					</tr>
+					{%- endif %}
+					{% if doc.tile_anti_slip_properties -%}
+					<tr>
+						<td style="width: 30%;"><p>Tile Anti Slip Properties</p></td>
+						<td><p class="sub-text">{{doc.tile_anti_slip_properties}}</p></td>
+					</tr>
+					{%- endif %}
+	
+				</table>
+			</div>
 </div>

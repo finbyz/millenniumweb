@@ -1,7 +1,7 @@
-<div class="col-md-7 h-100">
+<div class="col-md-5 h-100">
 	<div class=" ">
 		{% if slides %}
-		<div class="w-75 has-animation has-animation-x has-animation-orange animation-ltr scroll">
+		<div class=" has-animation has-animation-x has-animation-orange animation-ltr scroll">
 			{{ product_image(slides[0].image, 'product-image') }}
 		</div>
 		<div class="item-slideshow  ">
@@ -27,14 +27,14 @@
 		</script>
 
 		{% else %}
-		<div class="w-75 has-animation has-animation-x has-animation-orange animation-ltr scroll">
+		<div class=" has-animation has-animation-x has-animation-orange animation-ltr scroll">
 			{{ product_image(website_image or image or 'no-image.jpg') }}
 		</div>
 		{% endif %}
 
 		<!-- Simple image preview -->
 
-		<div class="image-zoom-view  has-animation has-animation-x has-animation-orange animation-ltr"
+		<div class="image-zoom-view "
 			style="display: none;">
 			<button type="button" class="close" aria-label="Close">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -46,6 +46,7 @@
 			</button>
 		</div>
 	</div>
+	
 </div>
 <style>
 	.website-image {

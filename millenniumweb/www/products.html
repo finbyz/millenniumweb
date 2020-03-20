@@ -1,0 +1,78 @@
+{% set data = frappe.get_all('Item', fields=['name', 'item_name', 'description', 'website_image','route'],
+                filters={'show_in_website': 1, 'website_image': ['NOT IN', [null, '']]},order_by='RAND()', page_length = 7)  %}
+<div class="product-section  mt-5">
+    <div class="container product-text py-5  d-none d-lg-block">
+        <div class="row w-50  text-justify">
+            <div class="col-sm-12 pl-0">
+                <div class="text-left pb-20 ">
+                    <div class="title-underline">
+                        <h2 class="text-white">Our Product Range</h2>
+                        <div class='line-circle-container '>
+                            <div class='loader pl-1' >
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="sub-text mt-4">These three words capture the essence of Millennium tiles, India’s fastest growing
+                company in the segment. Keeping the needs of the modern customer in mind, Millennium opens the doorway
+                to the world of style.
+            </p>
+        </div>
+    </div>
+
+    <div class="container product-text py-5 px-5  d-lg-none">
+        <div class="row ">
+            <div class="col-sm-12 pl-0">
+                <div class="text-left pb-20 ">
+                    <div class="title-underline">
+                        <h2 class="text-white">Our Product Range</h2>
+                        <div class='line-circle-container '>
+                            <div class='loader pl-1' >
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                                <div class='loader--dot loader--dot--product'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="sub-text pt-5">These three words capture the essence of Millennium tiles, India’s fastest growing
+                company in the segment. Keeping the needs of the modern customer in mind, Millennium opens the doorway
+                to the world of style.
+            </p>
+        </div>
+    </div>
+    <div class="gallery">
+        <div id="drag-container">
+            <div id="spin-container">
+                <!-- Add your images (or video) here -->
+                
+                {%- for d in data -%}
+                    {%- if d.website_image -%}
+                        <img src="{{ d.website_image }}" alt="{{ d.name }}">
+                    {%- endif -%}
+                {%- endfor -%}
+                
+
+            </div>
+            <div id="ground"></div>
+        </div>
+    </div>
+</div>

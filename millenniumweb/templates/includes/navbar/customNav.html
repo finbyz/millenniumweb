@@ -2,28 +2,28 @@
 
     <ul class="navRoot">
         <li class="navSection logo mt-2 ml-2">
-            <div class="millennium-logo" style=" margin: 4px 11px;">
-                <a href="/"><img src="/files/millennium-icon.svg" class="img-responsive" alt="Millennium Tiles" title="Millennium Tiles"></a>
+            <div class="millennium-logo m-2" >
+                <a href="/"><img src="/files/millennium-icon.png" class="img-responsive" alt="Millennium Tiles" title="Millennium Tiles"></a>
             </div>
         </li>
         <li class="navSection primary p-2">
             <a class="rootLink" href="/"> Home </a>
-            <a class="rootLink" href="/about.html" >
+            <a class="rootLink" href="/about" >
                     About
                 </a>
-            <a class="rootLink hasDropdown" href="/all-products/index.html" data-dropdown="product">
+            <a class="rootLink hasDropdown" href="/all-products" data-dropdown="product">
                 Products
             </a>
-            <a class="rootLink" href="">
+            <a class="rootLink" href="/catalogue-form">
                 E-Catalogue
             </a>
-            <a class="rootLink" >
+            <a class="rootLink" href="/events">
                 Event
             </a>
-            <a class="rootLink">
+            <a class="rootLink" href="/inquiry">
                 Inquiry
             </a>
-            <a class="rootLink">
+            <a class="rootLink" href="/contact">
                 Contact
             </a>
         </li>
@@ -47,14 +47,13 @@
                             <a href="/">Home</a>
                         </li>
                         <li class="p-3">
-                            <a href="" class="go-tosub-menu" data-toggle="collapse" aria-expanded="false">
-                                <!-- <img class="nav-service-icon" src="/files/nav-about-company.svg" alt="About" title="About Company"> -->
+                            <a href="/about" class="go-tosub-menu"  aria-expanded="false">
                                 About
                             </a>
                         </li>
                        
                         <li class="p-3">
-                            <a href="" data-ls="products" data-toggle="collapse" aria-expanded="false" class="go-tosub-menu">
+                            <a href="/all-products" data-ls="products" aria-expanded="false" class="go-tosub-menu">
                                 <img class="left-arrow nav-service-icon d-none" src="" alt="Left Arrow" title="Web App Development">
                                 <!-- <img class="nav-service-icon" src="/files/nav-services.svg" alt="Services" title="Services"> -->
                                 Products
@@ -89,19 +88,19 @@
                         </li>
                         <li class="p-3">
                             <!-- <img class="nav-service-icon" src="/files/nav-tech-update.svg" alt="Blog" title="Blog"> -->
-                            <a href="">E-Catalogue</a>
+                            <a  href="/catalogue-form">E-Catalogue</a>
                         </li>
                         <li class="p-3">
                             <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
-                            <a href="">Event</a>
+                            <a href="/event">Event</a>
                         </li>
                         <li class="p-3">
                             <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
-                            <a href="">Inquiry</a>
+                            <a href="/inquiry">Inquiry</a>
                         </li>
                         <li class="p-3">
                             <!-- <img class="nav-service-icon" src="/files/nav-Gallery.svg" alt="Gallery" title="Gallery"> -->
-                            <a href="">Contact</a>
+                            <a href="/contact">Contact</a>
                         </li>
                         {% if not hide_login %}
                         <li class="btn-login-area">
@@ -111,7 +110,7 @@
                         {% endif %}
                         <li >
                             <a data-ls="loginsubmenu" class="go-tosub-menu" data-toggle="collapse" aria-expanded="false">
-                                <img class="left-arrow nav-service-icon d-none" src="/files/left-arrow.svg" alt="Left Arrow" title="About Company">
+                                <img class="left-arrow nav-service-icon d-none" src="/files/left-arrow-nav.svg" alt="Left Arrow" title="About Company">
                                 <span class="user-image-wrapper"></span>
                                 <span class="full-name"></span>
                                 <b class="caret"></b>

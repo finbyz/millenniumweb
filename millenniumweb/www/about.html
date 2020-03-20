@@ -9,186 +9,183 @@
 <article itemscope itemtype="http://schema.org/AboutPage" class="about-content">
 	<div itemprop="description" class="container">
 
-		<div class="container my-5 pt-5">
-			<div class="row ">
-				<div class="col-md-5 pl-0">
-					<div class="about-heading mt-3">
-						<h2 class="blue-text" style="text-transform: capitalize;">millennium at glance</h2>
+		<div class="row my-5 pt-5">
+			<div class="col-md-12 col-lg-6 col-sm-12">
+				<div class="about-heading mt-3">
+					<h2 class="blue-text">Millennium At Glance</h2>
+				</div>
+				<div class='line-circle-container '>
+					<div class='loader  ' >
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
 					</div>
-					<div class='line-circle-container pl-0'>
-						<div class='loader pl-1  pt-4' style="left:0">
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
+				</div>
 
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-							<div class='loader--dot'></div>
-
-						</div>
-					</div>
-
-					<div class="about-text  text-justify  mt-5">
-
-
-						{{ doc.company_introduction or """<p>Some Introduction about your company that you would
+				<div class="about-text  text-justify   mt-5">
+					{{ doc.company_introduction or """<p>Some Introduction about your company that you would
 					like your website visitor to know.
 					More people than you think will read your About page.
 					People always like to know who the are doing business with.
 					Be authentic and avoid using jargon like 'value added services' etc.
 					Be sure to update your company history and
 					list of key team members in Website > About Us Settings</p>""" }}
-					</div>
-				</div>
-				<div class="col-md-7 video-wrapper">
-					<div class="video-player container mar_60 pad_60 ">
-						<div class="embed-responsive embed-responsive-4by3" style="z-index: 4;">
-							<iframe width="900" height="506" src="https://www.youtube.com/embed/4FdGbvSARjE"
-								frameborder="0"
-								allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen></iframe>
-						</div>
-						<div class="diamond-container " style="position:relative;">
-
-
-
-						</div>
-						<div class="diamond diamond-one">
-						</div>
-						<div class="diamond diamond-two">
-						</div>
-					</div>
-
-
-
-
-
 				</div>
 			</div>
+			<div class="col-md-12 col-lg-6 col-sm-12 my-auto py-3">
+				<div class="image top50 mt-5 pt-4">
 
-
-			{% if doc.get({"doctype":"Company History"}) %}
-			<div class="row timeline-row mt-4">
-				<div class="global-svg-container">
-					<svg width="100%" viewBox="0 0 32 32" class="global-logo">
-						<path fill="#000"
-							d="M31.4,16l-8.3-8.3l-2.4,2.4L13.6,3l-13,13l13,13l7.1-7.1l2.4,2.4L31.4,16z M13.6,25.6L4.1,16l9.6-9.6l5.4,5.4L14.8,16 l4.2,4.2L13.6,25.6z">
-						</path>
-					</svg>
+					<div class="youtube-player" data-id="yVG9Gpd4kAk"></div>
 				</div>
-				<div class="col-sm-12">
+				<div class="diamond diamond-one"></div>
+				<div class="diamond diamond-two"></div>
+			</div>
+		</div>
 
-					<div class="text-left pb-20">
-						<div class="title-underline">
-							<h2 class="blue-text">{{ doc.company_history_heading or "Company History" }}</h2>
-							<div class='line-circle-container pl-0'>
-								<div class='loader pl-3  pt-2' style="left:0 ;z-index:2">
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
 
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
-									<div class='loader--dot'></div>
+		{% if doc.get({"doctype":"Company History"}) %}
 
-								</div>
+		<div class="row timeline-row mt-5">
+			<div class="col-sm-12 col-lg-12 col-md-12">
+				<div class="text-left pb-20">
+					<div class="title-underline">
+						<h2 class="blue-text">{{ doc.company_history_heading or "Company History" }}</h2>
+						<div class='line-circle-container '>
+							<div class='loader ' >
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
+								<div class='loader--dot'></div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="finbyz-timeline">
-
-				<div class="container  wgl-row-animation">
-
-					<div class="row timeline-wrapper">
-
-						<div data-vc-full-width="true" data-vc-full-width-init="true"
-							class="vc_row wpb_row vc_row-fluid vc_custom_1542873226451 vc_row-has-fill wgl-row-animation"
-							style="left: -11.2px; box-sizing: border-box; width: 1002px; padding-left: 11.2px; padding-right: 10.8px; position: relative;">
-							<div id="particles-js"></div>
-							<div class="wpb_column vc_column_container vc_col-sm-12">
-								<div class="vc_column-inner ">
-									<div class="wpb_wrapper">
-										<div class="seofy_module_spacing">
-											<div class="spacing_size spacing_size-initial" style="height:30px;"></div>
-										</div>
-										<div class="seofy_module_time_line_vertical appear_anim">
-											{% for d in doc.get({"doctype":"Company History"}) %}
 
 
-											<div id="{{ loop.cycle('time_line_left', 'time_line_right') }}"
-												class="time_line-item  item_show  ">
-												{% if d.logo -%}
-												<div class="timeline-icon " style="position: relative;">
 
-													<img itemtype="image" alt="{{ d.title }}" title="{{ d.title }}"
-														src="{{ d.logo }}" class="finbyz-zoomin d-md-block d-none"
-														alt="Finbyz-icon" style="width: 150px; position: absolute;">
-												</div>
-												{%- endif %}
-
-
-												<div class="time_line-date_wrap">
-													<div class="seofy_hexagon"><svg
-															style=" fill: var(--secondary-bg-color);"
-															xmlns="http://www.w3.org/2000/svg"
-															viewBox="0 0 177.4 197.4">
-															<path fill="#f77d28" fill-opacity=".992"
-																d="M87.72 197l89.696-97.683L89.696 0 0 97.683z" />
-														</svg></div>
-													<div class="seofy_hexagon"><svg
-															style="filter: drop-shadow(4px 4px 5px rgb(253, 220, 197,0.3)); fill: var(--secondary-bg-color);"
-															xmlns="http://www.w3.org/2000/svg"
-															viewBox="0 0 177.4 197.4">
-															<path
-																d="M0,58.4v79.9c0,6.5,3.5,12.6,9.2,15.8l70.5,40.2c5.6,3.2,12.4,3.2,18,0l70.5-40.2c5.7-3.2,9.2-9.3,9.2-15.8V58.4 c0-6.5-3.5-12.6-9.2-15.8L97.7,2.4c-5.6-3.2-12.4-3.2-18,0L9.2,42.5C3.5,45.8,0,51.8,0,58.4z">
-															</path>
-														</svg></div>
-													<h4 class="time_line-date">{{ d.year }}</h4>
+				<div class="row">
+					<div class="finbyz-timeline col-sm-12 col-md-12 col-lg-12">
+						<div class="wgl-row-animation">
+							<div class="timeline-wrapper">
+								<div data-vc-full-width="true" data-vc-full-width-init="true"
+									class="vc_row wpb_row vc_row-fluid vc_custom_1542873226451 vc_row-has-fill wgl-row-animation"
+									style=" box-sizing: border-box;  position: relative;">
+									<div id="particles-js"></div>
+									<div class="wpb_column vc_column_container vc_col-sm-12">
+										<div class="vc_column-inner ">
+											<div class="wpb_wrapper">
+												<div class="seofy_module_spacing">
+													<div class="spacing_size spacing_size-initial" >
+													</div>
 												</div>
 												<div
-													class="time_line-content has-animation has-animation-x {{ loop.cycle('animation-ltr', 'animation-rtl') }} scroll">
-													<h5 class="time_line-title">{{ d.title }}</h5>
-													<div class="time_line-descr">{{ d.highlight }}</div>
+													class="seofy_module_time_line_vertical appear_anim timeline-inner-wrapper">
+													{% for d in doc.get({"doctype":"Company History"}) %}
+
+
+													<div id="{{ loop.cycle('time_line_left', 'time_line_right') }}"
+														class="time_line-item  item_show  ">
+														{% if d.logo -%}
+														<div class="timeline-icon " >
+
+															<img itemtype="image" alt="{{ d.title }}"
+																title="{{ d.title }}" src="{{ d.logo }}"
+																class="finbyz-zoomin d-md-block d-none"
+																alt="Finbyz-icon">
+														</div>
+														{%- endif %}
+
+
+														<div class="time_line-date_wrap">
+															<div class="seofy_hexagon"><svg
+																	xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 177.4 197.4">
+																	<path
+																		fill="{{ loop.cycle('var(--secondary-bg-color)', 'var(--main-bg-color') }}"
+																		fill-opacity=".992"
+																		d="M87.72 197l89.696-97.683L89.696 0 0 97.683z" />
+																</svg></div>
+															<div class="seofy_hexagon"><svg
+																	
+																	xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 177.4 197.4">
+																	<path
+																		d="M87.72 197l89.696-97.683L89.696 0 0 97.683z" />
+																</svg></div>
+															<h4 class="time_line-date">{{ d.year }}</h4>
+														</div>
+														<div
+															class="time_line-content has-animation has-animation-x {{ loop.cycle('animation-ltr timeline-even', 'animation-rtl') }} scroll">
+															<h5 class="time_line-title">{{ d.title }}</h5>
+															<div class="time_line-descr">{{ d.highlight }}</div>
+														</div>
+													</div>
+
+
+
+													{% endfor %}
 												</div>
 											</div>
-
-
-
-											{% endfor %}
 										</div>
 									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			{% endif %}
-			{% if doc.middle_content %}
-			<div>{{ doc.middle_content }}</div>
-			{% endif %}
-			{% if doc.get({"doctype":"About Us Team Member"}) %}
-			<section id="team-finbyz">
-				<div class="text-center pb-20">
-					<h2 class="title-underline">{{ doc.team_members_heading or "Team Members" }}</h2>
+		</div>
+
+
+
+		{% endif %}
+		{% if doc.middle_content %}
+		<div>{{ doc.middle_content }}</div>
+		{% endif %}
+		{% if doc.get({"doctype":"About Us Team Member"}) %}
+		<section id="team-finbyz my-3">
+			<div class="row mt-5">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="text-left pb-20">
+						<div class="title-underline">
+							<h2 class="blue-text">{{ doc.team_members_heading or "Team Members" }}</h2>
+							<div class='line-circle-container '>
+								<div class='loader' >
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+									<div class='loader--dot'></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="team-member">
-					<div class="row" itemscope itemtype="http://schema.org/Person">
-						{% for d in doc.get({"doctype":"About Us Team Member"}) %}
-						<span class="mg-bottom col-md-6 col-sm-6 col-xs-12">
-							<div class="row">
-								<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 col-4 ">
-									<div>
+			</div>
+			<div class=" row team-member text-center mt-5">
+
+
+				{% for d in doc.get({"doctype":"About Us Team Member"}) %}
+
+				<div class="col-lg-4 col-md-12 col-sm-12  team-member-container" >
+					<!-- <div>
 										{% if d.image_link %}
 										<img src="{{ d.image_link }}" alt="{{ d.full_name }}" title="{{ d.full_name }}"
 											itemprop="image" class="grayscale-img" height="185" width="160">
@@ -203,16 +200,67 @@
 									<h3 style="margin-top:-3px" itemprop="name">{{ d.full_name }}</h3>
 									<h5>{{ d.designation }}</h5>
 									<p itemprop="description" class="about_bio">{{ d.bio }}</p>
+								</div> -->
+					<div class="key my-5 ">
+						<div class="view mx-auto" >
+							<div class="person-wrapper">
+								<div class="person" target="_blank"><span>
+										<img class="person-image" src="{{ d.image_link }}" alt="{{ d.full_name }}"
+											title="{{ d.full_name }}">
+
+									</span>
+									<span>
+										<p  class="person-name" itemprop="name">
+											{{ d.full_name }}</p>
+										<p class="designation">{{ d.bio }}</p>
+									</span>
 								</div>
 							</div>
-						</span>
-						{% endfor %}
+						</div>
 					</div>
+
+
 				</div>
-			</section>
-			{% endif %}
-			{{ doc.footer or "" }}
-		</div>
+				{% endfor %}
+
+
+
+			</div>
+		</section>
+		{% endif %}
+		{{ doc.footer or "" }}
+
+	</div>
+
 </article>
 
+<script>
+	document.addEventListener("DOMContentLoaded",
+		function () {
+			var div, n,
+				v = document.getElementsByClassName("youtube-player");
+			for (n = 0; n < v.length; n++) {
+				div = document.createElement("div");
+				div.setAttribute("data-id", v[n].dataset.id);
+				div.innerHTML = labnolThumb(v[n].dataset.id);
+				div.onclick = labnolIframe;
+				v[n].appendChild(div);
+			}
+		});
+
+	function labnolThumb(id) {
+		var thumb = '<img src="/files/video.png" title="youtube video" alt="Youtube Video">',
+			play = '<div class="play"></div>';
+		return thumb + play;
+	}
+
+	function labnolIframe() {
+		var iframe = document.createElement("iframe");
+		var embed = "//www.youtube.com/embed/4FdGbvSARjE?autoplay=1";
+		iframe.setAttribute("src", embed.replace("ID", this.dataset.id));
+		iframe.setAttribute("frameborder", "0");
+		iframe.setAttribute("allowfullscreen", "1");
+		this.parentNode.replaceChild(iframe, this);
+	}
+</script>
 {% endblock %}

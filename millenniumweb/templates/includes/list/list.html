@@ -2,24 +2,43 @@
 <h4 class="text-muted">{{ sub_title }}</h4>
 {% endif %}
 {% if not result -%}
-	<div class="text-muted" style="min-height: 300px;">
-		{{ no_result_message or _("Nothing to show") }}
-	</div>
+<div class="text-muted" style="min-height: 300px;">
+	{{ no_result_message or _("Nothing to show") }}
+</div>
 {% else %}
-	<div class="website-list" data-doctype="{{ doctype }}"
-		data-txt="{{ txt or '[notxt]' | e }}">
-		<!-- {% if not hide_filters -%}
+<div class="website-list" data-doctype="{{ doctype }}" data-txt="{{ txt or '[notxt]' | e }}">
+	<!-- {% if not hide_filters -%}
 			{% include "templates/includes/list/filters.html" %}
 		{%- endif %} -->
-		{% if result_heading_template %}{% include result_heading_template %}{% endif %}
+	{% if result_heading_template %}{% include result_heading_template %}{% endif %}
+	{% if doctype=="Events" %}
+	<div class="result">
+		<div class="container">
+			<div class="event-parent">
+				<div class="content">
+					<div class="grid">
+						<div class="row  " style="">
+							{% for item in result %}
+							{{ item }}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
 
-		<div class="result">
-			{% for item in result %}
-				{{ item }}
-			{% endfor %}
-		</div>
-		<div class="more-block {% if not show_more -%} hidden {%- endif %}">
-			<button class="btn btn-light btn-more btn-sm">{{ _("More") }}</button>
+			</div>
 		</div>
 	</div>
+	{% else %}
+	<div class="result">
+		{% for item in result %}
+		{{ item }}
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	<div class="more-block {% if not show_more -%} hidden {%- endif %} container py-3">
+		<button class="mw-button mw-button-draw mw-button-meet ml-0">{{ _("More") }}</button>
+
+	</div>
+</div>
 {%- endif %}

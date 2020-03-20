@@ -1,7 +1,27 @@
+$(window).on('load', function () {
+   if ($(window).width() <= 768) {
+        $('.back-face-div').css('height', $('.feature-img').css('height'));
+        $('.back-face-div').css('width', $('.feature-img').css('width'));
+    }
+
+    setTimeout(function () {
+        $('.form-section').removeClass('row')
+        $('.section-body').addClass('row')
+        if ($(".web-form-footer button").hasClass('btn btn-primary btn-sm')) {
+            $(".web-form-footer button").addClass('mw-button mw-button-draw mw-button-meet').removeClass('btn btn-primary btn-sm');
+        }
+        if ($(".website-list .result a").hasClass('btn btn-primary btn-sm')) {
+            $(".website-list .result a").addClass('mw-button mw-button-draw mw-button-meet').removeClass('btn btn-primary btn-sm');
+        }
+    }, 500);
+})
 $(document).ready(function () {
+
+
+
     
-    
-      
+
+
     // showProjects(20);
     $(".testimonial_owlCarousel").owlCarousel({
         autoplay: true,
@@ -105,38 +125,56 @@ $(document).ready(function () {
     })
     // END 
     //return false;
-    var controller = new ScrollMagic.Controller();
-    var fade_all = new TimelineMax();
-    fade_all
-        .to(".back-face-div", 1, { css: { className: "+=show" } })
-        .to(".front-img", 2, { css: { className: "+=top-bottom" } })
-    new ScrollMagic.Scene({
-        triggerElement: '.custom-container',
-        reverse: true,
-        duration: 1100,
-        offset: -400,
-    })
+ 
+    if ($('.custom-container').length > 0) {
+        var controller = new ScrollMagic.Controller();
+        var fade_all = new TimelineMax();
+        fade_all
+            .to(".back-face-div", 1, { css: { className: "+=show" } })
 
-        .addTo(controller)
-        .setTween(fade_all);
+        new ScrollMagic.Scene({
+            triggerElement: '.custom-container',
+            reverse: false,
+            duration: 1100,
+            offset: -400,
+        })
 
+            .addTo(controller)
+            .setTween(fade_all);
+    }
 
     // bar section top-bottom
+    if ($('.bar-wrapper').length > 0) {
+        var controller = new ScrollMagic.Controller();
+        var fade_all = new TimelineMax();
+        fade_all
+            .to(".back-bar-wrapper", 1, { css: { top: "78%" } })
+        new ScrollMagic.Scene({
+            triggerElement: '.bar-wrapper',
+            reverse: true,
+            duration: 1000,
+            offset: 300,
+        })
 
-    var controller = new ScrollMagic.Controller();
-    var fade_all = new TimelineMax();
-    fade_all
-        .to(".back-bar-wrapper", 1, { css: { top: "78%" } })
-    new ScrollMagic.Scene({
-        triggerElement: '.bar-wrapper',
-        reverse: true,
-        duration: 1000,
-        offset: 300,
-    })
+            .addTo(controller)
+            .setTween(fade_all);
+    }
 
-        .addTo(controller)
-        .setTween(fade_all);
+    if ($('.front-img').length > 0) {
+        var controller = new ScrollMagic.Controller();
+        var fade_all = new TimelineMax();
+        fade_all
+            .to(".front-img", 1, { css: { top: "-.5rem" } })
+        new ScrollMagic.Scene({
+            triggerElement: '.custom-container',
+            reverse: true,
+            duration: 1000,
 
+        })
+
+            .addTo(controller)
+            .setTween(fade_all);
+    }
     // console.log("hello");
 
     // var controller = new ScrollMagic.Controller();
@@ -150,6 +188,7 @@ $(document).ready(function () {
     // })
     //     .addTo(controller)
     //     .setTween(fade_all);
+
     var controller = new ScrollMagic.Controller();
     $(".has-animation").filter($(".scroll")).each(function () {
         var tween = TweenMax.to(this, 1, { className: "+=animate-in" })
@@ -164,18 +203,20 @@ $(document).ready(function () {
             .addTo(controller);
     })
     if ($(window).width() > 768) {
-        var controller = new ScrollMagic.Controller();
-        var fade_all = new TimelineMax();
-        fade_all
-            .to(".testimonial_container", 1, { css: { top: "-4rem" } })
-        new ScrollMagic.Scene({
-            triggerElement: '.background_layer',
-            reverse: true,
-            duration: 700,
-            offset: -150,
-        })
-            .addTo(controller)
-            .setTween(fade_all);
+        if ($('.background_layer').length > 0) {
+            var controller = new ScrollMagic.Controller();
+            var fade_all = new TimelineMax();
+            fade_all
+                .to(".testimonial_container", 1, { css: { top: "-4rem" } })
+            new ScrollMagic.Scene({
+                triggerElement: '.background_layer',
+                reverse: true,
+                duration: 700,
+                offset: -150,
+            })
+                .addTo(controller)
+                .setTween(fade_all);
+        }
     }
 
 
@@ -246,62 +287,64 @@ $(document).ready(function () {
 
 
     // })
+    if ($('.loader').length) {
+        $('.loader').each(function (index) {
+            var controller = new ScrollMagic.Controller();
 
-    $('.loader').each(function (index) {
-        var controller = new ScrollMagic.Controller();
-        
-        const tl = new TimelineMax({ ease: Power4.easeIn });
+            const tl = new TimelineMax({ ease: Power4.easeIn });
 
-        tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
-            x: 15
-        }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
-                x: 30
+            tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
+                x: 15
             }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
-                x: 45
-            }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
-                x: 60
-            }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
-                x: 75
-            }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
-                x: 90
-            }, '-=0.15')
-            .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
-                x: 105
-            }, '-=0.15')
-        new ScrollMagic.Scene({
-            
-            reverse: true,
-            duration: 0,
+                .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
+                    x: 30
+                }, '-=0.15')
+                .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
+                    x: 45
+                }, '-=0.15')
+                .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
+                    x: 60
+                }, '-=0.15')
+                .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
+                    x: 75
+                }, '-=0.15')
+                .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
+                    x: 90
+                }, '-=0.15')
+                .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
+                    x: 105
+                }, '-=0.15')
+            new ScrollMagic.Scene({
+
+                triggerElement: this,
+                offset: -200,
+                reverse: false
+
+            })
+                .addTo(controller)
+                .setTween(tl);
 
         })
-            .addTo(controller)
-            .setTween(tl);
 
-    })
+    }
 
 
-
-// rotating diamonds
-const tl = new TimelineMax({repeat:-1})
-var el1 = $('.diamond-one')
-var el2 = $('.diamond-two')
-var time = 12
-tl.to(el1,time,
-{
-  rotation: 405,
-  ease: Linear.easeNone
-})
-.to(el2,time,
-    {
-  rotation:-405,
-  ease: Linear.easeNone
-}
-,'-=time')
+    // rotating diamonds
+    const tl = new TimelineMax({ repeat: -1 })
+    var el1 = $('.diamond-one')
+    var el2 = $('.diamond-two')
+    var time = 12
+    tl.to(el1, time,
+        {
+            rotation: 405,
+            ease: Linear.easeNone
+        })
+        .to(el2, time,
+            {
+                rotation: -405,
+                ease: Linear.easeNone
+            }
+            , '-=time')
 
 
     $('.hover-img').on({
@@ -314,115 +357,118 @@ tl.to(el1,time,
 
         }
     })
-    particlesJS("particles-js", {
-        "particles": {
-          "number": {
-            "value": 13,
-            "density": {
-              "enable": true,
-              "value_area": 400
-            }
-          },
-          "color": {
-            "value": "#f67d2a"
-          },
-          "shape": {
-            "type": "image",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
+
+    if ($('#particles-js').length) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 13,
+                    "density": {
+                        "enable": true,
+                        "value_area": 400
+                    }
+                },
+                "color": {
+                    "value": "#f67d2a"
+                },
+                "shape": {
+                    "type": "image",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 4
+                    },
+                    "image": {
+                        "src": "/files/diamond.png",
+                        "width": 500,
+                        "height": 500,
+
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 6,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false,
+
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
             },
-            "polygon": {
-              "nb_sides": 4
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": false,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
             },
-            "image": {
-              "src": "/files/diamond.png",
-              "width": 500,
-              "height": 500,
-              
-            }
-          },
-          "opacity": {
-            "value": 0.5,
-            "random": false,
-            "anim": {
-              "enable": false,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
-            }
-          },
-          "size": {
-            "value": 6,
-            "random": true,
-            "anim": {
-              "enable": false,
-              "speed": 40,
-              "size_min": 0.1,
-              "sync": false
-            }
-          },
-          "line_linked": {
-            "enable": false,
-      
-          },
-          "move": {
-            "enable": true,
-            "speed": 1,
-            "direction": "none",
-            "random": false,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-              "enable": false,
-              "rotateX": 600,
-              "rotateY": 1200
-            }
-          }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": false,
-              "mode": "grab"
-            },
-            "onclick": {
-              "enable": false,
-              "mode": "push"
-            },
-            "resize": true
-          },
-          "modes": {
-            "grab": {
-              "distance": 140,
-              "line_linked": {
-                "opacity": 1
-              }
-            },
-            "bubble": {
-              "distance": 400,
-              "size": 40,
-              "duration": 2,
-              "opacity": 8,
-              "speed": 3
-            },
-            "repulse": {
-              "distance": 200,
-              "duration": 0.4
-            },
-            "push": {
-              "particles_nb": 4
-            },
-            "remove": {
-              "particles_nb": 2
-            }
-          }
-        },
-        "retina_detect": true
-      });
-      
+            "retina_detect": true
+        });
+    }
+
 
 
     // $('#menu_bars').hasClass("active")(function(){
@@ -433,16 +479,55 @@ tl.to(el1,time,
 
     const sidebar = document.getElementById('sidebar');
     const button = document.getElementById('toggle');
+    if (button) {
+        button.addEventListener('click', _ => {
+            sidebar.classList.toggle('collapsed');
+        });
+    }
 
-    button.addEventListener('click', _ => {
-        sidebar.classList.toggle('collapsed');
+
+    // event filter
+
+    $('.filter').on('click', function () {
+        var cat = $(this).attr("data-rel");
+        if (cat == 'all') {
+            $('.category-filter').removeClass('d-none');
+            setTimeout(function () {
+                $('.category-filter').removeClass('d-none');
+            }, 300);
+        }
+        else {
+            $('.category-filter').addClass('d-none');
+            setTimeout(function () {
+                $('.category-filter.' + cat).removeClass('d-none');
+            }, 300);
+        }
     });
 
+    //   inquiry page
+
+    // Event Page
+
+    // $('.event-image-wrapper').each(function () {
+    //     $(this).children(".mw-overlay").mouseenter(function(){
+    //         $(this).animate({
+    //             opacity: '0.5'
+    //         });
+    //     })
+    //     $(this).mouseleave(function(){
+    //         $(this).animate({
+    //             opacity: '1'
+    //         });
+    //     })
+
+    // })
 
 
-    
 
-});
+
+})
+
+
 
 
 function millenniumNavDropdowns(e) {
@@ -825,13 +910,13 @@ try {
 
 function findOnScroll(elm, eval) {
 
-
-    eval = eval || "object visible";
-    var viewportHeight = $(window).height(), // Viewport Height
-        scrolltop = $(window).scrollTop(), // Scroll Top
-        y = $(elm).offset().top,
-        elementHeight = $(elm).height();
-
+    if (elm.length) {
+        eval = eval || "object visible";
+        var viewportHeight = $(window).height(), // Viewport Height
+            scrolltop = $(window).scrollTop(), // Scroll Top
+            y = $(elm).offset().top,
+            elementHeight = $(elm).height();
+    }
 
     if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
 }

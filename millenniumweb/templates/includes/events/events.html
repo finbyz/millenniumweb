@@ -1,0 +1,52 @@
+{% if sub_title %}
+<h4 class="text-muted">{{ sub_title }}</h4>
+{% endif %}
+{% if not result -%}
+<div class="text-muted no-results" style="min-height: 300px;">
+    <i class="mega-octicon octicon-telescope"></i>
+    {{ no_result_message or _("Nothing to show") }}
+</div>
+{% else %}
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-left pb-20">
+                <div class="title-underline">
+                    <h2 class="blue-text">Events</h2>
+                    <div class='line-circle-container '>
+                        <div class='loader' >
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                            <div class='loader--dot'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12 justify-content-center mb-10 event-category-main">
+            <div class="mw-button-grid row">
+                <button type="button" class="mw-button event-button filter-button filter parent-category mw-button-draw mw-button-meet col-4 col-lg-2 col-md-3 col-sm-6 " data-rel="all">
+                <span>All</span>
+                </button>
+                {% for category in event_category %}
+                {% set title = frappe.db.get_value("Event Category",{ 'name':category.name },'title') %}
+                <button type="button" class=" col-5 col-lg-2 col-md-3 col-sm-6 mw-button event-button filter-button filter parent-category mw-button-draw mw-button-meet"
+                    data-rel="{{ category.name }}">
+                <span>{{ title }}</span>
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{%- endif %}

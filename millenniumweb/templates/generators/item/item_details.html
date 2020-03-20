@@ -1,15 +1,33 @@
 <div class="col-md-6">
-	<div class=" pt-5">
+	<div class="pt-4 pt-sm-0">
 		<!-- title -->
-		<h2 itemprop="name" class="blue-text pt-3">
-			{{ item_name }}
-		</h2>
-		<p class="text-muted sub-text pt-3">
+
+
+		<div class="text-left pb-20">
+			<div class="title-underline">
+				<h2 class="blue-text">{{ item_design }} - {{ tile_surface }} - {{ tile_type }}</h2>
+				<div class='line-circle-container '>
+					<div class='loader pl-3 ' style="left:0; z-index:2">
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+						<div class='loader--dot'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p class="text-muted sub-text pt-4">
 			<span>{{ _("Item Code") }}:</span>
 			<span itemprop="productID">{{ doc.name }}</span>
 		</p>
 		<!-- description -->
-		<p class="sub-text pt-3">
+		<!-- <p class="sub-text pt-3">
 			<div itemprop="description">
 				{% if frappe.utils.strip_html(doc.web_long_description or '') %}
 				{{ doc.web_long_description | safe }}
@@ -30,7 +48,7 @@
 				class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
 				class="tile-point"></span></span>
 			<h5 class="label" style="text-transform: capitalize;">View More</h5>
-		</a>
+		</a> -->
 
 		{% if has_variants %}
 		<!-- configure template -->
@@ -40,95 +58,164 @@
 		{% include "templates/generators/item/item_add_to_cart.html" %}
 		{% endif %}
 	</div>
-	<div class="container mt-5 pl-0">
-		<hr>
-		<div class="row item-website-specification mt-5">
+	<div class="container  pl-0">
+		<hr style="margin: 30px 0">
+		<div class="row item-website-specification mt-1">
 			<div class="col-md-12">
-				<h2 class="blue-text">Specifications</h2>
-				<div class='line-circle-container'>
-					<div class='loader'>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-					  <div class='loader--dot'></div>
-	
-				
-					</div>
-				  </div>
 
-				<table class="table table-bordered mt-4" >
+				<h3 class="blue-text">Specifications
+
+				</h3>
+
+
+				<table class="table table-bordered mt-3 item-table">
 					{% if doc.item_series -%}
 					<tr>
-						<td style="width: 30%;"><p>Item Series</p></td>
-						<td><p class="sub-text">{{doc.item_series}}</p></td>
+						<td style="width: 30%;">
+							<p>Item Series</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.item_series}}</p>
+						</td>
 					</tr>
 					{%- endif%}
-	
+					{% if doc.tile_size -%}
+					<tr>
+						<td style="width: 30%;">
+							<p>Tile Size</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_size}} mm</p>
+						</td>
+					</tr>
+					{%- endif %}
 					{% if doc.tile_body_composition -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Body Composition</p></td>
-						<td><p class="sub-text">{{doc.tile_body_composition}}</p></td>
+						<td style="width: 36%;">
+							<p>Tile Body Composition</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_body_composition}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_use -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Use</p></td>
-						<td><p class="sub-text">{{doc.tile_use}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Use</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_use}}</p>
+						</td>
 					</tr>
 					{%- endif %}
+
 					{% if doc.tile_type -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Type</p></td>
-						<td><p class="sub-text">{{doc.tile_type}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Type</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_type}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_surface -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Surface</p></td>
-						<td><p class="sub-text">{{doc.tile_surface}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Surface</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_surface}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_texture -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Texture</p></td>
-						<td><p class="sub-text">{{doc.tile_texture}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Texture</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_texture}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_technical -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Technical</p></td>
-						<td><p class="sub-text">{{doc.tile_technical}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Technical</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_technical}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_color -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Color</p></td>
-						<td><p class="sub-text">{{doc.tile_color}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Color</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_color}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_shape -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Shape</p></td>
-						<td><p class="sub-text">{{doc.tile_shape}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Shape</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_shape}}</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_thickness -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Thickness</p></td>
-						<td><p class="sub-text">{{doc.tile_thickness}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Thickness</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_thickness}} mm</p>
+						</td>
 					</tr>
 					{%- endif %}
 					{% if doc.tile_anti_slip_properties -%}
 					<tr>
-						<td style="width: 30%;"><p>Tile Anti Slip Properties</p></td>
-						<td><p class="sub-text">{{doc.tile_anti_slip_properties}}</p></td>
+						<td style="width: 30%;">
+							<p>Tile Anti Slip Properties</p>
+						</td>
+						<td>
+							<p style="font-weight: 300">{{doc.tile_anti_slip_properties}}</p>
+						</td>
 					</tr>
 					{%- endif %}
-	
+
 				</table>
+				{% if  frappe.db.get_value("Item Group",doc.item_group,'catalogue') %}
+				{% set url = frappe.db.get_value("Item Group",doc.item_group,'catalogue') %}
+				<a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/catalogue-form">
+					<span class="tile-point-parent"><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span></span>
+					<h6 class="label" style="text-transform: capitalize;">Download Catalogue</h6>
+				</a>
+
+				<script>
+					window.onload = function () {
+						localStorage.setItem("url", "{{ url }}");
+						
+					}
+				</script>
+				{% endif %}
 			</div>
-</div>
+
+		</div>

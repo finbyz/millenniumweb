@@ -1,0 +1,113 @@
+{
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2020-03-07 10:30:29.239614",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "event_title",
+  "published",
+  "published_on",
+  "column_break_5",
+  "event_category",
+  "route",
+  "description",
+  "image"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "event_title",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Event Title"
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Published On"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_category",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Category",
+   "options": "Event Category"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  }
+ ],
+ "has_web_view": 1,
+ "image_field": "image",
+ "is_published_field": "published",
+ "modified": "2020-03-14 09:48:17.620468",
+ "modified_by": "Administrator",
+ "module": "Millennium Website",
+ "name": "Events",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Website Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "/event",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "event_title",
+ "track_changes": 1
+}

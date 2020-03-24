@@ -25,6 +25,11 @@
 		<div class="page_content">
 
 			{%- block page_content -%}{%- endblock -%}
+			{% if title == "Index" %}
+				{% include 'www/products.html' %}
+				{% include 'www/half.html' %}
+			{% endif %}
+
 		</div>
 
 		<div class="page-footer">

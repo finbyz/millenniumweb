@@ -175,19 +175,7 @@ $(document).ready(function () {
             .addTo(controller)
             .setTween(fade_all);
     }
-    // console.log("hello");
 
-    // var controller = new ScrollMagic.Controller();
-    // var fade_all = new TimelineMax();
-    // fade_all
-    //     .to(".has-animation", 0.1, { css: { className: "+=animate-in" } }, 1)
-
-    // new ScrollMagic.Scene({
-    //     reverse: true,
-    //     triggerElement: '.has-animation'
-    // })
-    //     .addTo(controller)
-    //     .setTween(fade_all);
 
     var controller = new ScrollMagic.Controller();
     $(".has-animation").filter($(".scroll")).each(function () {
@@ -220,73 +208,8 @@ $(document).ready(function () {
     }
 
 
+// dot anination
 
-    // $(window).scroll(function () {
-
-    //     $('.line-circle-container').each(function () {
-    //         if (findOnScroll($('.line-circle-container'))) {
-
-    //             const tl = new TimelineMax({ ease: Power4.easeIn });
-
-    //             tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
-    //                 x: 15
-    //             }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
-    //                     x: 30
-    //                 }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
-    //                     x: 45
-    //                 }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
-    //                     x: 60
-    //                 }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
-    //                     x: 75
-    //                 }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
-    //                     x: 90
-    //                 }, '-=0.15')
-    //                 .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
-    //                     x: 105
-    //                 }, '-=0.15')
-
-    //         }
-
-
-    //     })
-    // })
-
-    // $('.line-circle-container').each(function () {
-    //     if (findOnScroll($('.line-circle-container'))) {
-
-    //         const tl = new TimelineMax({ ease: Power4.easeIn });
-
-    //         tl.to($(this).find('.loader--dot:nth-child(1)'), 0.3, {
-    //             x: 15
-    //         }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(2)'), 0.3, {
-    //                 x: 30
-    //             }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(3)'), 0.3, {
-    //                 x: 45
-    //             }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(4)'), 0.3, {
-    //                 x: 60
-    //             }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(5)'), 0.3, {
-    //                 x: 75
-    //             }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(6)'), 0.3, {
-    //                 x: 90
-    //             }, '-=0.15')
-    //             .to($(this).find('.loader--dot:nth-child(7)'), 0.3, {
-    //                 x: 105
-    //             }, '-=0.15')
-
-    //     }
-
-
-    // })
     if ($('.loader').length) {
         $('.loader').each(function (index) {
             var controller = new ScrollMagic.Controller();
@@ -471,9 +394,6 @@ $(document).ready(function () {
 
 
 
-    // $('#menu_bars').hasClass("active")(function(){
-    //     $('.page_content').css("padding-left",20%)
-    // }
 
 
 
@@ -503,24 +423,6 @@ $(document).ready(function () {
             }, 300);
         }
     });
-
-    //   inquiry page
-
-    // Event Page
-
-    // $('.event-image-wrapper').each(function () {
-    //     $(this).children(".mw-overlay").mouseenter(function(){
-    //         $(this).animate({
-    //             opacity: '0.5'
-    //         });
-    //     })
-    //     $(this).mouseleave(function(){
-    //         $(this).animate({
-    //             opacity: '1'
-    //         });
-    //     })
-
-    // })
 
 
 
@@ -903,6 +805,45 @@ try {
 
     });
 
+    $('.owl-carousel.nav-carousel').owlCarousel({
+        stagePadding: 200,
+        loop:true,
+        margin:10,
+        nav:false,
+        items:1,
+        lazyLoad: true,
+        nav:true,
+      responsive:{
+            0:{
+                items:1,
+                stagePadding: 60
+            },
+            600:{
+                items:1,
+                stagePadding: 100
+            },
+            1000:{
+                items:1,
+                stagePadding: 200
+            },
+            1200:{
+                items:1,
+                stagePadding: 250
+            },
+            1400:{
+                items:1,
+                stagePadding: 300
+            },
+            1600:{
+                items:1,
+                stagePadding: 350
+            },
+            1800:{
+                items:1,
+                stagePadding: 400
+            }
+        }
+    })
 
 } catch (err) { }
 

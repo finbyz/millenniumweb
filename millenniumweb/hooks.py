@@ -131,3 +131,8 @@ app_license = "GPL 3.0"
 override_whitelisted_methods = {
 	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "millenniumweb.api.get_products_html_for_website",
 }
+
+
+from millenniumweb.api import get_items as my_get_item
+import erpnext 
+erpnext.portal.product_configurator.utils.get_items = my_get_item

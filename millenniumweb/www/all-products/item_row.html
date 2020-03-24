@@ -2,7 +2,7 @@
 	<div class="row no-gutters">
 		<div class="col-md-12">
 			<div class="card-body card-image">
-
+				{{ item.item_design }}
 				<a class="no-underline" href="/{{ item.route }}">
 					<div class="vis-img product-img has-animation has-animation-y animation-ttb scroll">
 
@@ -24,7 +24,7 @@
 	<div class="card-content card-body">
 		<h5 class="card-title sub-text">
 			<a class="blue-text" href="/{{ item.route }}">
-				{{ item.item_name or item.name }}
+				{{ item.item_design }} - {{ item.tile_surface }} - {{ item.tile_type }}
 			</a>
 		</h5>
 		<a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/{{ item.route }}">

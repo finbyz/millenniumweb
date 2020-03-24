@@ -1,31 +1,35 @@
 import frappe
-from frappe import _
-from erpnext.portal.product_configurator.utils import get_items_by_fields, get_product_settings, get_conditions
+from erpnext.portal.product_configurator.utils import (get_product_settings,
+	get_field_filter_data, get_attribute_filter_data)
 
-@frappe.whitelist(allow_guest=True)
-def get_products_html_for_website(field_filters=None, attribute_filters=None):
-	field_filters = frappe.parse_json(field_filters)
-	attribute_filters = frappe.parse_json(attribute_filters)
+sitemap = 1
 
-	items = get_products_for_website(field_filters, attribute_filters)
-	html = ''.join(get_html_for_items(items))
+def get_context(context):
+	frappe.throw("Get Context Called")
+	if frappe.form_dict:
+		search = frappe.form_dict.search
+		field_filters = frappe.parse_json(frappe.form_dict.field_filters)
+		attribute_filters = frappe.parse_json(frappe.form_dict.attribute_filters)
+	else:
+		search = field_filters = attribute_filters = None
 
-	if not items:
-		html = frappe.render_template('millenniumweb/www/all-products/not_found.html', {})
+	context.items = get_products_for_website(field_filters, attribute_filters, search)
 
-	return html
+	product_settings = get_product_settings()
+	context.field_filters = get_field_filter_data() \
+		if product_settings.enable_field_filters else []
 
+	context.attribute_filters = get_attribute_filter_data() \
+		if product_settings.enable_attribute_filters else []
 
-def get_html_for_items(items):
-	html = []
-	for item in items:
-		html.append(frappe.render_template('millenniumweb/www/all-products/item_row.html', {
-			'item': item
-		}))
-	return html
+	context.product_settings = product_settings
+	context.page_length = product_settings.products_per_page
+
+	context.no_cache = 1
 
 # To change the values brought from Item table, we written same function just changed sql query in get_items function
 def get_products_for_website(field_filters=None, attribute_filters=None, search=None):
+	frappe.msgprint("Our Get Products Called")
 	if attribute_filters:
 		item_codes = get_item_codes_by_attributes(attribute_filters)
 		items_by_attributes = get_items([['name', 'in', item_codes]])
@@ -47,14 +51,8 @@ def get_products_for_website(field_filters=None, attribute_filters=None, search=
 			if item.name in item_codes_in_attribute:
 				items_intersection.append(item)
 
-		return items_intersection
-
-	if search:
-		return get_items(search=search)
-
-	return get_items()
-
 def get_items(filters=None, search=None):
+	frappe.msgprint("Our Get Items Called")
 	start = frappe.form_dict.start or 0
 	products_settings = get_product_settings()
 	page_length = products_settings.products_per_page
@@ -144,4 +142,3 @@ def get_items(filters=None, search=None):
 		r.image = r.website_image or r.image
 
 	return results
-

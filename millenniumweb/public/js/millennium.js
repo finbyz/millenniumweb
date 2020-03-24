@@ -427,10 +427,26 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
 })
 
 
-
+$(document).on("click","div.floor-tiles-link", function(e) {
+    let tab_content = $(this).children("a")[0].dataset.content;
+      // console.log(tab_content);
+    if($("ul.tab-nav li").hasClass("active") && $("div.tab-content-indus").hasClass("active")){
+          $("ul.tab-nav li").removeClass("active");
+          $("div.tab-content-indus").removeClass("active");
+    }
+      $(`#${tab_content}`).addClass("active");
+      $(`#${tab_content}`).addClass("o_tip");
+      $(this).addClass("active");
+      
+  });
 
 function millenniumNavDropdowns(e) {
     var t = this;

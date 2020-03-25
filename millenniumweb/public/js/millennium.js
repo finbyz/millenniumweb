@@ -429,24 +429,24 @@ $(document).ready(function () {
 
 
 
+    $(document).on("click","div.floor-tiles-link", function(e) {
+        let tab_content = $(this).children("a")[0].dataset.content;
+          // console.log(tab_content);
+        if($("ul.tab-nav li").hasClass("active") && $("div.tab-content-indus").hasClass("active")){
+              $("ul.tab-nav li").removeClass("active");
+              $("div.tab-content-indus").removeClass("active");
+        }
+          $(`#${tab_content}`).addClass("active");
+          $(`#${tab_content}`).addClass("o_tip");
+          $(this).addClass("active");
+          
+      });
 
 
 
 })
 
 
-$(document).on("click","div.floor-tiles-link", function(e) {
-    let tab_content = $(this).children("a")[0].dataset.content;
-      // console.log(tab_content);
-    if($("ul.tab-nav li").hasClass("active") && $("div.tab-content-indus").hasClass("active")){
-          $("ul.tab-nav li").removeClass("active");
-          $("div.tab-content-indus").removeClass("active");
-    }
-      $(`#${tab_content}`).addClass("active");
-      $(`#${tab_content}`).addClass("o_tip");
-      $(this).addClass("active");
-      
-  });
 
 function millenniumNavDropdowns(e) {
     var t = this;
@@ -518,7 +518,6 @@ var Strut = {
 
 
 Strut.supports = {
-
     pointerEvents: function () {
 
         var e = document.createElement("a").style;
@@ -894,6 +893,8 @@ function imageGallary(args) {
     var ospin = document.getElementById('spin-container');
     var aImg = ospin.getElementsByTagName('img');
     var aEle = [...aImg]; // combine 2 arrays
+    var aP = ospin.getElementsByTagName('p');
+    var apEle = [...aP]
 
     // Size of images
     ospin.style.width = imgWidth + "px";
@@ -909,6 +910,9 @@ function imageGallary(args) {
             aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
             aEle[i].style.transition = "transform 1s";
             aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+            apEle[i].style.transform = "rotateY(" + (i * (360 / apEle.length)) + "deg) translateZ(" + radius + "px)";
+            apEle[i].style.transition = "transform 1s";
+            apEle[i].style.transitionDelay = delayTime || (apEle.length - i) / 4 + "s";
         }
     }
     // auto spin

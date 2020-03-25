@@ -18,7 +18,7 @@ def get_products_html_for_website(field_filters=None, attribute_filters=None):
 
 def get_html_for_items(items):
 	html = []
-	for item in items:
+	for item in items:		
 		html.append(frappe.render_template('millenniumweb/www/all-products/item_row.html', {
 			'item': item
 		}))
@@ -68,7 +68,7 @@ def get_items(filters=None, search=None):
 
 	show_in_website_condition = ''
 	if products_settings.hide_variants:
-		show_in_website_condition = get_conditions({'show_in_website': 1 }, 'and')
+		show_in_website_condition = get_conditions({'show_in_website': 1}, 'and')
 	else:
 		show_in_website_condition = get_conditions([
 			['show_in_website', '=', 1],

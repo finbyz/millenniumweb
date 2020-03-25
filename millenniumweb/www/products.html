@@ -1,4 +1,4 @@
-{% set data = frappe.get_all('Item', fields=['name', 'item_name', 'item_group' ,'description', 'website_image','route'],
+{% set data = frappe.get_all('Item', fields=['name', 'item_name' , 'tile_surface' , 'item_design' , 'item_group' ,'description', 'website_image','route'],
                 filters={'show_in_website': 1, 'website_image': ['NOT IN', [null, '']]},order_by='RAND()', page_length = 7)  %}
 <div class="product-section">
     <div class="container product-text py-5  d-none d-lg-block">
@@ -66,8 +66,11 @@
                 
                 {%- for d in data -%}
                     {%- if d.website_image -%}
-                        <img src="{{ d.website_image }}" alt="{{ d.name }}">
-                        <p></p>
+                           
+                            <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
+                        <img class="pt-1 px-2 pb-3"src="{{ d.website_image }}" alt="{{ d.name }}">
+                            
+                        
                     {%- endif -%}
                 {%- endfor -%}
                 

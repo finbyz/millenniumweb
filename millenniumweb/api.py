@@ -58,7 +58,7 @@ def get_items(filters=None, search=None):
 	start = frappe.form_dict.start or 0
 	products_settings = get_product_settings()
 	page_length = products_settings.products_per_page
-
+	frappe.msgprint(str(page_length))
 	filters = filters or []
 	# convert to list of filters
 	if isinstance(filters, dict):
@@ -68,7 +68,7 @@ def get_items(filters=None, search=None):
 
 	show_in_website_condition = ''
 	if products_settings.hide_variants:
-		show_in_website_condition = get_conditions({'show_in_website': 1 }, 'and')
+		show_in_website_condition = get_conditions({'show_in_website': 1}, 'and')
 	else:
 		show_in_website_condition = get_conditions([
 			['show_in_website', '=', 1],
@@ -122,7 +122,7 @@ def get_items(filters=None, search=None):
 			`tabItem`
 		{left_join}
 		WHERE
-			{where_conditions}
+			{where_conditions} and `tabItem`.`website_image` IS NOT NULL
 		GROUP BY
 			`tabItem`.`name`
 		ORDER BY

@@ -270,8 +270,9 @@ $(document).ready(function () {
             , '-=time')
 
 
-    $('.hover-img').on({
+    $('.vis-img').on({
         mouseenter: function () {
+            console.log("Hello")
             $(this).animate({ opacity: 0 });
 
         },
@@ -426,21 +427,18 @@ $(document).ready(function () {
 
 
 
+    
+        $('.tabanchor').on('mouseenter', function (e) { 
+            var getTab = $(this).attr('href');
+            $(this).parent().addClass('active');
+            $('.flex-inner').removeClass('active')
+            $(getTab).addClass('active')
+            e.preventDefault();
+        })
+   
 
 
 
-    $(document).on("click","div.floor-tiles-link", function(e) {
-        let tab_content = $(this).children("a")[0].dataset.content;
-          // console.log(tab_content);
-        if($("ul.tab-nav li").hasClass("active") && $("div.tab-content-indus").hasClass("active")){
-              $("ul.tab-nav li").removeClass("active");
-              $("div.tab-content-indus").removeClass("active");
-        }
-          $(`#${tab_content}`).addClass("active");
-          $(`#${tab_content}`).addClass("o_tip");
-          $(this).addClass("active");
-          
-      });
 
 
 
@@ -808,6 +806,9 @@ try {
         if (findOnScroll($('#drag-container'))) {
             // console.log("hello");
             imageGallary({ "radius": 400, "imgheightwidth": 208.3 });
+            setTimeout(function(){
+                $('#drag-container p').animate({opacity:"1"})
+            },2000)
         }
         if ($(window).width() < 768) {
 
@@ -920,5 +921,7 @@ function imageGallary(args) {
         var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
         ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
     }
+
+
 };
 

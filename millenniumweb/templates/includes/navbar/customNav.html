@@ -168,20 +168,20 @@
     </ul>
 
     <div class="dropdownRoot">
-        <div class="dropdownBackground" style="transform: translateX(452px) scaleX(0.707692) scaleY(1.1075);">
-            <div class="alternateBackground" style="transform: translateY(255.53px);"></div>
+        <div class="dropdownBackground">
+            <div class="alternateBackground"></div>
         </div>
-        <div class="dropdownArrow" style="transform: translateX(636px) rotate(45deg);"></div>
-        <div class="dropdownContainer" style="transform: translateX(452px); width: 400px; height: 443px;">
+        <div class="dropdownArrow"></div>
+        <div class="dropdownContainer">
             <div class="dropdownSection left" data-dropdown="product">
-                <div class="dropdownContent dropdownContent-product">
-                    <div class="linkGroup ">
-                        <div class="item-group-tiles">
-                            <div class="group-tile group-tile-floor ">
-                                <div class="floor-tiles-list">
-                                    <h2 class="pt-4 blue-text">Floor Tiles</h2>
-                                   
-                                    <ul class="floor-tiles-link">
+                <div class="dropdownContent dropdownContent-product container">
+                    <div class="linkGroup">
+                        <div class="item-group-tiles row pt-3">
+                            <div class="group-tile group-tile-floor col-lg-8 row p-5  d-flex flex-row"
+                                style="background-color: #f5f5f5;">
+                                <div class="floor-tiles-list col-5  ">
+                                    <h2 class="pt-2 blue-text">Floor Tiles</h2>
+                                    <ul class="floor-tiles-link pt-3">
                                         <div class="c1">
                                             <a class="tabanchor" href="#c1">
                                                 <li class="py-2">Double Charge Tiles</li>
@@ -198,36 +198,50 @@
                                             </a>
                                         </div>
                                         <div class="c4">
-                                            <a class="tabanchor" href="c4">
+                                            <a class="tabanchor" href="#c4">
                                                 <li class="py-2">Porcelain Tiles</li>
                                             </a>
                                         </div>
                                     </ul>
                                 </div>
-                                <a href="floor-tiles" class="floor-tile-img ">
-                                    <img class="floor-tiles-1 rounded"  id="c1" src="/files/floor-tiles.jpg" alt="">
-                                    <img class="floor-tiles-2 rounded"  id="c2" src="/files/floor-tiles-2.jpg" alt="">
-                                    <img class="floor-tiles-3 rounded"  id="c3" src="/files/floor-tiles-3.jpg" alt="">
+                                <a href="floor-tiles" class="floor-tile-img col-lg-7">
+                                    <img class="flex-inner floor-tiles-1 rounded active" id="c1"
+                                        src="/files/floor-tiles.jpg" alt="">
+                                    <img class="flex-inner floor-tiles-2 rounded" id="c2" src="/files/floor-tiles-2.jpg"
+                                        alt="">
+                                    <img class="flex-inner floor-tiles-3 rounded" id="c3" src="/files/floor-tiles-3.jpg"
+                                        alt="">
+                                    <img class="flex-inner floor-tiles-4 rounded" id="c4" src="/files/floor-tiles-4.jpg"
+                                        alt="">
                                 </a>
                             </div>
 
 
-                            <div class="group-tile group-tile-single p-5">
-
-                                <a href="floor-tiles-img" class="pl-4 ">
-                                    <img class="rounded" src="/files/wall-tiles.jpg" alt="">
-                                </a>
-                                <h3 class="blue-text pt-3 pl-4">Wall Tiles</h3>
-
+                            <div class="group-tile group-tile-single col-4  pl-5 ">
+                                <div class="container w-100  d-flex flex-column align-items-center" style="background-color: #f5f5f5;">
+                                    <div class="row pt-4" >
+                                        <a href="floor-tiles-img" class="col-6 w-100 h-100">
+                                            <img class="rounded w-100 h-100 " src="/files/wall-tiles.jpg" alt="">
+                                        </a>
+                                        <h3 class="blue-text pt-4 col-6">Wall Tiles</h3>
+                                    </div>
+                                    <hr>
+                                    <div class="row pb-4" >
+                                        <a href="floor-tiles-img" class="col-6 w-100 h-100">
+                                            <img class="rounded w-100 h-100 " src="/files/parking-tiles038120.jpg" alt="">
+                                        </a>
+                                        <h3 class="blue-text pt-4 col-6">Parking Tiles</h3>
+                                    </div>
+                                </div>
+                               
                             </div>
-                            <div class="group-tile">
 
-                            </div>
+
                         </div>
                     </div>
-                    <ul class="linkGroup linkList prodsubGroup mt-1 p-1">
+                    <ul class="linkGroup linkList prodsubGroup mt-2 pt-0">
                         <li class="text-center">
-                            <a class="" href="/all-products">
+                            <a class="" href="">
                                 <h6 class="title-underline item-group-link-nav link-underline ">View All</h6>
                             </a>
                         </li>

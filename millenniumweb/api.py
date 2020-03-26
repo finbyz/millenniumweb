@@ -58,7 +58,7 @@ def get_items(filters=None, search=None):
 	start = frappe.form_dict.start or 0
 	products_settings = get_product_settings()
 	page_length = products_settings.products_per_page
-	frappe.msgprint(str(page_length))
+	
 	filters = filters or []
 	# convert to list of filters
 	if isinstance(filters, dict):

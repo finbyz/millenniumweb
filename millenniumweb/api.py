@@ -145,3 +145,6 @@ def get_items(filters=None, search=None):
 
 	return results
 
+def get_context(context):
+	pass
+

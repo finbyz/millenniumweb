@@ -102,9 +102,11 @@
 
 									<div class=" d-md-block" id="product-filters">
 										{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
+										
 										<a class="mb-3 d-inline-block" href="/all-products">{{ _('Clear filters') }}</a>
 										{% endif  %}
 										{% for field_filter in field_filters %}
+										{{ field_filter }}
 										{%- set item_field =  field_filter[0] %}
 										{%- set values =  field_filter[1] %}
 										<div class="mb-4 ">

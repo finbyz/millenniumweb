@@ -12,7 +12,7 @@
             <a class="rootLink" href="/about">
                 About
             </a>
-            <a class="rootLink hasDropdown" href="/all-products" data-dropdown="product">
+            <a class="rootLink hasDropdown" data-dropdown="product">
                 Products
             </a>
             <a class="rootLink" href="">
@@ -67,27 +67,40 @@
                             <ul class="collapse list-unstyled ml-5" id='products'>
                                 <li class="p-3">
                                     <!-- <img class="nav-service-icon" src="/files/ser-erp-implementation.svg" alt="ERP Implementation" title="ERP Implementation">  -->
-                                    <a href="" class="link-underline p-1">Porcelain Tiles</a>
+                                    <a href='all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%7D'
+                                        class="link-underline p-1">Floor Tiles</a>
                                 </li>
-                                <li class="p-3">
+                                <li class="p-3 pl-4">
+                                    <!-- <img class="nav-service-icon" src="/files/ser-erp-implementation.svg" alt="ERP Implementation" title="ERP Implementation">  -->
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D'
+                                        class="link-underline p-1">Double Charge Tiles</a>
+                                </li>
+                                <li class="p-3 pl-4">
                                     <!-- <img class="nav-service-icon" src="/files/ser-software-development.svg" alt="Software Development" title="Software Development"> -->
-                                    <a href="" class="link-underline p-1"> Wall Tiles</a>
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"%28P%29GVT"%5D%7D'
+                                        class="link-underline p-1"> GVT/PGVT Tiles</a>
                                 </li>
-                                <li class="p-3">
+                                <li class="p-3 pl-4">
                                     <!-- <img class="nav-service-icon" src="/files/ser-website-development.svg" alt="Website Development" title="Website Development"> -->
-                                    <a href="" class="link-underline p-1">Floor Tiles</a>
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Nano"%5D%7D'
+                                        class="link-underline p-1">Nano - Soluble Salt Tiles</a>
                                 </li>
-                                <li class="p-3">
+                                <li class="p-3 pl-4">
                                     <!-- <img class="nav-service-icon" src="/files/ser-it-consulting.svg" alt="IT Consulting" title="IT Consulting"> -->
-                                    <a href="" class="link-underline p-1">Double Charges Tiles</a>
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Porcelain"%5D%7D'
+                                        class="link-underline p-1">Porcelain Tiles</a>
                                 </li>
                                 <li class="p-3">
                                     <!-- <img class="nav-service-icon" src="/files/ser-crm-system.svg" alt="CRM Software" title="CRM Software"> -->
-                                    <a class="link-underline p-1" href="">Full Body Vitrified Tiles</a>
+                                    <a class="link-underline p-1"
+                                        href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D'>Wall
+                                        Tiles</a>
                                 </li>
                                 <li class="p-3">
                                     <!-- <img class="nav-service-icon" src="/files/ser-data-analytics.svg" alt="Data Analytics" title="Data Analytics"> -->
-                                    <a class="link-underline p-1" href="">Parking Tiles</a>
+                                    <a class="link-underline p-1"
+                                        href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D'>Parking
+                                        Tiles</a>
                                 </li>
                             </ul>
                         </li>
@@ -175,36 +188,64 @@
         <div class="dropdownContainer">
             <div class="dropdownSection left" data-dropdown="product">
                 <div class="dropdownContent dropdownContent-product container">
-                    <div class="linkGroup">
-                        <div class="item-group-tiles row pt-3">
-                            <div class="group-tile group-tile-floor col-lg-8 row p-5  d-flex flex-row"
-                                style="background-color: #f5f5f5;">
-                                <div class="floor-tiles-list col-5  ">
-                                    <h2 class="pt-2 blue-text">Floor Tiles</h2>
-                                    <ul class="floor-tiles-link pt-3">
+                    <div class="linkGroup pl-5">
+                        <div class="item-group-tiles row pt-3 pl-4">
+                            <div class="group-tile group-tile-floor col-xl-8 row pt-2  d-flex flex-row">
+                                <div class="floor-tiles-list col-5">
+                                    <a href='all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%7D'>
+                                        <h3 class="pt-3 blue-text">Floor Tiles</h3>
+                                    </a>
+                                    <div class='line-circle-container '>
+                                        <div class='loader  '>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                            <div class='loader--dot'></div>
+                                        </div>
+                                    </div>
+                                    <ul class="floor-tiles-link pb-5 pt-4">
                                         <div class="c1">
-                                            <a class="tabanchor" href="#c1">
-                                                <li class="py-2">Double Charge Tiles</li>
-                                            </a>
+                                            <div class="tabanchor" href="#c1">
+                                                <a
+                                                    href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D'>
+                                                    <li class="pt-2">Double Charge Tiles</li>
+                                                </a>
+                                            </div>
                                         </div>
                                         <div class="c2">
-                                            <a class="tabanchor" href="#c2">
-                                                <li class="py-2">GVT/PGVT Tiles</li>
-                                            </a>
+                                            <div class="tabanchor" href="#c2">
+                                                <a
+                                                    href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"%28P%29GVT"%5D%7D'>
+                                                    <li class="pt-2">GVT/PGVT Tiles</li>
+                                                </a>
+                                            </div>
                                         </div>
                                         <div class="c3">
-                                            <a class="tabanchor" href="#c3">
-                                                <li class="py-2">Nano - Soluble Salt Tiles</li>
-                                            </a>
+                                            <div class="tabanchor" href="#c3">
+                                                <a
+                                                    href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Nano"%5D%7D'>
+                                                    <li class="pt-2">Nano - Soluble Salt Tiles</li>
+                                                </a>
+
+                                            </div>
                                         </div>
                                         <div class="c4">
-                                            <a class="tabanchor" href="#c4">
-                                                <li class="py-2">Porcelain Tiles</li>
-                                            </a>
+                                            <div class="tabanchor" href="#c4">
+                                                <a
+                                                    href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Porcelain"%5D%7D'>
+                                                    <li class="pt-2">Porcelain Tiles</li>
+                                                </a>
+                                            </div>
                                         </div>
                                     </ul>
                                 </div>
-                                <a href="floor-tiles" class="floor-tile-img col-lg-7">
+                                <a  href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D' class="floor-tile-img col-lg-7">
+                                    <div class="nav-background h-100 w-75"></div>
                                     <img class="flex-inner floor-tiles-1 rounded active" id="c1"
                                         src="/files/floor-tiles.jpg" alt="">
                                     <img class="flex-inner floor-tiles-2 rounded" id="c2" src="/files/floor-tiles-2.jpg"
@@ -213,27 +254,47 @@
                                         alt="">
                                     <img class="flex-inner floor-tiles-4 rounded" id="c4" src="/files/floor-tiles-4.jpg"
                                         alt="">
+
                                 </a>
                             </div>
 
 
-                            <div class="group-tile group-tile-single col-4  pl-5 ">
-                                <div class="container w-100  d-flex flex-column align-items-center" style="background-color: #f5f5f5;">
-                                    <div class="row pt-4" >
-                                        <a href="floor-tiles-img" class="col-6 w-100 h-100">
-                                            <img class="rounded w-100 h-100 " src="/files/wall-tiles.jpg" alt="">
+                            <div class="group-tile group-tile-single col-xl-4">
+                                <div class="row pt-5">
+                                    <a  href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D' class="col-lg-4 w-100 h-100">
+                                        <img class="rounded w-100 h-100 " src="/files/wall-tiles.jpg" alt="">
+                                    </a>
+                                    <div class="col-lg-8">
+                                        <a  href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D'>
+                                            <h3 class="blue-text pro-menu-title">Wall Tiles</h3>
                                         </a>
-                                        <h3 class="blue-text pt-4 col-6">Wall Tiles</h3>
+                                        <div class="nav-pro-description-side">elegant and robust designs for your wall
+                                            tiling
+                                            needs.</div>
                                     </div>
-                                    <hr>
-                                    <div class="row pb-4" >
+                                </div>
+                                <hr>
+                                <!-- <div class="row pb-4" >
                                         <a href="floor-tiles-img" class="col-6 w-100 h-100">
                                             <img class="rounded w-100 h-100 " src="/files/parking-tiles038120.jpg" alt="">
                                         </a>
                                         <h3 class="blue-text pt-4 col-6">Parking Tiles</h3>
+                                    </div> -->
+                                <div class="row pt-4">
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D' class="col-lg-4 w-100 h-100">
+                                        <img class="rounded w-100 h-100 " src="/files/parking-tiles038120.jpg" alt="">
+                                    </a>
+                                    <div class="col-lg-8">
+                                        <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D'>
+                                            <h3 class="blue-text pro-menu-title">Parking Tiles</h3>
+                                        </a>
+                                        <div class="nav-pro-description-side">
+                                            The complete solution to beautify your outdoor spaces.
+                                        </div>
                                     </div>
                                 </div>
-                               
+
+
                             </div>
 
 
@@ -241,8 +302,9 @@
                     </div>
                     <ul class="linkGroup linkList prodsubGroup mt-2 pt-0">
                         <li class="text-center">
-                            <a class="" href="">
-                                <h6 class="title-underline item-group-link-nav link-underline ">View All</h6>
+                            <a class="" href="/all-products">
+                                <h6 class="title-underline item-group-link-nav link-underline view-all pt-2">View All
+                                </h6>
                             </a>
                         </li>
                     </ul>

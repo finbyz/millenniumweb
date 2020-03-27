@@ -1,0 +1,87 @@
+{% extends "templates/web.html" %}
+
+{% block title %}About Us{% endblock %}
+{% block page_sidebar %}
+{% include "templates/pages/web_sidebar.html" %}
+{% endblock %}
+{% block page_content %}
+
+{% set data = frappe.get_all('Item Group', fields=['catalogue', 'catalogue_name' , 'image']) %}
+
+<article itemscope itemtype="http://schema.org/AboutPage" class="about-content">
+    <div itemprop="description" class="container">
+
+        <div class="row my-5 pt-5">
+            <div class="col-md-12 col-lg-6 col-sm-12">
+                <div class="about-heading mt-3">
+                    <h2 class="blue-text">E-catalogue</h2>
+                </div>
+                <div class='line-circle-container '>
+                    <div class='loader  '>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                        <div class='loader--dot'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container products-list-container">
+            <div class="products-list finbyz row">
+
+                {%- for d in data -%}
+                <div class="card m-3 ">
+                    <div class="row no-gutters">
+                        <div class="col-md-12">
+                            <div class="card-body card-image">
+
+                                <a class="no-underline" href="">
+                                    <div class=" product-img has-animation has-animation-y animation-ttb scroll">
+
+                                        <img class="website-image" src="{{ d.image or '/files/no-image.png'  }}" alt="">
+
+                                    </div>
+
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content card-body">
+                        <h5 class="card-title sub-text">
+                            <a class="blue-text" href="/">
+                                {{ d.catalogue_name }}
+                            </a>
+                        </h5>
+                        <a class="tile-button card-button fill ml-0 mt-4 pt-4" href="">
+                            <span class="tile-point-parent"><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span><span class="tile-point"></span><span
+                                    class="tile-point"></span></span>
+                            <h6 class="label text-capitalize">Download</h6>
+                        </a>
+                    </div>
+                </div>
+                {%- endfor -%}
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+{% endblock %}

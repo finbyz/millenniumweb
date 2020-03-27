@@ -15,7 +15,7 @@
             <a class="rootLink hasDropdown" data-dropdown="product">
                 Products
             </a>
-            <a class="rootLink" href="">
+            <a class="rootLink" href="/catalogue">
                 E-Catalogue
             </a>
             <a class="rootLink" href="/event">
@@ -192,7 +192,7 @@
                         <div class="item-group-tiles row pt-3 pl-4">
                             <div class="group-tile group-tile-floor col-xl-8 row pt-2  d-flex flex-row">
                                 <div class="floor-tiles-list col-5">
-                                    <a href='all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%7D'>
+                                    <a href='all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%7D' class="tile-use-link">
                                         <h3 class="pt-3 blue-text">Floor Tiles</h3>
                                     </a>
                                     <div class='line-circle-container '>
@@ -211,7 +211,7 @@
                                     <ul class="floor-tiles-link pb-5 pt-4">
                                         <div class="c1">
                                             <div class="tabanchor" href="#c1">
-                                                <a
+                                                <a class="tile-type-link" 
                                                     href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D'>
                                                     <li class="pt-2">Double Charge Tiles</li>
                                                 </a>
@@ -219,7 +219,7 @@
                                         </div>
                                         <div class="c2">
                                             <div class="tabanchor" href="#c2">
-                                                <a
+                                                <a class="tile-type-link"
                                                     href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"%28P%29GVT"%5D%7D'>
                                                     <li class="pt-2">GVT/PGVT Tiles</li>
                                                 </a>
@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="c3">
                                             <div class="tabanchor" href="#c3">
-                                                <a
+                                                <a class="tile-type-link"
                                                     href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Nano"%5D%7D'>
                                                     <li class="pt-2">Nano - Soluble Salt Tiles</li>
                                                 </a>
@@ -236,7 +236,7 @@
                                         </div>
                                         <div class="c4">
                                             <div class="tabanchor" href="#c4">
-                                                <a
+                                                <a class="tile-type-link"
                                                     href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Porcelain"%5D%7D'>
                                                     <li class="pt-2">Porcelain Tiles</li>
                                                 </a>
@@ -244,7 +244,8 @@
                                         </div>
                                     </ul>
                                 </div>
-                                <a  href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D' class="floor-tile-img col-lg-7">
+                                <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Floor"%5D%2C"tile_type"%3A%5B"Double+Charge"%5D%7D'
+                                    class="floor-tile-img col-lg-7">
                                     <div class="nav-background h-100 w-75"></div>
                                     <img class="flex-inner floor-tiles-1 rounded active" id="c1"
                                         src="/files/floor-tiles.jpg" alt="">
@@ -261,11 +262,13 @@
 
                             <div class="group-tile group-tile-single col-xl-4">
                                 <div class="row pt-5">
-                                    <a  href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D' class="col-lg-4 w-100 h-100">
+                                    <a href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D'
+                                        class="col-lg-4 w-100 h-100">
                                         <img class="rounded w-100 h-100 " src="/files/wall-tiles.jpg" alt="">
                                     </a>
                                     <div class="col-lg-8">
-                                        <a  href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D'>
+                                        <a class="tile-use-link"
+                                            href='http://tileexport.finbyz.in:8000/all-products?field_filters=%7B%22tile_use%22%3A%5B%22Wall%22%5D%7D'>
                                             <h3 class="blue-text pro-menu-title">Wall Tiles</h3>
                                         </a>
                                         <div class="nav-pro-description-side">elegant and robust designs for your wall
@@ -280,12 +283,13 @@
                                         </a>
                                         <h3 class="blue-text pt-4 col-6">Parking Tiles</h3>
                                     </div> -->
-                                <div class="row pt-4">
-                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D' class="col-lg-4 w-100 h-100">
+                                <div class="row">
+                                    <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D'
+                                        class="col-lg-4 w-100 h-100">
                                         <img class="rounded w-100 h-100 " src="/files/parking-tiles038120.jpg" alt="">
                                     </a>
                                     <div class="col-lg-8">
-                                        <a href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D'>
+                                        <a class="tile-use-link" href='/all-products?field_filters=%7B"tile_use"%3A%5B"Parking"%5D%7D'>
                                             <h3 class="blue-text pro-menu-title">Parking Tiles</h3>
                                         </a>
                                         <div class="nav-pro-description-side">
@@ -300,12 +304,24 @@
 
                         </div>
                     </div>
-                    <ul class="linkGroup linkList prodsubGroup mt-2 pt-0">
+                    <ul class=" prodsubGroup mt-2 pt-0">
                         <li class="text-center">
-                            <a class="" href="/all-products">
-                                <h6 class="title-underline item-group-link-nav link-underline view-all pt-2">View All
-                                </h6>
+
+                            <a class="tile-button card-button fill mx-auto mt-4 pt-4 mb-3" href="/all-products">
+                                <span class="tile-point-parent"><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span><span class="tile-point"></span><span
+                                        class="tile-point"></span></span>
+                                <h6 class="label text-capitalize">View All</h6>
                             </a>
+
                         </li>
                     </ul>
                 </div>

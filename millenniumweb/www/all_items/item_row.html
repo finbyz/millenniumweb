@@ -1,0 +1,79 @@
+<div class="card m-3 ">
+	<div class="row no-gutters">
+		<div class="col-md-12">
+			<div class="card-body card-image">
+				
+				<a class="no-underline" href="/{{ item.route }}">
+					<div class="vis-img product-img has-animation has-animation-y animation-ttb scroll">
+
+						<img class="website-image" src="{{ item.website_image or '/files/no-image.png'  }}"
+							alt="{{ item.item_name }}">
+
+					</div>
+					<div class=" hover-img product-img has-animation has-animation-y animation-ttb scroll"
+						style="position: absolute; top:0; ">
+						<img class=" website-image" src="{{ item.cover_image or '/files/no-image.png' }}" alt="">
+
+					</div>
+
+
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="card-content card-body">
+		<h5 class="card-title sub-text">
+			<a class="blue-text" href="/{{ item.route }}">
+				{{ item.item_design }} - {{ item.tile_surface }} - {{ item.tile_type }}
+			</a>
+		</h5>
+		<a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/{{ item.route }}">
+			<span class="tile-point-parent"><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+					class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span></span>
+			<h6 class="label text-capitalize" >View More</h6>
+		</a>
+
+
+	</div>
+
+
+
+</div>
+<script>
+
+		//your code here
+
+		$('.has-animation').filter('.product-img').each(function (index) {
+			if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
+				$(this).delay($(this).data('delay+20')).queue(function () {
+					$(this).addClass('animate-in');
+				});
+			}
+			// else {
+			//     $(this).delay($(this).data('delay+20')).queue(function () {
+			//         $(this).addClass('reverse');
+			//     });
+			// }
+		});
+
+		$(window).scroll(function () {
+			$('.has-animation').filter('.product-img').each(function (index) {
+				if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
+					$(this).delay($(this).data('delay+20')).queue(function () {
+						$(this).addClass('animate-in');
+					});
+				}
+				// else {
+				//     $(this).delay($(this).data('delay+20')).queue(function () {
+				//         $(this).addClass('reverse');
+				//     });
+				// }
+			});
+		});
+
+</script>

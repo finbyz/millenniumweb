@@ -138,13 +138,9 @@ def get_items(filters=None, search=None):
 			left_join=left_join
 		)
 	, as_dict=1)
-	frappe.msgprint(str(results))
 	for r in results:
 		r.description = r.web_long_description or r.description
 		r.image = r.website_image or r.image
 
 	return results
-
-def get_context(context):
-	pass
 

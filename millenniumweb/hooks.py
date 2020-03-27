@@ -134,8 +134,7 @@ override_whitelisted_methods = {
 
 
 from millenniumweb.api import get_items as my_get_item
-from millenniumweb.api import get_context as my_get_context
-import erpnext 
-# import erpnext.www.all_products.index.get_contex
-# erpnext.portal.product_configurator.utils.get_items = my_get_item
-# erpnext.www.all_products.index.get_contex = my_get_context
+import erpnext
+erpnext.portal.product_configurator.utils.get_items = my_get_item
+
+# index.get_context = my_get_context

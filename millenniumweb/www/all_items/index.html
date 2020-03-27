@@ -42,12 +42,12 @@
 		{% if items %}
 		{% for item in items %}
 		
-		{% include "millenniumweb/www/all-products/item_row.html" %}
+		{% include "millenniumweb/www/all_items/item_row.html" %}
 	
 
 		{% endfor %}
 		{% else %}
-		{% include "millenniumweb/www/all-products/not_found.html" %}
+		{% include "millenniumweb/www/all_items/not_found.html" %}
 		{% endif %}
 
 
@@ -103,14 +103,15 @@
 									<div class=" d-md-block" id="product-filters">
 										{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
 										
-										<a class="mb-3 d-inline-block" href="/all-products">{{ _('Clear filters') }}</a>
+										<a class="mb-3 d-inline-block" href="/all_items">{{ _('Clear filters') }}</a>
 										{% endif  %}
-										{% for field_filter in field_filters %}
-								
-										{%- set item_field =  field_filter[0] %}
-										{%- set values =  field_filter[1] %}
+										
+										{% for key, value in available_filters.items() %}
+										
+										{%- set item_field =  key %}
+										{%- set values =  value %}
 										<div class="mb-4 ">
-											<h6 class="filter-name">{{ item_field.label }}</h6>
+											<h6 class="filter-name">{{ key | replace("_", " ") | title }}</h6>
 
 											{% if values | len > 20 %}
 											<!-- show inline filter if values more than 20 -->
@@ -124,7 +125,7 @@
 												<div class="custom-control custom-checkbox" data-value="{{ value }}">
 													<input type="checkbox"
 														class="product-filter field-filter custom-control-input"
-														id="{{value}}" data-filter-name="{{ item_field.fieldname }}"
+														id="{{value}}" data-filter-name="{{ item_field }}"
 														data-filter-value="{{ value }}">
 													<label class="custom-control-label" for="{{value}}">
 														{{ value }}
@@ -308,8 +309,7 @@
 				data-start="{{ frappe.form_dict.start|int - page_length }}">{{ _("Prev") }}</button>
 
 			{% endif %}
-			{{ page_length }}
-			{{ msg }}
+			
 			{% if items|length >= page_length %}
 			<button class="btn btn-outline-secondary btn-next"
 				data-start="{{ frappe.form_dict.start|int + page_length }}">{{ _("Next") }}</button>

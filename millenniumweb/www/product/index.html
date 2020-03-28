@@ -42,12 +42,12 @@
 		{% if items %}
 		{% for item in items %}
 
-		{% include "millenniumweb/www/all_items/item_row.html" %}
+		{% include "millenniumweb/www/product/item_row.html" %}
 
 
 		{% endfor %}
 		{% else %}
-		{% include "millenniumweb/www/all_items/not_found.html" %}
+		{% include "millenniumweb/www/product/not_found.html" %}
 		{% endif %}
 
 
@@ -65,7 +65,7 @@
 									<div class=" d-md-block" id="product-filters">
 										{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
 
-										<a class="mb-3 d-inline-block" href="/all_items">{{ _('Clear filters') }}</a>
+										<a class="mb-3 d-inline-block" href="/product">{{ _('Clear filters') }}</a>
 										{% endif  %}
 										<!-- {{ field_filters }} -->
 

@@ -55,7 +55,7 @@ $(() => {
 					field_filters: JSON.stringify(if_key_exists(this.field_filters)),
 					attribute_filters: JSON.stringify(if_key_exists(this.attribute_filters)),
 				});
-				window.history.pushState('filters', '', '/all_items?' + query_string);
+				window.history.pushState('filters', '', '/product?' + query_string);
 				
 				$('.page_content input').prop('disabled', true);
 

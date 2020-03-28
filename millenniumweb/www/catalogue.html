@@ -1,12 +1,13 @@
 {% extends "templates/web.html" %}
 
-{% block title %}About Us{% endblock %}
+{% block title %}E-catalogue{% endblock %}
 {% block page_sidebar %}
 {% include "templates/pages/web_sidebar.html" %}
 {% endblock %}
 {% block page_content %}
 
-{% set data = frappe.get_all('Item Group', fields=['catalogue', 'catalogue_name' , 'image']) %}
+{% set data = frappe.get_all('Item Group', fields=['catalogue', 'catalogue_name' , 'image' , 'item_group_name']) %}
+
 
 <article itemscope itemtype="http://schema.org/AboutPage" class="about-content">
     <div itemprop="description" class="container">
@@ -35,7 +36,7 @@
         <div class="container products-list-container">
             <div class="products-list finbyz row">
 
-                {%- for d in data -%}
+                {%- for d in data -%}               
                 <div class="card m-3 ">
                     <div class="row no-gutters">
                         <div class="col-md-12">
@@ -44,7 +45,7 @@
                                 <a class="no-underline" href="">
                                     <div class=" product-img has-animation has-animation-y animation-ttb scroll">
 
-                                        <img class="website-image" src="{{ d.image or '/files/no-image.png'  }}" alt="">
+                                        <img class="website-image" src="{{ d.image or '/files/no-image.png'  }}" alt="{{ d.item_group_name }}">
 
                                     </div>
 
@@ -60,7 +61,8 @@
                                 {{ d.catalogue_name }}
                             </a>
                         </h5>
-                        <a class="tile-button card-button fill ml-0 mt-4 pt-4" href="">
+                        {% set url = d.catalogue %}
+                        <a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/catalogue-form">
                             <span class="tile-point-parent"><span class="tile-point"></span><span
                                     class="tile-point"></span><span class="tile-point"></span><span
                                     class="tile-point"></span><span class="tile-point"></span><span
@@ -74,6 +76,12 @@
                                     class="tile-point"></span></span>
                             <h6 class="label text-capitalize">Download</h6>
                         </a>
+                        <script>
+                            window.onload = function () {
+                                localStorage.setItem("url", "{{ url }}");
+                                
+                            }
+                        </script>
                     </div>
                 </div>
                 {%- endfor -%}

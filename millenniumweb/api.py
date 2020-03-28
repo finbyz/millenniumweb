@@ -122,7 +122,7 @@ def get_items(filters=None, search=None):
 			`tabItem`
 		{left_join}
 		WHERE
-			{where_conditions} and `tabItem`.`website_image` IS NOT NULL
+			{where_conditions} 
 		GROUP BY
 			`tabItem`.`name`
 		ORDER BY

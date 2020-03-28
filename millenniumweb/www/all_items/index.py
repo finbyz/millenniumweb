@@ -1,5 +1,5 @@
 import frappe
-from erpnext.portal.product_configurator.utils import (get_products_for_website, get_product_settings, get_attribute_filter_data, get_conditions)
+from erpnext.portal.product_configurator.utils import (get_products_for_website, get_product_settings, get_field_filter_data, get_attribute_filter_data, get_conditions)
 
 
 sitemap = 1
@@ -19,40 +19,14 @@ def get_context(context):
 	context.field_filters = get_field_filter_data() \
 		if product_settings.enable_field_filters else []
 
-	context.available_filters = get_filters_from_items(field_filters, attribute_filters, search)
-
 	context.attribute_filters = get_attribute_filter_data() \
 		if product_settings.enable_attribute_filters else []
 
+	context.available_filters = get_filters_from_items(field_filters, attribute_filters, search)
 	context.product_settings = product_settings
 	context.page_length = product_settings.products_per_page
 
 	context.no_cache = 1
-
-def get_field_filter_data():
-	product_settings = get_product_settings()
-	filter_fields = [row.fieldname for row in product_settings.filter_fields]
-
-	meta = frappe.get_meta('Item')
-	frappe.errprint(str(meta))
-	fields = [df for df in meta.fields if df.fieldname in filter_fields]
-
-	filter_data = []
-	for f in fields:
-		doctype = f.get_link_doctype()
-
-		# apply enable/disable filter
-		meta = frappe.get_meta(doctype)
-		filters = {}
-		if meta.has_field('enabled'):
-			filters['enabled'] = 1
-		if meta.has_field('disabled'):
-			filters['disabled'] = 0
-
-		values = [d.name for d in frappe.get_all(doctype, filters)]
-		filter_data.append([f, values])
-	
-	return filter_data
 
 def get_filters_from_items(field_filters=None, attribute_filters=None, search=None):
 	if attribute_filters:
@@ -120,7 +94,7 @@ def get_available_filters(filters=None, search=None):
 		or_filters = [[field, 'like', search] for field in search_fields]
 
 		search_condition = get_conditions(or_filters, 'or')
-
+	# print(filters)
 	filter_condition = get_conditions(filters, 'and')
 
 	where_conditions = ' and '.join(
@@ -135,13 +109,12 @@ def get_available_filters(filters=None, search=None):
 
 	left_join = ' '.join(['LEFT JOIN `tab{0}` on (`tab{0}`.parent = `tabItem`.name)'.format(l) for l in left_joins])
 	
-	meta_filters = "`tabItem`.`tile_type` , `tabItem`.`tile_size`, `tabItem`.`tile_surface`, `tabItem`.`item_design`, `tabItem`.`tile_texture`, `tabItem`.`tile_thickness`"
-
+	
 
 
 	product_settings = get_product_settings()
 	my_filter_fields = [row.fieldname for row in product_settings.filter_fields]
-	data = []
+
 	result = {}
 	for d in my_filter_fields:
 		data = (frappe.db.sql('''
@@ -151,10 +124,9 @@ def get_available_filters(filters=None, search=None):
 				`tabItem`
 			{left_join}
 			WHERE
-				{where_conditions} and `tabItem`.`website_image` IS NOT NULL
+				{where_conditions}
 			'''.format(
 				filter=d,
-				meta_filters= meta_filters,
 				where_conditions=where_conditions,
 				left_join=left_join
 			)
@@ -164,3 +136,28 @@ def get_available_filters(filters=None, search=None):
 			result[d] = data
 	return result
 
+def get_items_by_fields(field_filters):
+	meta = frappe.get_meta('Item')
+	filters = []
+	print(field_filters)
+	for fieldname, values in field_filters.items():
+		if not values: continue
+
+		_doctype = 'Item'
+		_fieldname = fieldname
+
+		df = meta.get_field(fieldname)
+		if df.fieldtype == 'Table MultiSelect':
+			child_doctype = df.options
+			child_meta = frappe.get_meta(child_doctype)
+			fields = child_meta.get("fields", { "fieldtype": "Link", "in_list_view": 1 })
+			if fields:
+				_doctype = child_doctype
+				_fieldname = fields[0].fieldname
+
+		if len(values) == 1:
+			filters.append([_doctype, _fieldname, '=', values[0]])
+		else:
+			filters.append([_doctype, _fieldname, 'in', values])
+
+	return get_available_filters(filters)

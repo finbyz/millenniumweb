@@ -41,9 +41,9 @@
 
 		{% if items %}
 		{% for item in items %}
-		
+
 		{% include "millenniumweb/www/all_items/item_row.html" %}
-	
+
 
 		{% endfor %}
 		{% else %}
@@ -56,58 +56,21 @@
 	<div class="d-lg-flex container">
 		<div class="sidebar-block mt-100">
 			<div class="navbar-toggle-visible left">
-				<!--side menu open button-->
-
-
-				<!-- <div class="your-account-info-sidebar">
-				<div class="row">
-					<div class="col-xs-2">
-						<span class="user-image-sidebar"></span>
-					</div>
-					<div class="col-xs-10">
-						<div class="web-sidebar-user">SPMPL</div>
-						<a href="/?cmd=web_logout">
-							<div class="text-muted small">
-								Logout</div>
-						</a>
-					</div>
-				</div>
-			</div> -->
-
-
-
 				<div class="web-sidebar">
-					<!-- <div class="your-account-info-sidebar">
-					<div class="row">
-						<div class="col-xs-2">
-							<span class="user-image-sidebar"></span>
-						</div>
-						<div class="col-xs-10">
-							<div class="web-sidebar-user">{{ fullname }}</div>
-							<a href="/?cmd=web_logout">
-								<div class="text-muted small">
-									{{ _("Logout") }}</div>
-							</a>
-						</div>
-					</div>
-				</div> -->
-				<div id="menu_bars" class="left "> <span></span> <span></span> <span></span> </div>
+					<div id="menu_bars" class="left "> <span></span> <span></span> <span></span> </div>
 					<div class="sidebar-items">
-						<nav class="side-nav side-nav-left slide-nav static-nav ">
-							<div class="side-nav-inner-setting">
-
-								<div class=" order-1  order-md-2">
-
-
-
+						<nav class="side-nav side-nav-left slide-nav static-nav">
+							<div class="side-nav-inner-setting" id="filter-nav">
+								<div class=" order-1  order-md-2" id ='product-filter-parent'>
 									<div class=" d-md-block" id="product-filters">
 										{% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
-										
+
 										<a class="mb-3 d-inline-block" href="/all_items">{{ _('Clear filters') }}</a>
 										{% endif  %}
-										
+										<!-- {{ field_filters }} -->
+
 										{% for key, value in available_filters.items() %}
-										
+
 										{%- set item_field =  key %}
 										{%- set values =  value %}
 										<div class="mb-4 ">
@@ -193,67 +156,9 @@
 										}, 300));
 									})
 								</script>
-
-								<!-- <ul class="list-unstyled side-nav-list">
-											{% if sidebar_title %}
-											<li class="title clearfix">
-												{{ sidebar_title }}
-											</li>
-											{% endif %}
-											{% for item in sidebar_items -%}
-											<li class="sidebar-item clearfix">
-												{% if item.type != 'input' %}
-												<a href="{{ item.route }}"
-													class="gray {{ 'active' if pathname==item.route else '' }}"
-													{% if item.target %}target="{{ item.target }}" {% endif %}>
-													{{ _(item.title or item.label) }}
-												</a>
-												{% else %}
-												<form action='{{ item.route }}' style="margin-right: 15px;">
-													<input name='q' class='form-control' type='text' style="outline: none"
-														placeholder="{{ _(item.title or item.label) }}">
-												</form>
-												{% endif %}
-											</li>
-											{%- endfor %}
-											{% if frappe.user != 'Guest' %}
-											<li class="sidebar-item clearfix">
-												<a href="/me">{{ _("My Account") }}</a>
-											</li>
-											{% endif %}
-										</ul> -->
 							</div>
 						</nav>
 					</div>
-					<!-- <div class="sidebar-items">
-					<ul class="list-unstyled">
-						{% if sidebar_title %}
-						<li class="title">
-							{{ sidebar_title }}
-						</li>
-						{% endif %}
-						{% for item in sidebar_items -%}
-						<li class="sidebar-item">
-							{% if item.type != 'input' %}
-								<a href="{{ item.route }}" class="gray {{ 'active' if pathname==item.route else '' }}"
-									{% if item.target %}target="{{ item.target }}"{% endif %}>
-									{{ _(item.title or item.label) }}
-								</a>
-							{% else %}
-								<form action='{{ item.route }}' style="margin-right: 15px;">
-									<input name='q' class='form-control' type='text' style="outline: none"
-										placeholder="{{ _(item.title or item.label) }}">
-								</form>
-							{% endif %}
-						</li>
-						{%- endfor %}
-						{% if frappe.user != 'Guest' %}
-						<li class="sidebar-item">
-							<a href="/me">{{ _("My Account") }}</a>
-						</li>
-						{% endif %}
-					</ul>
-				</div> -->
 				</div>
 			</div>
 			<script>
@@ -276,18 +181,17 @@
 								$(this).toggleClass("active");
 
 
-								if($(window).width()>768){
+								if ($(window).width() > 768) {
 									$('.products-list').toggleClass("shift");
 								}
 								$menu_left.toggleClass("side-nav-open");
 								e.stopPropagation();
 							});
-						}
-						else {
+						} else {
 							if ($toggler.hasClass("full")) {
 								$toggler.on("click", function (e) {
 									$(this).toggleClass("active");
-									
+
 
 									$menu_full.toggleClass("side-nav-open");
 									e.stopPropagation();
@@ -309,7 +213,7 @@
 				data-start="{{ frappe.form_dict.start|int - page_length }}">{{ _("Prev") }}</button>
 
 			{% endif %}
-			
+
 			{% if items|length >= page_length %}
 			<button class="btn btn-outline-secondary btn-next"
 				data-start="{{ frappe.form_dict.start|int + page_length }}">{{ _("Next") }}</button>

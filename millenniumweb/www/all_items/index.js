@@ -7,10 +7,11 @@ $(() => {
 		}
 
 		bind_filters() {
+			let me = this;
 			this.field_filters = {};
 			this.attribute_filters = {};
 
-			$('.product-filter').on('change', frappe.utils.debounce((e) => {
+			$(document).on('change', '.product-filter', frappe.utils.debounce((e) => {
 				const $checkbox = $(e.target);
 				const is_checked = $checkbox.is(':checked');
 
@@ -55,25 +56,37 @@ $(() => {
 					attribute_filters: JSON.stringify(if_key_exists(this.attribute_filters)),
 				});
 				window.history.pushState('filters', '', '/all_items?' + query_string);
-
+				
 				$('.page_content input').prop('disabled', true);
+
 				this.get_items_with_filters()
 					.then(html => {
-						$('.products-list').html(html);
-
-
+						frappe.run_serially([
+						() => {
+							$.get(document.URL, function(data) {
+								var product_filters = $(data).find('#product-filters')
+								$('#product-filter-parent').html(product_filters);
+							}).then(data => {me.restore_filters_state()});
+						},
+						() => {
+							$('.products-list').html(html);
+						}
+						]);
 					})
 					.then(data => {
 						$('.page_content input').prop('disabled', false);
+						me.restore_filters_state();
+						new ProductListing();
 						return data;
 				
 4
 					})
 					.catch(() => {
 						$('.page_content input').prop('disabled', false);
+						new ProductListing();
+						me.restore_filters_state();
 
 					});
-
 			}, 1000));
 		}
 
@@ -97,6 +110,7 @@ $(() => {
 		}
 
 		restore_filters_state() {
+			
 			const filters = frappe.utils.get_query_params();
 			let {field_filters, attribute_filters} = filters;
 
@@ -107,7 +121,7 @@ $(() => {
 					const selector = values.map(value => {
 						return `input[data-filter-name="${fieldname}"][data-filter-value="${value}"]`;
 					}).join(',');
-					$(selector).prop('checked', true);
+					$(selector).attr('checked', 'checked');
 				}
 				this.field_filters = field_filters;
 			}

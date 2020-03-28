@@ -75,17 +75,10 @@ $(() => {
 					})
 					.then(data => {
 						$('.page_content input').prop('disabled', false);
-						me.restore_filters_state();
-						new ProductListing();
 						return data;
-				
-4
 					})
 					.catch(() => {
 						$('.page_content input').prop('disabled', false);
-						new ProductListing();
-						me.restore_filters_state();
-
 					});
 			}, 1000));
 		}

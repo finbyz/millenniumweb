@@ -74,7 +74,7 @@
  "has_web_view": 1,
  "image_field": "image",
  "is_published_field": "published",
- "modified": "2020-03-14 09:48:17.620468",
+ "modified": "2020-03-30 12:13:42.678370",
  "modified_by": "Administrator",
  "module": "Millennium Website",
  "name": "Events",
@@ -103,6 +103,27 @@
    "role": "Website Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Local Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
   }
  ],
  "route": "/event",

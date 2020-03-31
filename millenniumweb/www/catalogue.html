@@ -8,13 +8,17 @@
 
 {% set data = frappe.get_all('Item Group', fields=['catalogue', 'catalogue_name' , 'image' , 'item_group_name']) %}
 
-
+<script>
+    var url = [] 
+    var btnElem = [] 
+    i= Number(0)
+</script>
 <article itemscope itemtype="http://schema.org/AboutPage" class="about-content">
     <div itemprop="description" class="container">
 
         <div class="row my-5 pt-5">
             <div class="col-md-12 col-lg-6 col-sm-12">
-                <div class="about-heading mt-3">
+                <div class="about-heading mt-3 ">
                     <h2 class="blue-text">E-catalogue</h2>
                 </div>
                 <div class='line-circle-container '>
@@ -34,10 +38,12 @@
         </div>
 
         <div class="container products-list-container">
-            <div class="products-list finbyz row">
+            <div class="products-list catalogue-list finbyz row">
 
-                {%- for d in data -%}               
-                <div class="card m-3 ">
+                {%- for d in data -%}
+                {%- if d.catalogue -%}
+              
+                <div class="card m-3 catalogue-card ">
                     <div class="row no-gutters">
                         <div class="col-md-12">
                             <div class="card-body card-image">
@@ -45,12 +51,15 @@
                                 <a class="no-underline" href="">
                                     <div class=" product-img has-animation has-animation-y animation-ttb scroll">
 
-                                        <img class="website-image" src="{{ d.image or '/files/no-image.png'  }}" alt="{{ d.item_group_name }}">
+                                        <img class="website-image" src="{{ d.image or '/files/no-image.png'  }}"
+                                            alt="{{ d.item_group_name }}">
 
                                     </div>
-
-
-
+                                    <div class=" hover-img product-img has-animation has-animation-y animation-ttb scroll"
+                                    style="position: absolute; top:0; ">
+                                    <img class=" website-image" src="{{ '/files/no-image.png' }}" alt="">
+            
+                                </div>
                                 </a>
                             </div>
                         </div>
@@ -61,8 +70,8 @@
                                 {{ d.catalogue_name }}
                             </a>
                         </h5>
-                        {% set url = d.catalogue %}
-                        <a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/catalogue-form">
+
+                        <a class="tile-button card-button catalogue-btn fill ml-0 mt-4 pt-4"  href="/catalogue-form">
                             <span class="tile-point-parent"><span class="tile-point"></span><span
                                     class="tile-point"></span><span class="tile-point"></span><span
                                     class="tile-point"></span><span class="tile-point"></span><span
@@ -75,15 +84,32 @@
                                     class="tile-point"></span><span class="tile-point"></span><span
                                     class="tile-point"></span></span>
                             <h6 class="label text-capitalize">Download</h6>
+
+
                         </a>
                         <script>
-                            window.onload = function () {
-                                localStorage.setItem("url", "{{ url }}");
+                                url.push("{{ d.catalogue }}")
                                 
-                            }
+                               
+
+                                $('.card').mouseenter(function(){
+                                    var index = $(this).index()
+                                    thisUrl = url[index]
+                                    localStorage.setItem("url",thisUrl)
+                                    console.log(localStorage.getItem("url"))
+                                   
+                                })
+
+                                i = i + 1
+
+
+                                
+                      
                         </script>
                     </div>
                 </div>
+               
+                {%- endif -%}
                 {%- endfor -%}
 
             </div>

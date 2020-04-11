@@ -1,5 +1,5 @@
 {% set data = frappe.get_all('Item', fields=['name', 'item_name' , 'tile_surface' , 'item_design' , 'item_group' ,'description','cover_image', 'website_image','route'],
-                filters={'show_in_website': 1, 'cover_image': ['NOT IN', [null, '']]},order_by='RAND()', page_length = 6)  %}
+                filters={'show_in_website': 1, 'cover_image': ['NOT IN', [null, '']]}, page_length = 6)  %}
 
 <footer class="main-footer">
     <div class="container px-5 px-xl-2">

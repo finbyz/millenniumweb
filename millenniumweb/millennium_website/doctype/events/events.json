@@ -11,11 +11,14 @@
   "event_title",
   "published",
   "published_on",
+  "seo_title",
+  "small_description",
   "column_break_5",
   "event_category",
   "route",
   "description",
-  "image"
+  "image",
+  "keywords"
  ],
  "fields": [
   {
@@ -69,12 +72,27 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fieldname": "small_description",
+   "fieldtype": "Small Text",
+   "label": "Small Description"
+  },
+  {
+   "fieldname": "keywords",
+   "fieldtype": "Small Text",
+   "label": "Keywords"
+  },
+  {
+   "fieldname": "seo_title",
+   "fieldtype": "Small Text",
+   "label": "SEO Title"
   }
  ],
  "has_web_view": 1,
  "image_field": "image",
  "is_published_field": "published",
- "modified": "2020-03-30 12:13:42.678370",
+ "modified": "2020-04-11 10:58:58.583726",
  "modified_by": "Administrator",
  "module": "Millennium Website",
  "name": "Events",

@@ -11,12 +11,60 @@
     {% include "templates/includes/meta_block.html" %}
     {% endblock %}
 
-    <title>{% block title %} {{ title | striptags }} {% endblock %}</title>
-
+    <title>{% block title %} {{ seo_title or title }} {% endblock %}</title>
+    {% if keywords %}
+        <meta name="keywords" content="{{ keywords }}">
+    {% endif %}
+    {% if small_description or blog_intro %}
+        <meta name="description" content="{{ small_description or blog_intro }}" />
+    {% endif %}
     {% block favicon %}
     <link rel="shortcut icon" href="{{ (favicon or '/assets/frappe/images/favicon.png') | abs_url }}"
         type="image/x-icon">
     {% endblock %}
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#003576">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#003576">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#003576">
+    <!--  <meta name="theme-color" content="#A1CC3A"/> -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    {% if doctype == "Item" and description %}
+    <script type="application/ld+json" crossorigin="anonymous">
+    	{"@context":"https://schema.org/","@type":"Product","name":"{{ title }}","image":"{{ image or website_image or cover_image }}","description":"{{ small_description }}","brand":{"@type":"Thing","name":"https://tileexporter.in/files/millennium-icon.png"},"review":{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Deep"}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"8"}}
+    	</script>
+    {% endif %}
+
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta name="name" content="{{ seo_title or title }}">
+    <meta property="og:title" content="{{ seo_title or title }}" />
+    <meta property="og:url" content="/{{ route }}" />
+    <meta property="og:site_name" content="Millennium Tiles" />
+    {% if doctype == "Blog Post" and blog_intro %}
+    <meta property="og:image" content="{% if image_seo %}{{ image_seo }}{% else %} /files/about-us1.jpg {% endif %}" />
+    {% else %}
+    <meta property="og:image" content="{% if image %}{{image}}{% else %} /files/about-us1.jpg {% endif %}" />
+    {% endif %}
+    {% if small_description or blog_intro %}
+    <meta property="og:description" content="{{ small_description or blog_intro }}" />
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo_title or title }}">
+    <meta name="twitter:url" content="/{{ route }}">
+    <meta name="twitter:site" content="@TilesMillennium" />
+    <meta name="twitter:creator" content="@finbyz" />
+    {% if doctype == "Blog Post" and blog_intro %}
+    <meta property="twitter:image" content="{% if image_seo %}{{ image_seo }}{% else %} /files/about-us1.jpg {% endif %}" />
+    {% else %}
+    <meta property="twitter:image" content="{% if image %}{{image}}{% else %} /files/about-us1.jpg {% endif %}" />
+    {% endif %}{% if small_description or blog_intro %}
+    <meta name="twitter:description" content="{{ small_description or blog_intro }}">
+    {% endif %}
 
     {%- block head -%}
 

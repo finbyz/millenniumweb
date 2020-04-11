@@ -1,0 +1,59 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _('Not Found') }}{% endblock %}
+
+
+
+{% block page_content %}
+<div class="container ">
+	<div class="row mt-5">
+		<div class="col-md-4 web-title">
+			<div class="title-font pt-100 pl-1">
+				<h1 class="title-underline blue-text">404 - Page Not Found</h1>
+			</div>
+			<div class='line-circle-container pl-1'>
+				<div class='loader  '>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+					<div class='loader--dot'></div>
+				</div>
+			</div>
+			<div class='page-card not-found ml-0'>
+				<div class='page-card-head'>
+					<span class='indicator darkgrey'>{{_("Page Missing or Moved")}}</span>
+				</div>
+				<p>{{_("The page you are looking for is missing. This could be because it is moved or there is a typo in the link.")}}</p>
+				
+				<a class="tile-button card-button fill ml-0 mt-4 pt-4" href="/">
+					<span class="tile-point-parent"><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span><span
+							class="tile-point"></span><span class="tile-point"></span><span class="tile-point"></span></span>
+					<h6 class="label text-capitalize" >{{ _("Home") }}</h6>
+				</a>
+			</div>
+
+			<p class='text-muted text-center small sub-text' style='margin-top: -20px;'>{{ _("Error Code: {0}").format('404') }}</p>
+			<style>
+			.hero-and-content {
+				background-color: #f5f7fa;
+			}
+			</style>
+		</div>
+		
+		<div class="col-md-8"><img src="/files/back.svg"  style="float: right; " width="700px" height="300px" alt="Page Missing or Moved" title="Page Missing or Moved">
+			
+		</div>
+	</div>
+</div>
+
+{% endblock %}

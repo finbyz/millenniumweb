@@ -1,11 +1,20 @@
+{% if not slides %}
+{% set slides = [{'image': cover_image or '/files/no-image.png'},{'image' : website_image or '/files/no-image.png'}] %} 
+
+
+{% else %}
+	{% if slides.append({'image': cover_image or '/files/no-image.png'  }) %}{% endif %}
+	{% if slides.append({'image': website_image or '/files/no-image.png' }) %}{% endif %}
+{% endif %}
+
 <div class="col-md-5 h-100">
 	<div class=" ">
 		{% if slides %}
 		<div class=" has-animation has-animation-x has-animation-orange animation-ltr scroll">
-			{{ product_image(slides[0].image, 'product-image') }}
+			{{ product_image(slides[-1].image, 'product-image') }}
 		</div>
 		<div class="item-slideshow  ">
-			{% for item in slides %}
+			{% for item in slides|reverse %}
 			<img class="item-slideshow-image mt-2 {% if loop.first %}active{% endif %}" src="{{ item.image }}"
 				alt="{{ item.heading }}">
 			{% endfor %}

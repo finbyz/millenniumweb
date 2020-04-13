@@ -72,14 +72,10 @@
     {{ head_html or "" }}
     {%- endif %}
 
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/combine/npm/bootstrap-css-only@4.1.0/css/bootstrap.min.css,npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@300;400;700&family=Open+Sans:wght@400;600;700;800&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
 
 
     {% if theme.theme_url %}
@@ -146,9 +142,8 @@
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
     <script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+
 
     {% endblock %}
 
@@ -160,16 +155,16 @@
 
 
     <!-- <script type="text/javascript" src="/assets/finbyzweb/js/combine.min.js"></script> -->
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="/assets/millenniumweb/js/MorphSVGPlugin.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js,npm/particles.js@2.0.0/particles.min.js"></script>
+
 
 
     {%- if script_path -%}
     <script type="text/javascript" src="{{ script_path }}"></script>{%- endif -%}
     <script type="text/javascript" src="/assets/millenniumweb/js/combine.min.js"></script>
     <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>
+    <!-- <script type="text/javascript" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/finbyz/millenniumweb@latest/millenniumweb/public/js/millennium.min.js"></script> -->
+
     
 
     {%- block script %}{%- endblock %}

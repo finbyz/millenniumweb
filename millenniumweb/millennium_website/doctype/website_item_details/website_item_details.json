@@ -1,0 +1,57 @@
+{
+ "creation": "2020-04-15 15:20:14.501776",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "cover_image",
+  "item_design",
+  "tile_surface"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item_code.cover_image",
+   "fetch_if_empty": 1,
+   "fieldname": "cover_image",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Cover Image",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.item_design",
+   "fieldname": "item_design",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Design",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.tile_surface",
+   "fieldname": "tile_surface",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tile Surface",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-04-15 17:34:02.141885",
+ "modified_by": "Administrator",
+ "module": "Millennium Website",
+ "name": "Website Item Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

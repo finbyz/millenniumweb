@@ -1188,40 +1188,56 @@ try {
             });
             $(window).off('scroll');
         }
+
         
+    if($('#spin-container').height()==0){
+        if (findOnScroll($('#drag-container'))) {
+            var rad, widheight;
 
-        if ($(window).width() < 768) {
-
-            if (findOnScroll($('#drag-container'))) {
-                // console.log("hello");
-                imageGallary({ "radius": 200, "imgheightwidth": 110.3 });
+            if ($(window).width() > 768) {
+                rad = 400;
+                widheight = 208.3;
             }
-
-        }
-        else {
-            if (findOnScroll($('#drag-container'))) {
-                // console.log("hello");
-                imageGallary({ "radius": 400, "imgheightwidth": 208.3 });
+            else {
+                rad = 200;
+                widheight = 110.3;
             }
+            // console.log("hello");
+            imageGallary({ "radius": rad, "imgheightwidth": widheight });
+            setTimeout(function () {
+                $('#drag-container p').animate({ opacity: "1" })
+            }, 2000)
         }
-        // if (findOnScroll($('#drag-container'))) {
-        //     // console.log("hello");
-        //     var rad ,widheight;
-        //     if($(window).width()<768){
-        //         rad = 200;
-        //         widheight = 104;
-        //     }
-        //     else{
-        //         rad = 400;
-        //         widheight = 208.3
-        //     }
-        //     imageGallary({ "radius": rad, "imgheightwidth": widheight });
-  
-        // }
+    }
+        $(window).on('scroll',function(){
+            
+                if (findOnScroll($('#drag-container'))) {
+                    var rad, widheight;
+        
+                    if ($(window).width() > 768) {
+                        rad = 400;
+                        widheight = 208.3;
+                    }
+                    else {
+                        rad = 200;
+                        widheight = 110.3;
+                    }
+                    // console.log("hello");
+                    imageGallary({ "radius": rad, "imgheightwidth": widheight });
+                    setTimeout(function () {
+                        $('#drag-container p').animate({ opacity: "1" })
+                    }, 2000)
+                }
+               
+                      
+        })
+ 
+
+
+ 
+
+
     
-
-
-
 
     });
 
@@ -1266,8 +1282,6 @@ try {
     })
 
 } catch (err) { }
-
-
 
 function findOnScroll(elm, eval) {
 

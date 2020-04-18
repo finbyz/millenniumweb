@@ -1190,25 +1190,7 @@ try {
         }
 
         
-    if($('#spin-container').height()==0){
-        if (findOnScroll($('#drag-container'))) {
-            var rad, widheight;
-
-            if ($(window).width() > 768) {
-                rad = 400;
-                widheight = 208.3;
-            }
-            else {
-                rad = 200;
-                widheight = 110.3;
-            }
-            // console.log("hello");
-            imageGallary({ "radius": rad, "imgheightwidth": widheight });
-            setTimeout(function () {
-                $('#drag-container p').animate({ opacity: "1" })
-            }, 2000)
-        }
-    }
+   
         $(window).on('scroll',function(){
             
                 if (findOnScroll($('#drag-container'))) {
@@ -1231,7 +1213,25 @@ try {
                
                       
         })
- 
+        if($("#ground").height()==900){
+            if (findOnScroll($('#drag-container'))) {
+                var rad, widheight;
+    
+                if ($(window).width() > 768) {
+                    rad = 400;
+                    widheight = 208.3;
+                }
+                else {
+                    rad = 200;
+                    widheight = 110.3;
+                }
+                // console.log("hello");
+                imageGallary({ "radius": rad, "imgheightwidth": widheight });
+                setTimeout(function () {
+                    $('#drag-container p').animate({ opacity: "1" })
+                }, 2000)
+            }
+        }
 
 
  

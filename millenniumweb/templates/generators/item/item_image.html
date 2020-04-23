@@ -1,13 +1,21 @@
 {% if not slides %}
-{% set slides = [{'image': cover_image or '/files/no-image.png'},{'image' : website_image or '/files/no-image.png'}] %} 
+	{% set slides = [{'image' : website_image or '/files/no-image.png'}] %}
+		{% if cover_image %}
+			{% if slides.append({'image': cover_image}) %}{% endif %}
+		{% endif %}
+
+
 
 
 {% else %}
-	{% if slides.append({'image': cover_image or '/files/no-image.png'  }) %}{% endif %}
 	{% if slides.append({'image': website_image or '/files/no-image.png' }) %}{% endif %}
+	{% if cover_image %}
+		{% if slides.append({'image': cover_image }) %}{% endif %}
+	{% endif %}
+
 {% endif %}
 
-<div class="col-md-5 h-100">
+<div class="col-md-5 ">
 	<div class=" ">
 		{% if slides %}
 		<div class=" has-animation has-animation-x has-animation-orange animation-ltr scroll">

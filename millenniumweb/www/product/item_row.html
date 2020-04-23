@@ -1,4 +1,4 @@
-<div class="card m-3 ">
+<div class="card my-3 mx-auto mx-sm-3">
 	<div class="row no-gutters">
 		<div class="col-md-12">
 			<div class="card-body card-image">
@@ -10,11 +10,13 @@
 							alt="{{ item.item_name }}">
 
 					</div>
+					{% if item.cover_image %}
 					<div class=" hover-img product-img has-animation has-animation-y animation-ttb scroll"
 						style="position: absolute; top:0; ">
-						<img class=" website-image" src="{{ item.cover_image or '/files/no-image.png' }}" alt="">
+						<img class=" website-image" src="{{ item.cover_image}}" alt="">
 
 					</div>
+					{% endif %}
 
 
 				</a>

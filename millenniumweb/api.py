@@ -116,17 +116,17 @@ def get_items(filters=None, search=None):
 		SELECT
 			`tabItem`.`name`, `tabItem`.`item_name`, `tabItem`.`item_design`, `tabItem`.`tile_surface`, `tabItem`.`tile_type`,
 			`tabItem`.`website_image`, `tabItem`.`image`, `tabItem`.`thumbnail`,`tabItem`.`cover_image`,
-			`tabItem`.`web_long_description`, `tabItem`.`description`,
+			`tabItem`.`web_long_description`, `tabItem`.`description`, `tabItem`.`tile_grade`,
 			`tabItem`.`route`
 		FROM
 			`tabItem`
 		{left_join}
 		WHERE
-			{where_conditions} 
+			{where_conditions} AND `tabItem`.`tile_grade` = "I"
 		GROUP BY
 			`tabItem`.`name`
 		ORDER BY
-			`tabItem`.`weightage` DESC
+			`tabItem`.`weightage` DESC , `tabItem`.`website_image` DESC
 		LIMIT
 			{page_length}
 		OFFSET

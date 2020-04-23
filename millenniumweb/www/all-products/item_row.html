@@ -44,36 +44,3 @@
 
 
 </div>
-<script>
-
-		//your code here
-
-		$('.has-animation').filter('.product-img').each(function (index) {
-			if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
-				$(this).delay($(this).data('delay+20')).queue(function () {
-					$(this).addClass('animate-in');
-				});
-			}
-			// else {
-			//     $(this).delay($(this).data('delay+20')).queue(function () {
-			//         $(this).addClass('reverse');
-			//     });
-			// }
-		});
-
-		$(window).scroll(function () {
-			$('.has-animation').filter('.product-img').each(function (index) {
-				if ($(window).scrollTop() + $(window).height() > $(this).offset().top + $(this).outerHeight()) {
-					$(this).delay($(this).data('delay+20')).queue(function () {
-						$(this).addClass('animate-in');
-					});
-				}
-				// else {
-				//     $(this).delay($(this).data('delay+20')).queue(function () {
-				//         $(this).addClass('reverse');
-				//     });
-				// }
-			});
-		});
-
-</script>

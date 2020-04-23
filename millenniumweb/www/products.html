@@ -1,5 +1,5 @@
-{% set data = frappe.get_all('Item', fields=['name', 'item_name' , 'tile_surface' , 'item_design' , 'item_group' ,'description', 'website_image','route'],
-                filters={'show_in_website': 1, 'website_image': ['NOT IN', [null, '']]},order_by='RAND()', page_length = 7)  %}
+{% set data = frappe.get_all('Website Item Details', fields=['item_code','cover_image','item_design','tile_surface'],order_by='RAND()', page_length = 7)  %}
+
 <div class="product-section">
     <div class="container product-text py-5  d-none d-lg-block">
         <div class="row w-50  text-justify">
@@ -59,19 +59,19 @@
             </p>
         </div>
     </div>
-    <div class="gallery">
+       <div class="gallery">
         <div id="drag-container">
-            <div id="spin-container">
+            <div id="spin-container" style="height: 205px;width:205px">
                 <!-- Add your images (or video) here -->
                 
                 {%- for d in data -%}
-                    {%- if d.website_image -%}
+                  
                            
-                            <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
-                        <img class="pt-1 px-2 pb-3"src="{{ d.website_image }}" alt="{{ d.name }}">
+                        <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
+                        <img class="pt-1 px-2 pb-3"src="{{ d.cover_image }}" alt="{{ d.item_design }}" width="205" height="205">
                             
                         
-                    {%- endif -%}
+                   
                 {%- endfor -%}
                 
 

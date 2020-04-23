@@ -75,7 +75,7 @@
     <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/combine/npm/bootstrap-css-only@4.1.0/css/bootstrap.min.css,npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
 
  
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@300;400;700&family=Open+Sans:wght@400;600;700;800&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@300;400;700&family=Open+Sans:wght@400;600;700;800&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">    
 
 
     {% if theme.theme_url %}
@@ -91,7 +91,7 @@
     {%- endfor -%}
 
     {%- endblock -%}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
     {%- block head_include %}
     {{ head_include or "" }}
@@ -141,31 +141,24 @@
     </div>
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
-    <script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/gh/finbyz/millenniumweb/millenniumweb/public/js/frappe-web.min.js,npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
 
 
     {% endblock %}
 
     {%- for link in web_include_js -%}
-    {%- if link not in ["website_script.js","assets/js/erpnext-web.min.js"] -%}
-    <script type="text/javascript" src="{{ link|abs_url }}"></script>
-    {%- endif -%}
+
     {%- endfor -%}
 
 
-    <!-- <script type="text/javascript" src="/assets/finbyzweb/js/combine.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/combine/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js,npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js,npm/particles.js@2.0.0/particles.min.js,gh/finbyz/millenniumweb/millenniumweb/public/js/combine.min.js"></script>
 
 
 
     {%- if script_path -%}
     <script type="text/javascript" src="{{ script_path }}"></script>{%- endif -%}
-    <script type="text/javascript" src="/assets/millenniumweb/js/combine.min.js"></script>
-    <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>
-    <!-- <script type="text/javascript" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/finbyz/millenniumweb@latest/millenniumweb/public/js/millennium.min.js"></script> -->
 
-    
+    <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>    
 
     {%- block script %}{%- endblock %}
     <!-- csrf_token -->

@@ -247,17 +247,6 @@ $(document).ready(function () {
             , '-=time')
 
 
-    $('.vis-img').on({
-        mouseenter: function () {
-            console.log("Hello")
-            $(this).animate({ opacity: 0 });
-
-        },
-        mouseleave: function () {
-            $(this).animate({ opacity: 1 });
-
-        }
-    })
 
     //particles js
     if ($('#particles-js').length) {
@@ -403,7 +392,7 @@ $(document).ready(function () {
                     $(this).toggleClass("active");
 
 
-                    if($(window).width()>768){
+                    if ($(window).width() > 768) {
                         $('.products-list').toggleClass("shift");
                     }
                     $menu_left.toggleClass("side-nav-open");
@@ -414,7 +403,7 @@ $(document).ready(function () {
                 if ($toggler.hasClass("full")) {
                     $toggler.on("click", function (e) {
                         $(this).toggleClass("active");
-                        
+
 
                         $menu_full.toggleClass("side-nav-open");
                         e.stopPropagation();
@@ -423,17 +412,17 @@ $(document).ready(function () {
             }
         }
     });
-	frappe.ready(() => {
-		$('.btn-prev, .btn-next').click((e) => {
-			const $btn = $(e.target);
-			$btn.prop('disabled', true);
-			const start = $btn.data('start');
-			let query_params = frappe.utils.get_query_params();
-			query_params.start = start;
-			let path = window.location.pathname + '?' + frappe.utils.get_url_from_dict(query_params);
-			window.location.href = path;
-		});
-	});
+    frappe.ready(() => {
+        $('.btn-prev, .btn-next').click((e) => {
+            const $btn = $(e.target);
+            $btn.prop('disabled', true);
+            const start = $btn.data('start');
+            let query_params = frappe.utils.get_query_params();
+            query_params.start = start;
+            let path = window.location.pathname + '?' + frappe.utils.get_url_from_dict(query_params);
+            window.location.href = path;
+        });
+    });
 
     // event filter
 
@@ -469,6 +458,30 @@ $(document).ready(function () {
             });
 
         }, 300));
+    })
+
+    //All Products hover image
+
+    $('.products-list .card').mouseenter(function () {
+        if ($(this).find(".hover-img").length) {
+
+            $(this).find(".hover-img.has-animation.animate-in img").css({
+                opacity: 1
+            })
+            $(this).find(".vis-img.has-animation.animate-in img").css({
+                opacity: 0
+            })
+        }
+    })
+    $('.products-list .card').mouseleave(function () {
+        if ($(this).find(".hover-img").length) {
+            $(this).find(".hover-img.has-animation.animate-in img").css({
+                opacity: 0
+            })
+            $(this).find(".vis-img.has-animation.animate-in img").css({
+                opacity: 1
+            })
+        }
     })
 
 
@@ -1189,34 +1202,34 @@ try {
             $(window).off('scroll');
         }
 
-        
-   
-        $(window).on('scroll',function(){
-            
-                if (findOnScroll($('#drag-container'))) {
-                    var rad, widheight;
-        
-                    if ($(window).width() > 768) {
-                        rad = 400;
-                        widheight = 208.3;
-                    }
-                    else {
-                        rad = 200;
-                        widheight = 110.3;
-                    }
-                    // console.log("hello");
-                    imageGallary({ "radius": rad, "imgheightwidth": widheight });
-                    setTimeout(function () {
-                        $('#drag-container p').animate({ opacity: "1" })
-                    }, 2000)
-                }
-               
-                      
-        })
-        if($("#ground").height()==900){
+
+
+        $(window).on('scroll', function () {
+
             if (findOnScroll($('#drag-container'))) {
                 var rad, widheight;
-    
+
+                if ($(window).width() > 768) {
+                    rad = 400;
+                    widheight = 208.3;
+                }
+                else {
+                    rad = 200;
+                    widheight = 110.3;
+                }
+                // console.log("hello");
+                imageGallary({ "radius": rad, "imgheightwidth": widheight });
+                setTimeout(function () {
+                    $('#drag-container p').animate({ opacity: "1" })
+                }, 2000)
+            }
+
+
+        })
+        if ($("#ground").height() == 900) {
+            if (findOnScroll($('#drag-container'))) {
+                var rad, widheight;
+
                 if ($(window).width() > 768) {
                     rad = 400;
                     widheight = 208.3;
@@ -1234,10 +1247,10 @@ try {
         }
 
 
- 
 
 
-    
+
+
 
     });
 

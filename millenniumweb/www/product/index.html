@@ -37,7 +37,7 @@
 
 <div class="container products-list-container">
 
-	<div class="products-list finbyz row">
+	<div class="products-list shift finbyz row">
 
 		{% if items %}
 		{% for item in items %}
@@ -57,9 +57,9 @@
 		<div class="sidebar-block mt-100">
 			<div class="navbar-toggle-visible left">
 				<div class="web-sidebar">
-					<div id="menu_bars" class="left "> <span></span> <span></span> <span></span> </div>
+					<div id="menu_bars" class="left active"> <span></span> <span></span> <span></span> </div>
 					<div class="sidebar-items">
-						<nav class="side-nav side-nav-left slide-nav static-nav">
+						<nav class="side-nav side-nav-left slide-nav static-nav side-nav-open">
 							<div class="side-nav-inner-setting" id="filter-nav">
 								<div class=" order-1  order-md-2" id ='product-filter-parent'>
 									<div class=" d-md-block" id="product-filters">
@@ -181,9 +181,9 @@
 								$(this).toggleClass("active");
 
 
-								if ($(window).width() > 768) {
+								
 									$('.products-list').toggleClass("shift");
-								}
+							
 								$menu_left.toggleClass("side-nav-open");
 								e.stopPropagation();
 							});

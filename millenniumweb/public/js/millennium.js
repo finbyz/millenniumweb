@@ -484,6 +484,13 @@ $(document).ready(function () {
         }
     })
 
+    // //products page infinite scroll
+    // $(window).scroll(function(){
+    //     if(findOnScroll($('.main-footer'))){
+    //         $(".btn-next").click()
+    //     }
+    // })
+
 
     //navbar images
     $('.tabanchor').on('mouseenter', function (e) {

@@ -1,4 +1,4 @@
-{% set data = frappe.get_all('Website Item Details', fields=['item_code','cover_image','item_design','tile_surface'],order_by='RAND()', page_length = 7)  %}
+{% set data = frappe.get_all('Website Item Details', fields=['item_code','cover_image','item_design','tile_surface','route'],order_by='RAND()', page_length = 7)  %}
 
 <div class="product-section">
     <div class="container product-text py-5  d-none d-lg-block">
@@ -66,9 +66,12 @@
                 
                 {%- for d in data -%}
                   
-                           
-                        <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
+                        <a href="{{ d.route }}">
+                            <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
+                        </a>
+                        <a href="{{ d.route }}">
                         <img class="pt-1 px-2 pb-3"src="{{ d.cover_image }}" alt="{{ d.item_design }}" width="205" height="205">
+                        </a>
                             
                         
                    

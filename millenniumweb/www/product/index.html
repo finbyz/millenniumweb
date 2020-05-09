@@ -183,6 +183,7 @@
 
 								
 									$('.products-list').toggleClass("shift");
+									$('.next-btn-row').toggleClass("shift");
 							
 								$menu_left.toggleClass("side-nav-open");
 								e.stopPropagation();
@@ -205,8 +206,8 @@
 	</div>
 </div>
 
-<div class="container my-5">
-	<div class="row w-100">
+<div class="container my-5 next-btn-container">
+	<div class="row next-btn-row shift pl-2">
 		<div class="col-12">
 			{% if frappe.form_dict.start|int > 0 %}
 			<button class="btn btn-outline-secondary btn-prev"

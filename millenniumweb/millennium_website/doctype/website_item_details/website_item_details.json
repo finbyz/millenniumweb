@@ -7,7 +7,8 @@
   "item_code",
   "cover_image",
   "item_design",
-  "tile_surface"
+  "tile_surface",
+  "route"
  ],
  "fields": [
   {
@@ -31,7 +32,7 @@
    "fieldname": "item_design",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Item Design",
+   "label": "Item Design`",
    "read_only": 1
   },
   {
@@ -41,10 +42,18 @@
    "in_list_view": 1,
    "label": "Tile Surface",
    "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.route",
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Route",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2020-04-15 17:34:02.141885",
+ "modified": "2020-04-25 10:59:00.676853",
  "modified_by": "Administrator",
  "module": "Millennium Website",
  "name": "Website Item Details",

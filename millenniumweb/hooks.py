@@ -2,6 +2,10 @@
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
+from millenniumweb.api import get_items as my_get_item
+import erpnext
+erpnext.portal.product_configurator.utils.get_items = my_get_item
+
 app_name = "millenniumweb"
 app_title = "Millennium Website"
 app_publisher = "Finbyz"
@@ -131,10 +135,5 @@ app_license = "GPL 3.0"
 override_whitelisted_methods = {
 	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "millenniumweb.api.get_products_html_for_website",
 }
-
-
-from millenniumweb.api import get_items as my_get_item
-import erpnext
-erpnext.portal.product_configurator.utils.get_items = my_get_item
 
 # index.get_context = my_get_context

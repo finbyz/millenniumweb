@@ -1,0 +1,330 @@
+
+<style>
+    table {
+        width: 100%;
+        border: 0;
+        border-collapse: collapse;
+    }
+
+    td {
+        padding: 0 0 0 0 !important;
+        margin: 0;
+        border: 0;
+    }
+
+    td.last {
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+
+    .border-top {
+        border-top: 1px solid #f67d2a;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #f67d2a;
+    }
+
+
+    p.field-title {
+        font-size: 16px;
+        color: #002c67;
+        padding: 0 !important;
+    }
+
+    p.text-size {
+        font-size: 14px;
+        color: #6c757d !important;
+        padding: 0 !important;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .img-background {
+        position: absolute;
+
+        width: 140px;
+        height: 140px;
+        background-color: #002c67;
+    }
+
+    .product-img {
+        position: relative;
+        top: 20px;
+        left: 20px;
+        width: 140px;
+    }
+
+    .group-text {
+        font-size: 19px !important;
+    }
+
+    .print-format td,
+    .print-format th {
+        padding: 0 !important;
+    }
+
+
+
+    .item-name {
+        font-size: 16px;
+        font-weight: 600 !important;
+    }
+
+    .item-table-wrapper {
+        padding: 5px 0;
+        border-top: 1px solid #f67d2a;
+    }
+
+    @media print {
+        @page {
+            size: portrait !important
+        }
+    }
+
+    .overlap-wrapper {
+        height: 160px;
+    }
+</style>
+
+{% extends "templates/web.html" %}
+
+{% block title %}Lot Wise Balance{% endblock %}
+{% block page_sidebar %}
+{% include "templates/pages/web_sidebar.html" %}
+{% endblock %}
+
+
+{% set thisDesign ={'design': ""}  %}
+
+
+{% block page_content %}
+
+<div class="d-lg-flex container">
+    <div class="sidebar-block mt-100">
+        <div class="navbar-toggle-visible left">
+            <div class="web-sidebar">
+                <div id="menu_bars" class="left active"> <span></span> <span></span> <span></span> </div>
+                <div class="sidebar-items">
+                    <nav class="side-nav side-nav-left slide-nav static-nav side-nav-open">
+                        <div class="side-nav-inner-setting" id="filter-nav">
+                            <div class=" order-1  order-md-2" id='product-filter-parent'>
+                                <div class=" d-md-block" id="product-filters">
+                                    {% if frappe.form_dict.start or frappe.form_dict.field_filters or frappe.form_dict.attribute_filters or frappe.form_dict.search %}
+
+                                    <a class="mb-3 d-inline-block" href="/product">{{ _('Clear filters') }}</a>
+                                    {% endif  %}
+                                    <!-- {{ field_filters }} -->
+                                    {% for filter in available_filters %}
+                                    <div class="mb-4 ">
+                                        {% for key in filter %}
+                                        <h6 class="filter-name">
+                                            {{ key| replace("_", " ") | title }}</h6>
+                                        {% set value = filter[key] %}
+                                        <input type="text"
+                                            class="form-control form-control-sm mb-2 product-filter-filter "
+                                            list="{{key}}" />
+                                        <datalist id="{{key}}">
+                                            {% set values = filter[key] %}
+                                            {% for value in values %}
+                                            <option value="{{ value.name }}">
+                                                {% endfor %}
+                                        </datalist>
+                                        {% endfor %}
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <script>
+                                    frappe.ready(() => {
+                                        $('.product-filter-filter').on('keydown', frappe.utils.debounce((e) => {
+                                            const $input = $(e.target);
+                                            const keyword = ($input.val() || '').toLowerCase();
+                                            const $filter_options = $input.next('.filter-options');
+
+                                            $filter_options.find('.custom-control').show();
+                                            $filter_options.find('.custom-control').each((i, el) => {
+                                                const $el = $(el);
+                                                const value = $el.data('value').toLowerCase();
+                                                if (!value.includes(keyword)) {
+                                                    $el.hide();
+                                                }
+                                            });
+
+                                        }, 300));
+                                    })
+                                </script>
+                            </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            frappe.ready(function () {
+                $('.sidebar-item a').each(function (index) {
+                    if (this.href.trim() == window.location)
+                        $(this).addClass("active");
+                });
+                /* ===================================
+                SideBar Menu On click
+                ====================================== */
+                var $menu_left = $(".side-nav-left");
+                var $toggler = $("#menu_bars");
+                if ($("#menu_bars").length) {
+                    $("#side-nav").addClass("side-nav-push");
+
+
+                    if ($toggler.hasClass("left")) {
+                        $toggler.on("click", function (e) {
+                            $(this).toggleClass("active");
+
+
+
+                            $('.products-list').toggleClass("shift");
+                            $('.next-btn-row').toggleClass("shift");
+
+                            $menu_left.toggleClass("side-nav-open");
+                            e.stopPropagation();
+                        });
+                    } else {
+                        if ($toggler.hasClass("full")) {
+                            $toggler.on("click", function (e) {
+                                $(this).toggleClass("active");
+
+
+                                $menu_full.toggleClass("side-nav-open");
+                                e.stopPropagation();
+                            });
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
+<div style="margin-top:100px" id="table-wrapper">
+    {% for i in range(data|length) %}
+    {% if i==0 or data[i].item_design != data[i-1].item_design %}
+    <table>
+        {% endif %}
+        {% if i==0 or data[i].item_group!=data[i-1].item_group %}
+        <tr>
+            <td>
+                <table class="group-table">
+                    <tbody>
+                        <tr>
+                            <td width="10%">
+                                <p class="field-title group-text" style="font-weight: 400; color: #002c67 !important">
+                                    Group: {{filters}}
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-size group-text" style="font-weight: 600; color: #000 !important;">
+                                    {{ data[i].item_group }} </p>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        {% endif %}
+        {% if i==0 or data[i].item_design != data[i-1].item_design %}
+        {% if thisDesign.update({'design': data[i].item_design}) %} {% endif %}
+        <tr>
+            <td>
+                <div class="item-table-wrapper">
+                    <table class="item-table" cellspacing="0" cellpadding="0" width="100%" style="padding: 10%;">
+                        <tr>
+                            <td valign="top" width="30%" style="position: relative;" valign="top">
+                                <div class="overlap-wrapper">
+                                    <div class="img-background"></div>
+                                    {% if data[i].image %}
+                                    <img style="width: 140px !important;" class="product-img" src="{{data[i].image}}"
+                                        alt="tile-image">
+                                    {% else %}
+                                    <img style="width: 140px !important;" class="product-img" src="/files/no-image.png"
+                                        alt="tile-image">
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td width="70%" valign="top">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="4" width="70%">
+                                            <p class="field-title item-name">{{data[i].item_design}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p class="field-title">Quality</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="field-title">Lot No.</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="field-title">Balance</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="field-title">Picked</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="field-title">Available</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="field-title">Total</p>
+                                        </td>
+                                    </tr>
+
+                                    {% endif %}
+
+                                    <tr>
+                                        <td>
+                                            {% if i>0 and data[i].tile_quality == data[i-1].tile_quality and data[i].item_design == data[i-1].item_design %}
+                                            <p class="text-size"></p>
+                                            {% else  %}
+                                            <p class="text-size">{{data[i].tile_quality}}</p>
+                                            {% endif %}
+                                        </td>
+                                        <td align="right">
+                                            <p class="text-size">{{data[i].lot_no}}</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="text-size">{{data[i].balance_qty}}</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="text-size">{{data[i].picked_qty}}</p>
+                                        </td>
+                                        <td align="right">
+                                            <p class="text-size">{{data[i].remaining_qty}}</p>
+                                        </td>
+                                        <td align="right">
+                                            {% if i==data|length-1 or data[i].tile_quality!=data[i+1].tile_quality or data[i].item_design!=data[i+1].item_design  %}
+                                            <p class="text-size">{{data[i].total}}</p>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% if i==data|length-1 or data[i+1].item_design != thisDesign.design %}
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
+<script>
+    console.log("Hello")
+</script>

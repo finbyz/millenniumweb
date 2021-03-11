@@ -6,6 +6,11 @@ from millenniumweb.api import get_items as my_get_item
 import erpnext
 erpnext.portal.product_configurator.utils.get_items = my_get_item
 
+# override bcz getting 404 error in thirt party files
+from frappe.website import render
+from millenniumweb.api import add_preload_headers as my_add_preload_headers
+render.add_preload_headers = my_add_preload_headers
+
 app_name = "millenniumweb"
 app_title = "Millennium Website"
 app_publisher = "Finbyz"

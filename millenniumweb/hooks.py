@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
-# from millenniumweb.api import get_items as my_get_item
-# from erpnext.portal.product_configurator import utils
-# utils.get_items = my_get_item
+from millenniumweb.api import get_items as my_get_item
+from erpnext.portal.product_configurator import utils
+utils.get_items = my_get_item
 # import erpnext
 # erpnext.portal.product_configurator.utils.get_items = my_get_item
 

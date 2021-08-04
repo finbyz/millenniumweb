@@ -3,7 +3,6 @@ from erpnext.portal.product_configurator.utils import (get_products_for_website,
 
 
 sitemap = 1
-
 def get_context(context):
 
 	if frappe.form_dict:

@@ -16,12 +16,9 @@ $(window).on('load', function () {
     }, 500);
 })
 $(document).ready(function () {
-
-
-
-
-
-
+    // login issue
+    $(".full-name").html(frappe.get_cookie("full_name"));
+    $(".block_login").attr('style', 'display: block !important');
     // showProjects(20);
     $(".testimonial_owlCarousel").owlCarousel({
         autoplay: true,
@@ -89,10 +86,6 @@ $(document).ready(function () {
 
         });
     });
-
-
-
-
     //   Auto Courosel 
     setTimeout(function () {
         $("a.slider--control.right").trigger('click');

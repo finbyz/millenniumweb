@@ -173,13 +173,15 @@
         </li>
         <li class="navSection secondary p-2">
             {% if not hide_login %}
-            <a href="/login" class="rootLink btn-login-area">{{ _("Login") }}</a>
+            <a href="/login" class="rootLink btn-login-area {% if frappe.session.user == 'Guest' %}block_login {% endif %}">{{ _("Login") }}</a>
             {% endif %}
+            {% if frappe.session.user != 'Guest' %}
             <a href="#" class="rootLink hasDropdown" data-dropdown="millennium-login">
                 <span class="user-image-wrapper"></span>
                 <span class="full-name"></span>
                 <b class="caret"></b>
             </a>
+            {% endif %}
             <a href="#" class="d-none"></a>
         </li>
     </ul>

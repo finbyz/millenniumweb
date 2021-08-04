@@ -141,7 +141,7 @@
     </div>
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/gh/finbyz/millenniumweb/millenniumweb/public/js/frappe-web.min.js,npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/gh/finbyz/finbyzweb@latest/finbyzweb/public/js/frappe-web-v13.min.js,npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
 
 
     {% endblock %}
@@ -160,7 +160,11 @@
 
     <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>    
 
-    {%- block script %}{%- endblock %}
+    {%- block script %}
+        {% if colocated_js -%}
+            <script>{{ colocated_js }}</script>
+        {%- endif %}
+    {%- endblock %}
     <!-- csrf_token -->
     {%- block body_include %}{{ body_include or "" }}{% endblock -%}
 </body>

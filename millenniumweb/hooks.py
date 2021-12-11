@@ -2,16 +2,16 @@
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
-from millenniumweb.api import get_items as my_get_item
-from erpnext.portal.product_configurator import utils
-utils.get_items = my_get_item
-# import erpnext
-# erpnext.portal.product_configurator.utils.get_items = my_get_item
+# from millenniumweb.api import get_items as my_get_item
+# from erpnext.portal.product_configurator import utils
+# utils.get_items = my_get_item
+# # import erpnext
+# # erpnext.portal.product_configurator.utils.get_items = my_get_item
 
-# override bcz getting 404 error in thirt party files
-from frappe.website import render
-from millenniumweb.api import add_preload_headers as my_add_preload_headers
-render.add_preload_headers = my_add_preload_headers
+# # override bcz getting 404 error in thirt party files
+# from frappe.website import render
+# from millenniumweb.api import add_preload_headers as my_add_preload_headers
+# render.add_preload_headers = my_add_preload_headers
 
 app_name = "millenniumweb"
 app_title = "Millennium Website"
@@ -42,6 +42,9 @@ app_license = "GPL 3.0"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
+web_include_js = [
+	"/assets/js/millennium-products-listening.min.js",
+]
 # Home Pages
 # ----------
 
@@ -139,8 +142,8 @@ app_license = "GPL 3.0"
 # }
 
 
-override_whitelisted_methods = {
-	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "millenniumweb.api.get_products_html_for_website",
-}
+# override_whitelisted_methods = {
+# 	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "millenniumweb.api.get_products_html_for_website",
+# }
 
 # index.get_context = my_get_context

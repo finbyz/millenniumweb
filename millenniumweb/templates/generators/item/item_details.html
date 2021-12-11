@@ -1,11 +1,9 @@
 <div class="col-md-6">
 	<div class="pt-4 pt-sm-0">
 		<!-- title -->
-
-
 		<div class="text-left pb-20">
 			<div class="title-underline">
-				<h2 class="blue-text {{ tile_surface }}">{{ item_design }} - {{ tile_surface }} - {{ tile_type }}</h2>
+				<h2 class="blue-text {{ frappe.db.get_value("Item", doc.item_code ,'tile_surface') }}">{{ frappe.db.get_value("Item", doc.item_code ,'item_design') or '' }} - {{ frappe.db.get_value("Item", doc.item_code ,'tile_surface') or '' }} - {{ frappe.db.get_value("Item", doc.item_code ,'tile_type') or '' }}</h2>
 				<div class='line-circle-container '>
 					<div class='loader pl-3 ' style="left:0; z-index:2">
 						<div class='loader--dot'></div>
@@ -62,131 +60,45 @@
 		<hr style="margin: 30px 0">
 		<div class="row item-website-specification mt-1">
 			<div class="col-md-12">
-
-				<h3 class="blue-text">Specifications
-
-				</h3>
-
-
-				<table class="table table-bordered mt-3 item-table">
-					{% if doc.item_series -%}
+				<h3 class="blue-text">Specifications</h3>
+				<table class=" table-bordered mt-3 item-table" width="100%">
+					{% if frappe.db.get_value("Item", doc.item_code ,'item_series') -%}
 					<tr>
-						<td style="width: 30%;">
+						<td style="border: 1px solid #dee2e6 !important" style="width: 30%;">
 							<p>Item Series</p>
 						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.item_series}}</p>
+						<td style="border: 1px solid #dee2e6 !important">
+							<p style="font-weight: 300">{{ frappe.db.get_value("Item", doc.item_code ,'item_series') }}</p>
 						</td>
 					</tr>
 					{%- endif%}
-					{% if doc.tile_size -%}
+					{% if frappe.db.get_value("Item", doc.item_code ,'tile_size')-%}
 					<tr>
-						<td style="width: 30%;">
+						<td style="border: 1px solid #dee2e6 !important" style="width: 30%;">
 							<p>Tile Size</p>
 						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_size}} mm</p>
+						<td style="border: 1px solid #dee2e6 !important">
+							<p style="font-weight: 300">{{ frappe.db.get_value("Item", doc.item_code ,'tile_size') }} mm</p>
 						</td>
 					</tr>
 					{%- endif %}
-					{% if doc.tile_body_composition -%}
+					{% if frappe.db.get_value("Item", doc.item_code ,'tile_body_composition') -%}
 					<tr>
-						<td style="width: 36%;">
+						<td style="border: 1px solid #dee2e6 !important" style="width: 36%;">
 							<p>Tile Body Composition</p>
 						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_body_composition}}</p>
+						<td style="border: 1px solid #dee2e6 !important">
+							<p style="font-weight: 300">{{ frappe.db.get_value("Item", doc.item_code ,'tile_body_composition') }}</p>
 						</td>
 					</tr>
 					{%- endif %}
-					{% if doc.tile_use -%}
+					{% if frappe.db.get_value("Item", doc.item_code ,'tile_use')  -%}
 					<tr>
-						<td style="width: 30%;">
+						<td style="border: 1px solid #dee2e6 !important" style="width: 30%;">
 							<p>Tile Use</p>
 						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_use}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-
-					{% if doc.tile_type -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Type</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_type}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_surface -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Surface</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_surface}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_texture -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Texture</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_texture}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_technical -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Technical</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_technical}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_color -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Color</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_color}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_shape -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Shape</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_shape}}</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_thickness -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Thickness</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_thickness}} mm</p>
-						</td>
-					</tr>
-					{%- endif %}
-					{% if doc.tile_anti_slip_properties -%}
-					<tr>
-						<td style="width: 30%;">
-							<p>Tile Anti Slip Properties</p>
-						</td>
-						<td>
-							<p style="font-weight: 300">{{doc.tile_anti_slip_properties}}</p>
+						<td style="border: 1px solid #dee2e6 !important">
+							<p style="font-weight: 300">{{ frappe.db.get_value("Item", doc.item_code ,'tile_use')  }}</p>
 						</td>
 					</tr>
 					{%- endif %}

@@ -91,7 +91,8 @@
     {%- endfor -%}
 
     {%- endblock -%}
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+    <!-- <script  src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script> -->
 
     {%- block head_include %}
     {{ head_include or "" }}
@@ -108,6 +109,7 @@
         window.dev_server = {{ dev_server }};
         window.socketio_port = {{ frappe.socketio_port }};
     </script>
+    
 </head>
 
 <body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}"
@@ -141,16 +143,17 @@
     </div>
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/gh/finbyz/finbyzweb@latest/finbyzweb/public/js/frappe-web-v13.min.js,npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
 
 
     {% endblock %}
 
     {%- for link in web_include_js -%}
-
+    <script type="text/javascript" src="{{ link | abs_url }}?ver={{ build_version }}"></script>
     {%- endfor -%}
 
-
+   
     <script src="https://cdn.jsdelivr.net/combine/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js,npm/particles.js@2.0.0/particles.min.js,gh/finbyz/millenniumweb/millenniumweb/public/js/combine.min.js"></script>
 
 
@@ -158,13 +161,47 @@
     {%- if script_path -%}
     <script type="text/javascript" src="{{ script_path }}"></script>{%- endif -%}
 
-    <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script>    
+    <script type="text/javascript" src="/assets/millenniumweb/js/millennium.js"></script> 
+    {% if name == 'all-products' %}
+        <script>
+            $(() => {
+                class ProductListing {
+                    constructor() {
+                        let me = this;
+                        let is_item_group_page = $(".item-group-content").data("item-group");
+                        this.item_group = is_item_group_page || null;
 
-    {%- block script %}
-        {% if colocated_js -%}
-            <script>{{ colocated_js }}</script>
-        {%- endif %}
-    {%- endblock %}
+                        let view_type = localStorage.getItem("product_view") || "List View";
+
+                        // Render Product Views, Filters & Search
+                        frappe.require('/assets/js/millennium-products-listening.min.js', function() {
+                            new erpnext.ProductView({
+                                view_type: view_type,
+                                products_section: $('#product-listing'),
+                                item_group: me.item_group
+                            });
+                        });
+
+                        this.bind_card_actions();
+                    }
+
+                    bind_card_actions() {
+                        erpnext.e_commerce.shopping_cart.bind_add_to_cart_action();
+                        erpnext.e_commerce.wishlist.bind_wishlist_action();
+                    }
+                }
+
+                new ProductListing();
+            });
+        </script>
+    {% else %} 
+   
+        {%- block script %}
+            {% if colocated_js -%}
+                <script>{{ colocated_js }}</script>
+            {%- endif %}
+        {%- endblock %}
+    {% endif %}
     <!-- csrf_token -->
     {%- block body_include %}{{ body_include or "" }}{% endblock -%}
 </body>

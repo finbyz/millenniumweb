@@ -45,7 +45,7 @@ erpnext.ProductView =  class {
 		let args = this.get_query_filters();
 
 		this.disable_view_toggler(true);
-
+		console.log(args)
 		frappe.call({
 			method: "erpnext.e_commerce.api.get_product_filter_data",
 			args: {
@@ -194,7 +194,7 @@ erpnext.ProductView =  class {
 			<div class="input-group col-8 p-0">
 				<div class="dropdown w-50" id="dropdownMenuSearch" style="margin-left: 300px;">
 					<input type="search" name="query" id="search-box" class="form-control border search_for_products font-md"
-						placeholder="Search for Products test"
+						placeholder="Search for Products"
 						aria-label="Product" aria-describedby="button-addon2">
 					<div class="icon search-icon search_icon_for_products">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

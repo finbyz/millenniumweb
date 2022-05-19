@@ -61,23 +61,16 @@
     </div>
        <div class="gallery">
         <div id="drag-container">
-            <div id="spin-container" style="height: 205px;width:205px">
+            <div id="spin-container" >
                 <!-- Add your images (or video) here -->
-                
                 {%- for d in data -%}
-                  
                         <a href="{{ d.route }}">
                             <p>{{ d.item_design }} - {{ d.tile_surface }}</p>
                         </a>
                         <a href="{{ d.route }}">
                         <img class="pt-1 px-2 pb-3"src="{{ d.cover_image }}" alt="{{ d.item_design }}" width="205" height="205">
                         </a>
-                            
-                        
-                   
                 {%- endfor -%}
-                
-
             </div>
             <div id="ground"></div>
         </div>

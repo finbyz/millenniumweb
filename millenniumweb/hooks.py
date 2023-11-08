@@ -28,7 +28,7 @@ app_license = "GPL 3.0"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/millenniumweb/css/millenniumweb.css"
 # app_include_js = "/assets/millenniumweb/js/millenniumweb.js"
-
+app_include_js = ["millenniumweb.bundle.js"]
 # include js, css files in header of web template
 # web_include_css = "/assets/millenniumweb/css/millenniumweb.css"
 # web_include_js = "/assets/millenniumweb/js/millenniumweb.js"
@@ -42,9 +42,9 @@ app_license = "GPL 3.0"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
-web_include_js = [
-	"/assets/js/millennium-products-listening.min.js",
-]
+# web_include_js = [
+# 	"/assets/js/millennium-products-listening.min.js",
+# ]
 # Home Pages
 # ----------
 

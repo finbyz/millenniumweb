@@ -82,16 +82,16 @@
     <link type="text/css" rel="stylesheet" href="{{ theme.theme_url }}">
     {% endif %}
 
-    {% for link in web_include_css %}
+    <!-- {% for link in app_include_css %}
     {% if link not in ["assets/frappe/css/bootstrap.css","assets/erpnext/css/website.css","assets/css/frappe-web.css"] %}
     <link type="text/css" rel="stylesheet" href="{{ link|abs_url }}">
 
     
     {%- endif -%}
-    {%- endfor -%}
+    {%- endfor -%} -->
 
     {%- endblock -%}
-    <script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script> -->
     <!-- <script  src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script> -->
 
     {%- block head_include %}
@@ -143,8 +143,10 @@
     </div>
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
-    <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="/assets/js/frappe-web.bundle.js?ver={{ build_version }}"></script> -->
+    {{ include_script('frappe-web.bundle.js') }}
+    <!-- <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js"></script> -->
+    <!-- {{ include_script('https://cdn.jsdelivr.net/combine/npm/popper.js@1.12.9/dist/umd/popper.min.js,npm/bootstrap@4.1.0/dist/js/bootstrap.min.js') }} -->
 
 
     {% endblock %}
@@ -174,7 +176,7 @@
                         let view_type = localStorage.getItem("product_view") || "List View";
 
                         // Render Product Views, Filters & Search
-                        frappe.require('/assets/js/millennium-products-listening.min.js', function() {
+                        frappe.require('millenniumweb.bundle.js', function() {
                             new erpnext.ProductView({
                                 view_type: view_type,
                                 products_section: $('#product-listing'),

@@ -1,8 +1,0 @@
-{
-    "js/millennium-products-listening.min.js": [
-        "public/js/list.js",
-        "public/js/grid.js",
-        "public/js/search.js",
-        "public/js/views.js"
-    ]
-}

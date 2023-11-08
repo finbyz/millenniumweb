@@ -51,7 +51,7 @@ $(document).ready(function () {
         }
     }
     // login issue
-    $(".full-name").html(frappe.get_cookie("full_name"));
+    // $(".full-name").html(frappe.get_cookie("full_name"));
     $(".block_login").attr('style', 'display: block !important');
     // showProjects(20);
     $(".testimonial_owlCarousel").owlCarousel({

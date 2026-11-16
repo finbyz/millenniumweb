@@ -19,4 +19,6 @@ import random
 def get_context(context):
     # data = frappe.db.sql("select * from `tabWebsite Item Details",as_dict=True)
     # return data
-    return { "data": frappe.get_all("Website Item Details", ['item_code', 'cover_image'],order_by = 'RAND()', page_length = 7) }
+    # v16 does not allow RAND() in order_by, so pick 7 random rows in Python
+    items = frappe.get_all("Website Item Details", ['item_code', 'cover_image'])
+    return { "data": random.sample(items, min(7, len(items))) }

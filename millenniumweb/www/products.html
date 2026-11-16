@@ -1,4 +1,4 @@
-{% set data = frappe.get_all('Website Item Details', fields=['item_code','cover_image','item_design','tile_surface','route'],order_by='RAND()', page_length = 7)  %}
+{# data comes from products.py get_context (v16 does not allow RAND() in order_by) #}
 
 <div class="product-section">
     <div class="container product-text py-5  d-none d-lg-block">

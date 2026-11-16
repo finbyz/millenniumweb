@@ -9,7 +9,6 @@ from frappe import _
 from frappe.utils import cint, flt, getdate
 
 
-@frappe.whitelist()
 def get_context(context):
     context._login_required = False
     if frappe.session.user == "Guest":
